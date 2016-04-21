@@ -164,7 +164,10 @@
 					<div class="form-group">
 					
 						<label for="color">Color: </label>
-						<input name="color" id="color" type="text" placeholder="Grey or dark grey" class="form-control">
+						<select name="color" id="color">
+					<option value="grey"> Grey </option>
+					<option value="dark grey"> Dark grey </option>
+					</select>
 					</div>
 				</div>
 			</div>
@@ -172,7 +175,10 @@
 				<div class="col-md-3 col-sm-6">
 					<div class="form-group">
 						<label for="dorsal_fin">Dorsal fin: </label>
-						<input name="dorsal_fin" id="dorsal_fin" type="text" placeholder="Flabby or straight" class="form-control">
+						<select name="dorsal_fin" id="dorsal_fin">
+					  <option value="flabby"> flabby </option>
+					  <option value="straight"> straight </option>
+					</select>
 					</div>
 				</div>
 		</div>
@@ -180,15 +186,9 @@
 				<div class="col-md-3 col-sm-6">
 					<div class="form-group">
 						<label for="tail">Tail: </label>
-						<input name="tail" id="tail" type="text"placeholder="Broken or not broken" class="form-control">
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3 col-sm-6">
-					<div class="form-group">
-						<label for="lenght">Lenght: </label>
-						<input name="lenght" id="lenght" type="text" placeholder="Insert dolphins lenght" class="form-control">
+						<select name="tail" id="tail">
+					  <option value="broken"> Broken </option>
+					  <option value="not broken"> Not broken </option>
 					</div>
 				</div>
 			</div>
