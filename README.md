@@ -6,8 +6,9 @@
     * This app can be helpful to people working with dolphins. I'm going to make this app specifically about an organisation DRC (Dolphin Research Center) where I have been myself as a voulenteer worker. Most of the workers there know the dolphins by heart but it can be really helpful for the beginners or for the visitors.
         * v0.1 It is possible to create user
         * v0.2 It is possible to log in 
-        * 
-        * 
+        * v0.3 It is possible to add dolphins features and see what dolphin did you see
+        * v0.4 It is possible to add dolphins who you saw
+        *
     * **Summary:** what did you learn? what did fail? what whould you do different next time?
 
 
