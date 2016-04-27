@@ -35,21 +35,20 @@
 			$( ".datepicker" ).datepicker({
 				//dateFormat: "yy-mm-dd",
 				dateFormat: "dd.mm.yy",
-				//altFormat: "dd M yy",
-				
+			
 				showAnim: "blind",
-				
+			});
 				
 			});
-				/*$( ".format" ).change(function("d MM, yy"){
-					$( ".anim" ).change(function("blind") {
-						$( ".datepicker" ).datepicker( "dateFormat", "option", "showAnim", $( this ).val() );
-												});
-											});*/
-		});
 		  </script>
 		  
-		  <!-- $( ".datepicker" ).datepicker( Дополнительные ФУНКЦИИ ПИСАТЬ СЮДА ); -->
+		  <!-- 
+				$ function() { 
+								$( ".datepicker" ).datepicker({ 
+																[Дополнительные ФУНКЦИИ ПИСАТЬ СЮДА] 
+																									}) 
+							}); 
+			-->
 		  
 		  
 		  
@@ -59,36 +58,29 @@
 		
 		    function validate(){
 				
-			    var Login_id = document.getElementById('Login_id').value;
-				var name = document.getElementById('name').value;
+			    var Name = document.getElementById('Name').value;
+				var Last_Name = document.getElementById('Last_Name').value;
 				var date = document.getElementById('datepicker').value;
 				var genre = document.getElementById('genre').value;
 				var error = '';
 				var formIsValid = true;
 				
+				if(!Name){
+					error += "<br>Login field is required";
+					formIsValid = false;
+				}
 				
-				if(!name){
+				if(!Last_Name){
 					error += "<br>Name field is required";
 					formIsValid = false;
 				}
 				
-				if(!Login_id){
-					error += "<br>Login field is required";
-					formIsValid = false;
-				}
 				
 				if(!date){
 					error += "<br>Please select date";
 					formIsValid = false;
 				}
 				
-				/*else{
-					if(preg_match("^[0-3][0-9].[0-1][0-9].[0-9]{4}$",$date)){
-						//true
-					}else{
-						formIsValid = false;
-					}
-				}*/
 				
 				if(!genre){
 					error += "<br>Please select the type of shooting";

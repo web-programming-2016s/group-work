@@ -169,6 +169,7 @@
 			<div class="row">
 				<form class="col-md-1 col-sm-4" id="dataForm" method="post" onsubmit="return validate();" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 					<input type="hidden" name="edit"  value="<?=$id;?>">
+			</div>
 	
 		<table border="0">
 			<tr>
@@ -179,9 +180,9 @@
 				<td>
 					<div class="row">
 						<div class="form-group">
-							<div class="col-md-1 col-sm-4">
+							<!-- <div class="col-md-1 col-sm-4"> -->
 								<input type="text" name="Name" id="Name" class="form-control" style="width: 300px;" value="<?=$Name?>">
-							</div>
+							<!-- </div> -->
 						</div>
 					</div>
 				</td>
@@ -195,9 +196,9 @@
 				<td>
 					<div class="row">
 						<div class="form-group">
-							<div class="col-md-1 col-sm-4">
+							<!-- <div class="col-md-1 col-sm-4"> -->
 								<input type="text"  name="Last_Name" id="Last_Name" class="form-control" style="width: 300px;" value="<?=$Last_Name?>">
-							</div>
+							<!-- </div> -->
 						</div>
 					</div>
 				</td>
@@ -211,9 +212,9 @@
 				<td>
 					<div class="row">
 						<div class="form-group">
-							<div class="col-md-1 col-sm-4">
+							<!-- <div class="col-md-1 col-sm-4"> -->
 								<input type="date" name="date" id="date" class="form-control" style="width: 300px;" value="<?=$reserv_date?>">
-							</div>
+							<!-- </div> -->
 						</div>
 					</div>
 				</td>
@@ -227,8 +228,8 @@
 				<td>
 					<div class="row">
 						<div class="form-group">
-							<div class="col-md-1 col-sm-4">
-								<div>
+							<!-- <div class="col-md-1 col-sm-4"> -->
+								<!-- <div> -->
 									<select id="genre" name="genre" class="form-control" style="width: 300px;">
 										<!-- <option value="notselected">Pick a category:</option>  NOT WORKING > without IF and ELSE. -->
 										<?php 
@@ -244,8 +245,8 @@
 											}
 										?>
 									</select>
-								</div>
-							</div>
+								<!-- </div> -->
+							<!-- </div> -->
 						</div>
 					</div>		
 				</td>
@@ -259,9 +260,9 @@
 				<td>
 					<div class="row">
 						<div class="form-group">
-							<div class="col-md-1 col-sm-4">
+							<!-- <div class="col-md-1 col-sm-4"> -->
 								<textarea name="description" type="text" class="form-control" style="width: 300px; height: 120px;" ><?=$description?></textarea>
-							</div>
+							<!-- </div> -->
 						</div>
 					</div>
 				</td>
@@ -276,11 +277,11 @@
 					<br>
 						<div class="row">
 							<div class="form-group">
-								<div class="col-md-1 col-sm-4">
-							<!-- btn-lg   visible-xs-inline  hidden-xs-->
-								<input class="btn btn-primary hidden-xs" type="submit" value="Edit the reservation">
-								<input class="btn btn-primary btn-block visible-xs-inline" type="submit" value="Edit the reservation">
-								</div>
+								<!-- <div class="col-md-1 col-sm-4"> -->
+									<!-- btn-lg   visible-xs-inline  hidden-xs-->
+									<input class="btn btn-primary hidden-xs" type="submit" value="Edit the reservation">
+									<input class="btn btn-primary btn-block visible-xs-inline" type="submit" value="Edit the reservation">
+								<!-- </div> -->
 							</div>
 						</div>
 				</td>

@@ -104,12 +104,13 @@
 	<h2>Reservation form:</h2>
 		<div id="errors" style="color: red;"></div>
 			<div class="row">
-				<form class="col-md-1 col-sm-4" id="dataForm" method="post" onsubmit="return validate();" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+				<form class="col-md-3 col-sm-6" id="dataForm" method="post" onsubmit="return validate();" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+			</div>
 				<br>
 				
 		<table border="0">
 			<tr>
-				<td width="185">
+				<td>
 					<p />Firt Name<span style="color: red;">*</span>:
 				</td>
 				
@@ -117,7 +118,7 @@
 					<div class="row">
 						<div class="form-group">
 							<!--<div class="col-md-1 col-sm-4">-->
-								<input type="text" name="Name" id="Name" class="form-control" style="width: 185px;" placeholder="First Name">
+								<input type="text" name="Name" id="Name" class="form-control" style="width: 300px;" placeholder="First Name">
 							<!--</div>-->
 						</div>
 					</div>
@@ -125,7 +126,7 @@
 			</tr>
 			
 			<tr>
-				<td width="185">
+				<td>
 					<!-- <div class="form-group"> -->
 						<p />Last Name<span style="color: red;">*</span>: 
 					<!-- </div> -->
@@ -135,7 +136,7 @@
 					<div class="row">
 						<div class="form-group">
 							<!-- <div class="col-md-1 col-sm-4"> -->
-								<input type="text"  name="Last_Name" id="Last_Name" class="form-control" style="width: 185px;" placeholder="Last Name">
+								<input type="text"  name="Last_Name" id="Last_Name" class="form-control" style="width: 300px;" placeholder="Last Name">
 							<!-- </div> -->
 						</div>
 					</div>
@@ -143,7 +144,7 @@
 			</tr>
 			
 			<tr>
-				<td width="185">
+				<td>
 					<!-- <div class="form-group"> -->
 						<p /><span title="Issue date">Issue date<span style="color: red;">*</span>: </span>
 					<!-- </div> -->
@@ -153,7 +154,7 @@
 					<div class="row">
 						<div class="form-group">
 							<!-- <div class="col-md-1 col-sm-4"> -->
-								<input type="text" name="date" id="datepicker" size="30" class="form-control datepicker" style="width: 185px;" placeholder="31.12.2016">
+								<input type="text" name="date" id="datepicker" size="30" class="form-control datepicker" style="width: 300px;" placeholder="31.12.2016">
 							<!-- </div> -->
 						</div>
 					</div>
@@ -161,7 +162,7 @@
 			</tr>
 			
 			<tr>
-				<td width="185">
+				<td>
 					<!-- <div class="form-group"> -->
 						<p />What kind of movie<span style="color: red;">*</span>: 			
 					<!-- </div> -->
@@ -171,7 +172,7 @@
 					<div class="row">
 						<div class="form-group">
 							<!-- <div class="col-md-1 col-sm-4"> -->
-								<select id="genre" name="genre" class="form-control" style="width: 185px;" placeholder="Genre">
+								<select id="genre" name="genre" class="form-control" style="width: 300px;" placeholder="Genre">
 									<!-- <option value="notselected">Pick a category:</option>  NOT WORKING > without IF and ELSE. -->
 									<option></option>
 									<option>Clip movie</option>
@@ -193,7 +194,7 @@
 			</tr>
 		
 			<tr>
-				<td width="185">
+				<td>
 					<!-- <div class="form-group"> -->
 						<p />Description:
 					<!-- </div> -->
@@ -203,7 +204,7 @@
 					<div class="row">
 						<div class="form-group">
 							<!-- <div class="col-md-1 col-sm-4"> -->
-										<textarea name="description" type="text" class="form-control" style="width: 185px; height: 120px;"></textarea>
+								<textarea name="description" type="text" class="form-control" style="width: 300px; height: 120px;"></textarea>
 							<!-- </div> -->
 						</div>
 					</div>
@@ -236,8 +237,8 @@
 	</form>
 
 
-		<br>
-		<hr />
+	<br>
+	<hr />
 		
 	</section>
 </div>
