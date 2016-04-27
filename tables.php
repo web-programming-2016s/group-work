@@ -152,7 +152,11 @@
 			$table_html .="<td>".$recipient."</td>";
 			$table_html .="<td>".$message."</td>";
 			$table_html .="<td>".$sender."</td>";
-			$table_html .="<td>".$created."</td>";
+			
+			$table_html .="<td>";
+			$table_html .=date_format( date_create($created) , "d/m/Y - H:i:s");
+			$table_html .="</td>";
+			
 			$table_html .="<td><a class='btn btn-warning' href='edit_message.php?edit=".$id."'>Edit</a></td>";
 			$table_html .="<td><a class='btn btn-danger' href='?delete=".$id."'>X</a></td>";
 			
@@ -225,10 +229,10 @@
 			$table2_html .="<th><center>ID</center></th>";
 			$table2_html .="<th><center>First Name</center></th>";
 			$table2_html .="<th><center>Last Name</center></th>";
-			$table2_html .="<th><center>The Date when</center></th>";
+			$table2_html .="<th><center>Project date beginning</center></th>";
 			$table2_html .="<th><center>Type</center></th>";
 			$table2_html .="<th><center>Description</center></th>";
-			$table2_html .="<th><center>Time</center></th>";
+			$table2_html .="<th><center>Created</center></th>";
 			$table2_html .="<th><center>Edit</center></th>";
 			$table2_html .="<th><center>Delete?</center></th>";
 		
@@ -247,15 +251,20 @@
 			$table2_html .="<td>".$id."</td>";	//add colums
 			$table2_html .="<td>".$Name."</td>";
 			$table2_html .="<td>".$Last_Name."</td>";
+			
 			$table2_html .="<td>";
 			//echo strtotime($reserv_date);
 			//echo date("d m Y", strtotime($reserv_date));
 			$table2_html .=date_format( date_create($reserv_date) , "d.m.Y");
-			
 			$table2_html .="</td>";
+			
 			$table2_html .="<td>".$label_genre."</td>";
 			$table2_html .="<td>".$description."</td>";
-			$table2_html .="<td>".$time_created."</td>";
+			
+			$table2_html .="<td>";
+			$table2_html .=date_format( date_create($time_created) , "d/m/Y - H:i:s");
+			$table2_html .="</td>";
+			
 			$table2_html .="<td><a class='btn btn-warning' href='edit_reservation.php?edit=".$id."'>Edit</a></td>";
 			$table2_html .="<td><a class='btn btn-danger' href='?delete=".$id."'>X</a></td>";
 			
@@ -267,8 +276,8 @@
 
 ?>
 					
-				<h3>Table of "Order APP"</h3>
-					<?php echo $table2_html; ?>
+	<h3>Table of "Order APP"</h3>
+		<?php echo $table2_html;?>
 		
 			
 			</section>
@@ -283,7 +292,7 @@
 			<dl class="dl-horizontal">
 				<dt>Beta Version 2.0</dt>
 				<dd>© Vadim Kozlov and Dmitri Kabluchko</dd>
-				<dt>Folders of</dt>
+				<dt>Directory:</dt>
 				<dd><div class="bkt"><a href="http://localhost:5555/~shikter/web/" target="_blank">Web Folders</a></div>
 			</dl>
 			<br>

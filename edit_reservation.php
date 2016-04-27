@@ -64,29 +64,13 @@
 				
 				echo "<br>"."-------------------------------------";
 				
-				
-				/*
-				echo 
-			
-				'<div>
-				
-				<br><strong>Name of recipient: </strong> <span style="color: red;">.$recipient = $_GET["who"].</span>
-				<br><strong>Message: </strong> <span style="color: red;">.$message = $_GET["message"].</span>
-				<br><strong>Sender name: </strong> <span style="color: red;">.$sender = $_GET["from_who"].</span>
-				<br>USER ID: $id = $_GET["edit"].
-				
-				</div>
-				<br>
-				';
-				*/
-				
 			}else{
 				
 				echo $stmt->error;
 			}
 			
 			
-		}else{
+				}else{
 			
 					//user did not click any buttons yet,
 					//give user latest data from db
@@ -106,7 +90,7 @@
 				if($stmt->fetch()){
 					
 					//we had data
-					echo "<h4>"."> <i>Filled field:</i> | "."<strong>[".$Name."] | [".$Last_Name."] | [".$reserv_date."] | [".$label_genre."] | [".$description."]</strong>"." | <i>which was created:</i> "."<strong>".$time_created."</strong>"."</h4>";
+					echo "<h4>"."> <i>Filled field:</i> | "."<strong>[".$Name."] | [".$Last_Name."] | [".date_format( date_create($reserv_date) , "d.m.Y")."] | [".$label_genre."] | [".$description."]</strong>"." | <i>which was created:</i> "."<strong>".date_format( date_create($time_created) , "d/m/Y - H:i:s")."</strong>"."</h4>";
 					
 				}else{
 					
@@ -308,7 +292,7 @@
 			<dl class="dl-horizontal">
 				<dt>Beta Version 2.0</dt>
 				<dd>© Vadim Kozlov and Dmitri Kabluchko</dd>
-				<dt>Folders of</dt>
+				<dt>Directory:</dt>
 				<dd><div class="bkt"><a href="http://localhost:5555/~shikter/web/" target="_blank">Web Folders</a></div>
 			</dl>
 			<br>

@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Little Estonia - My Applications</title>
+    <title>Little Estonia</title>
 	
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
@@ -27,9 +27,6 @@
 		<!--<link rel="stylesheet" type="text/css" href="app.css">-->
 		
 		
-		
-		
-		
 		  <script>
 		  $(function() {
 			$( ".datepicker" ).datepicker({
@@ -41,6 +38,7 @@
 				
 			});
 		  </script>
+		  
 		  
 		  <!-- 
 				$ function() { 
@@ -106,6 +104,26 @@
 			}
 			
 		</script>		
+		
+		<!--		
+			<script type="text/javascript" src="jquery.js"></script>
+					<script type="text/javascript">
+					function checker() 
+					{ 
+					if($('input[name^=toDel]:checked').length > 0) return confirm('Do you really want to delete?'); 
+					else return false; 
+					} 
+					
+			</script>
+		-->
+
+			<!--
+			<FORM action="" method="post" > 
+			<input name="toDel" type="checkbox" value="1"> 
+			<input name="toDel" type="checkbox" value="2"> 
+			<input name="" type="submit" onClick="return checker();"> 
+			</FORM>
+			-->
 		
 	
   </head>
