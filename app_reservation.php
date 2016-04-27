@@ -77,7 +77,7 @@
 	
 	
 	<div class="container">
-	<section id="application_reservation">
+		<section id="application_reservation">
 		
 	<?php
 		if($dataExists){
@@ -103,23 +103,22 @@
 		
 	<h2>Reservation form:</h2>
 		<div id="errors" style="color: red;"></div>
-			<form class="col-md-1 col-sm-4" id="dataForm" method="post" onsubmit="return validate();" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+			<div class="row">
+				<form class="col-md-1 col-sm-4" id="dataForm" method="post" onsubmit="return validate();" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 				<br>
 				
 		<table border="0">
 			<tr>
 				<td width="185">
-					<div class="form-group">
-						<p />Firt Name<span style="color: red;">*</span>: 
-					</div>
+					<p />Firt Name<span style="color: red;">*</span>:
 				</td>
 				
 				<td>
 					<div class="row">
 						<div class="form-group">
-							<div class="col-md-1 col-sm-4">
+							<!--<div class="col-md-1 col-sm-4">-->
 								<input type="text" name="Name" id="Name" class="form-control" style="width: 185px;" placeholder="First Name">
-							</div>
+							<!--</div>-->
 						</div>
 					</div>
 				</td>
@@ -127,17 +126,17 @@
 			
 			<tr>
 				<td width="185">
-					<div class="form-group">
+					<!-- <div class="form-group"> -->
 						<p />Last Name<span style="color: red;">*</span>: 
-					</div>
+					<!-- </div> -->
 				</td>
 				
 				<td>
 					<div class="row">
 						<div class="form-group">
-							<div class="col-md-1 col-sm-4">
+							<!-- <div class="col-md-1 col-sm-4"> -->
 								<input type="text"  name="Last_Name" id="Last_Name" class="form-control" style="width: 185px;" placeholder="Last Name">
-							</div>
+							<!-- </div> -->
 						</div>
 					</div>
 				</td>
@@ -145,17 +144,17 @@
 			
 			<tr>
 				<td width="185">
-					<div class="form-group">
+					<!-- <div class="form-group"> -->
 						<p /><span title="Issue date">Issue date<span style="color: red;">*</span>: </span>
-					</div>
+					<!-- </div> -->
 				</td>
 				
 				<td>
 					<div class="row">
 						<div class="form-group">
-							<div class="col-md-1 col-sm-4">
+							<!-- <div class="col-md-1 col-sm-4"> -->
 								<input type="text" name="date" id="datepicker" size="30" class="form-control datepicker" style="width: 185px;" placeholder="31.12.2016">
-							</div>
+							<!-- </div> -->
 						</div>
 					</div>
 				</td>
@@ -163,15 +162,15 @@
 			
 			<tr>
 				<td width="185">
-					<div class="form-group">
+					<!-- <div class="form-group"> -->
 						<p />What kind of movie<span style="color: red;">*</span>: 			
-					</div>
+					<!-- </div> -->
 				</td>
 				
 				<td>
 					<div class="row">
 						<div class="form-group">
-							<div class="col-md-1 col-sm-4">
+							<!-- <div class="col-md-1 col-sm-4"> -->
 								<select id="genre" name="genre" class="form-control" style="width: 185px;" placeholder="Genre">
 									<!-- <option value="notselected">Pick a category:</option>  NOT WORKING > without IF and ELSE. -->
 									<option></option>
@@ -195,19 +194,17 @@
 		
 			<tr>
 				<td width="185">
-					<div class="form-group">
+					<!-- <div class="form-group"> -->
 						<p />Description:
-					</div>
+					<!-- </div> -->
 				</td>
 
 				<td>
 					<div class="row">
 						<div class="form-group">
-							<div class="col-md-1 col-sm-4">
-								<div class="form-group">
+							<!-- <div class="col-md-1 col-sm-4"> -->
 										<textarea name="description" type="text" class="form-control" style="width: 185px; height: 120px;"></textarea>
-								</div>
-							</div>
+							<!-- </div> -->
 						</div>
 					</div>
 				</td>
@@ -221,15 +218,15 @@
 				<td>	
 					<br>	
 						<div class="row">
-									<div class="form-group">
-										<div class="col-md-1 col-sm-4">
-											<!-- btn-lg   visible-xs-inline  hidden-xs-->
-											<input class="btn btn-primary hidden-xs" type="submit" value="Make a reservation">
-											<input class="btn btn-primary btn-block visible-xs-inline" type="submit" value="Make a reservation">
-										</div>
-									</div>
-								</div>
-							</td>
+							<div class="form-group">
+								<!-- <div class="col-md-1 col-sm-4"> -->
+									<!-- btn-lg   visible-xs-inline  hidden-xs-->
+									<input class="btn btn-primary hidden-xs" type="submit" value="Make a reservation">
+									<input class="btn btn-primary btn-block visible-xs-inline" type="submit" value="Make a reservation">
+								<!-- </div> -->
+							</div>
+						</div>
+				</td>
 			</tr>
 			
 			
