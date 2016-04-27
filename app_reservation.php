@@ -5,23 +5,23 @@
 
 				$dataExists = false;
 				if ($_SERVER["REQUEST_METHOD"] == "POST"){
-					$Login_id = $_POST["Login_id"];
-					$name = $_POST["name"];
+					$Name = $_POST["Name"];
+					$Last_Name = $_POST["Last_Name"];
 					$date = $_POST["date"];
 					$genre = $_POST["genre"];
 					$description = $_POST["description"];
 						
-					if($name && $Login_id && $date && $genre){
+					if($Name && $Last_Name && $date && $genre){
 						$dataExists = true;
 						$mysql = new mysqli("localhost", $db_username, $db_password, "webpr2016_shikter");
 						
-						$stmt = $mysql->prepare("INSERT INTO Reservation(Login, Name, reserv_date, label_genre, description) VALUES(?,?,?,?,?)");
+						$stmt = $mysql->prepare("INSERT INTO Reservation(Name, Last_Name, reserv_date, label_genre, description) VALUES(?,?,?,?,?)");
 						
 						//echo error
 						echo $mysql->error;
 						
 						// for each question mark its type with one letter
-						$stmt->bind_param("sssss", $_POST["Login_id"], $_POST["name"], $_POST["date"], $_POST["genre"], $_POST["description"]);
+						$stmt->bind_param("sssss", $_POST["Name"], $_POST["Last_Name"], $_POST["date"], $_POST["genre"], $_POST["description"]);
 						
 						//save
 						if($stmt->execute()){
@@ -87,8 +87,8 @@
 			
 			"<div>
 			
-			<br>Login: $Login_id
-			<br>Name: $name
+			<br>First Name: $Name
+			<br>Last Name: $Last_Name
 			<br>Date: $date
 			<br>Type of shooting: $genre
 			<br>Description: $description
@@ -102,23 +102,23 @@
 	?>
 		
 	<h2>Reservation form:</h2>
-	<div id="errors" style="color: red;"></div>
-	
-	
-	<form id="dataForm" method="post" onsubmit="return validate();" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-	
-		<br>
+		<div id="errors" style="color: red;"></div>
+			<form class="col-md-1 col-sm-4" id="dataForm" method="post" onsubmit="return validate();" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+				<br>
+				
 		<table border="0">
 			<tr>
 				<td width="185">
-		<p />Login<span style="color: red;">*</span>: 
+					<div class="form-group">
+						<p />Firt Name<span style="color: red;">*</span>: 
+					</div>
 				</td>
 				
 				<td>
 					<div class="row">
 						<div class="form-group">
-							<div class="col-md-3 col-sm-6">
-		<input type="text" name="Login_id" id="Login_id" class="form-control" style="width: 300px;" placeholder="User name">
+							<div class="col-md-1 col-sm-4">
+								<input type="text" name="Name" id="Name" class="form-control" style="width: 185px;" placeholder="First Name">
 							</div>
 						</div>
 					</div>
@@ -127,14 +127,16 @@
 			
 			<tr>
 				<td width="185">
-		<p />Name<span style="color: red;">*</span>: 
+					<div class="form-group">
+						<p />Last Name<span style="color: red;">*</span>: 
+					</div>
 				</td>
 				
 				<td>
 					<div class="row">
 						<div class="form-group">
-							<div class="col-md-3 col-sm-6">
-		<input type="text"  name="name" id="name" class="form-control" style="width: 300px;" placeholder="Your full name">
+							<div class="col-md-1 col-sm-4">
+								<input type="text"  name="Last_Name" id="Last_Name" class="form-control" style="width: 185px;" placeholder="Last Name">
 							</div>
 						</div>
 					</div>
@@ -143,14 +145,16 @@
 			
 			<tr>
 				<td width="185">
-		<p /><span title="Issue date">Issue date<span style="color: red;">*</span>: </span>
+					<div class="form-group">
+						<p /><span title="Issue date">Issue date<span style="color: red;">*</span>: </span>
+					</div>
 				</td>
 				
 				<td>
 					<div class="row">
 						<div class="form-group">
-							<div class="col-md-3 col-sm-6">
-		<input type="text" name="date" id="datepicker" size="30" class="form-control datepicker" style="width: 300px;" placeholder="31.12.2016">
+							<div class="col-md-1 col-sm-4">
+								<input type="text" name="date" id="datepicker" size="30" class="form-control datepicker" style="width: 185px;" placeholder="31.12.2016">
 							</div>
 						</div>
 					</div>
@@ -159,14 +163,16 @@
 			
 			<tr>
 				<td width="185">
-		<p />What kind of movie<span style="color: red;">*</span>: 			
+					<div class="form-group">
+						<p />What kind of movie<span style="color: red;">*</span>: 			
+					</div>
 				</td>
 				
 				<td>
 					<div class="row">
 						<div class="form-group">
-							<div class="col-md-3 col-sm-6">
-								<select id="genre" name="genre" class="form-control" style="width: 300px;" placeholder="Genre">
+							<div class="col-md-1 col-sm-4">
+								<select id="genre" name="genre" class="form-control" style="width: 185px;" placeholder="Genre">
 									<!-- <option value="notselected">Pick a category:</option>  NOT WORKING > without IF and ELSE. -->
 									<option></option>
 									<option>Clip movie</option>
@@ -189,14 +195,18 @@
 		
 			<tr>
 				<td width="185">
-								<p />Description:
+					<div class="form-group">
+						<p />Description:
+					</div>
 				</td>
 
 				<td>
-				<div class="row">
-						<div class="col-md-3 col-sm-6">
+					<div class="row">
+						<div class="form-group">
+							<div class="col-md-1 col-sm-4">
 								<div class="form-group">
-									<textarea name="description" type="text" class="form-control" style="width: 300px; height: 120px;"></textarea>
+										<textarea name="description" type="text" class="form-control" style="width: 185px; height: 120px;"></textarea>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -209,15 +219,17 @@
 				</td>
 				
 				<td>	
-	<br>	<div class="row">
-						<div class="col-md-1 col-sm-4">
-						<!-- btn-lg   visible-xs-inline  hidden-xs-->
-							<input class="btn btn-primary hidden-xs" type="submit" value="Make a reservation">
-							<input class="btn btn-primary btn-block visible-xs-inline" type="submit" value="Make a reservation">
-							
-						</div>
-			</div>
-				</td>
+					<br>	
+						<div class="row">
+									<div class="form-group">
+										<div class="col-md-1 col-sm-4">
+											<!-- btn-lg   visible-xs-inline  hidden-xs-->
+											<input class="btn btn-primary hidden-xs" type="submit" value="Make a reservation">
+											<input class="btn btn-primary btn-block visible-xs-inline" type="submit" value="Make a reservation">
+										</div>
+									</div>
+								</div>
+							</td>
 			</tr>
 			
 			
@@ -241,7 +253,7 @@
 				<dt>Beta Version 2.0</dt>
 				<dd>© Vadim Kozlov and Dmitri Kabluchko</dd>
 				<dt>Folders of</dt>
-				<dd><div class="bkt"><a href="http://localhost:5555/~shikter/homeworks" target="_blank">Homework</a></div>
+				<dd><div class="bkt"><a href="http://localhost:5555/~shikter/web/" target="_blank">Web Folders</a></div>
 			</dl>
 			<br>
 

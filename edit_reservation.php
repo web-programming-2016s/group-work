@@ -28,20 +28,21 @@
 		
 		// maybe user wants to update data after clicking the button
 		//echo $_GET["who"];
-		if(isset($_POST["Login_id"])){
-			//$name && $Login_id && $date && $genre
+		if(isset($_POST["Last_Name"])){
+			//$$Name && Last_Name && $date && $genre
 			echo "<br>User modified data...";
 			
 			//should be validation
 			
-			$stmt = $mysql->prepare("UPDATE Reservation SET Login=?, Name=?, reserv_date=?, label_genre=?, description=? WHERE id=?");
+			$stmt = $mysql->prepare("UPDATE Reservation SET Name=?, Last_Name=?, reserv_date=?, label_genre=?, description=? WHERE id=?");
 			
 			echo $mysql->error;
 			
-			$stmt->bind_param("sssssi", $_POST["Login_id"], $_POST["name"], $_POST["date"], $_POST["genre"], $_POST["description"], $_POST["edit"]);
+			$stmt->bind_param("sssssi", $_POST["Name"], $_POST["Last_Name"], $_POST["date"], $_POST["genre"], $_POST["description"], $_POST["edit"]);
 			
 			if($stmt->execute()){
 				
+				echo "<br>"."-------------------------------------";
 				echo "<br><h4><strong><span style='color:red'>Saved successfully</span></strong></h4>";
 				
 				// option one - redirect:
@@ -54,11 +55,11 @@
 				echo "<br><strong><span style='color:green'>Changed to:</span></strong><br>";
 				
 				
-				echo "<br><strong>Name of recipient: </strong>".$Login = $_POST["Login_id"];
-				echo "<br><strong>Message: </strong>".$Name = $_POST["name"];
-				echo "<br><strong>Sender name: </strong>".$reserv_date = $_POST["date"];
-				echo "<br><strong>Message: </strong>".$label_genre = $_POST["genre"];
-				echo "<br><strong>Sender name: </strong>".$description = $_POST["description"];
+				echo "<br><strong>First Name: </strong>".$Name = $_POST["Name"];
+				echo "<br><strong>Last Name: </strong>".$Last_Name = $_POST["Last_Name"];
+				echo "<br><strong>Issue date: </strong>".$reserv_date = $_POST["date"];
+				echo "<br><strong>What kind of movie: </strong>".$label_genre = $_POST["genre"];
+				echo "<br><strong>Description: </strong>".$description = $_POST["description"];
 				$id = $_POST["edit"];
 				
 				echo "<br>"."-------------------------------------";
@@ -90,7 +91,7 @@
 					//user did not click any buttons yet,
 					//give user latest data from db
 					
-					$stmt = $mysql->prepare("SELECT id, Login, Name, reserv_date, label_genre, description, time_created FROM Reservation WHERE id=?");
+					$stmt = $mysql->prepare("SELECT id, Name, Last_Name, reserv_date, label_genre, description, time_created FROM Reservation WHERE id=?");
 				
 				echo $mysql->error;
 				
@@ -98,14 +99,14 @@
 				$stmt->bind_param("i", $_GET["edit"]);
 				
 				//bind result data
-				$stmt->bind_result($id, $Login, $Name, $reserv_date, $label_genre, $description, $time_created);
+				$stmt->bind_result($id, $Name, $Last_Name, $reserv_date, $label_genre, $description, $time_created);
 				
 				$stmt->execute();
 				//we have only 1 row of data
 				if($stmt->fetch()){
 					
 					//we had data
-					echo "<h4>"."> <i>Filled field:</i> | "."<strong>[".$Login."] | [".$Name."] | [".$reserv_date."] | [".$label_genre."] | [".$description."]</strong>"." | <i>which was created:</i> "."<strong>".$time_created."</strong>"."</h4>";
+					echo "<h4>"."> <i>Filled field:</i> | "."<strong>[".$Name."] | [".$Last_Name."] | [".$reserv_date."] | [".$label_genre."] | [".$description."]</strong>"." | <i>which was created:</i> "."<strong>".$time_created."</strong>"."</h4>";
 					
 				}else{
 					
@@ -161,28 +162,25 @@
 	
 	
 	<div class="container">
-	<section id="application_reservation">
+		<section id="application_reservation">
 		
 	<h2>Reservation form:</h2>
-	<div id="errors" style="color: red;"></div>
-	
-	<div class="row">
-	
-	<form class="col-md-3 col-sm-6" id="dataForm" method="post" onsubmit="return validate();" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-	
-		<input type="hidden" name="edit"  value="<?=$id;?>">
+		<div id="errors" style="color: red;"></div>
+			<div class="row">
+				<form class="col-md-1 col-sm-4" id="dataForm" method="post" onsubmit="return validate();" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+					<input type="hidden" name="edit"  value="<?=$id;?>">
 	
 		<table border="0">
 			<tr>
 				<td width="185">
-		<p />Login<span style="color: red;">*</span>: 
+					<p />First Name<span style="color: red;">*</span>: 
 				</td>
 				
 				<td>
 					<div class="row">
 						<div class="form-group">
-							<div class="col-md-3 col-sm-6">
-		<input type="text" name="Login_id" id="Login_id" class="form-control" style="width: 300px;" value="<?=$Login?>">
+							<div class="col-md-1 col-sm-4">
+								<input type="text" name="Name" id="Name" class="form-control" style="width: 300px;" value="<?=$Name?>">
 							</div>
 						</div>
 					</div>
@@ -191,14 +189,14 @@
 			
 			<tr>
 				<td width="185">
-		<p />Name<span style="color: red;">*</span>: 
+					<p />Last Name<span style="color: red;">*</span>: 
 				</td>
 				
 				<td>
 					<div class="row">
 						<div class="form-group">
-							<div class="col-md-3 col-sm-6">
-		<input type="text"  name="name" id="name" class="form-control" style="width: 300px;" value="<?=$Name?>">
+							<div class="col-md-1 col-sm-4">
+								<input type="text"  name="Last_Name" id="Last_Name" class="form-control" style="width: 300px;" value="<?=$Last_Name?>">
 							</div>
 						</div>
 					</div>
@@ -207,14 +205,14 @@
 			
 			<tr>
 				<td width="185">
-		<p /><span title="Issue date">Issue date<span style="color: red;">*</span>: </span>
+					<p /><span title="Issue date">Issue date<span style="color: red;">*</span>: </span>
 				</td>
 				
 				<td>
 					<div class="row">
 						<div class="form-group">
-							<div class="col-md-3 col-sm-6">
-		<input type="date" name="date" id="date" class="form-control" style="width: 300px;" value="<?=$reserv_date?>">
+							<div class="col-md-1 col-sm-4">
+								<input type="date" name="date" id="date" class="form-control" style="width: 300px;" value="<?=$reserv_date?>">
 							</div>
 						</div>
 					</div>
@@ -222,30 +220,31 @@
 			</tr>
 			
 			<tr>
-		<td width="185" >
-		<p />What kind of movie<span style="color: red;">*</span>: 			
+				<td width="185">
+					<p />What kind of movie<span style="color: red;">*</span>: 			
 				</td>
 				
 				<td>
 					<div class="row">
 						<div class="form-group">
-							<div>
-								<select id="genre" name="genre" class="form-control" style="width: 300px;">
-									<!-- <option value="notselected">Pick a category:</option>  NOT WORKING > without IF and ELSE. -->
-									<?php 
-									
-										$genres = array("Clip movie", "Advertisement", "TV production (procedural, broadcasting...)", "Home movie (travel, wedding...)", "Documentary", "Short movie", "Feature film", "Silent film", "Blue movie (+18)", "Animation", "Other"); 
-										foreach($genres as $genre){
-											if($genre == $label_genre){
-												echo "<option selected>".$genre."</option>";
-											}else{
-												echo "<option>".$genre."</option>";
+							<div class="col-md-1 col-sm-4">
+								<div>
+									<select id="genre" name="genre" class="form-control" style="width: 300px;">
+										<!-- <option value="notselected">Pick a category:</option>  NOT WORKING > without IF and ELSE. -->
+										<?php 
+										
+											$genres = array("Clip movie", "Advertisement", "TV production (procedural, broadcasting...)", "Home movie (travel, wedding...)", "Documentary", "Short movie", "Feature film", "Silent film", "Blue movie (+18)", "Animation", "Other"); 
+											foreach($genres as $genre){
+												if($genre == $label_genre){
+													echo "<option selected>".$genre."</option>";
+												}else{
+													echo "<option>".$genre."</option>";
+												}
+												
 											}
-											
-										}
-									?>
-									
-								</select>
+										?>
+									</select>
+								</div>
 							</div>
 						</div>
 					</div>		
@@ -253,13 +252,17 @@
 			</tr>
 		
 			<tr>
-				<td>
+				<td width="185">
 					<p>Description:</p>
 				</td>
 
 				<td>
-					<div class="form-group">
-						<textarea name="description" type="text" class="form-control" style="width: 300px; height: 120px;" ><?=$description?></textarea>
+					<div class="row">
+						<div class="form-group">
+							<div class="col-md-1 col-sm-4">
+								<textarea name="description" type="text" class="form-control" style="width: 300px; height: 120px;" ><?=$description?></textarea>
+							</div>
+						</div>
 					</div>
 				</td>
 			</tr>
@@ -269,15 +272,17 @@
 				&nbsp;
 				</td>
 				
-				<td>	
-	<br>	<div class="row">
-						<div class="col-md-1 col-sm-4">
-						<!-- btn-lg   visible-xs-inline  hidden-xs-->
-							<input class="btn btn-primary hidden-xs" type="submit" value="Make a reservation">
-							<input class="btn btn-primary btn-block visible-xs-inline" type="submit" value="Make a reservation">
-							
+				<td>
+					<br>
+						<div class="row">
+							<div class="form-group">
+								<div class="col-md-1 col-sm-4">
+							<!-- btn-lg   visible-xs-inline  hidden-xs-->
+								<input class="btn btn-primary hidden-xs" type="submit" value="Edit the reservation">
+								<input class="btn btn-primary btn-block visible-xs-inline" type="submit" value="Edit the reservation">
+								</div>
+							</div>
 						</div>
-			</div>
 				</td>
 			</tr>
 			
@@ -303,7 +308,7 @@
 				<dt>Beta Version 2.0</dt>
 				<dd>© Vadim Kozlov and Dmitri Kabluchko</dd>
 				<dt>Folders of</dt>
-				<dd><div class="bkt"><a href="http://localhost:5555/~shikter/homeworks" target="_blank">Homework</a></div>
+				<dd><div class="bkt"><a href="http://localhost:5555/~shikter/web/" target="_blank">Web Folders</a></div>
 			</dl>
 			<br>
 

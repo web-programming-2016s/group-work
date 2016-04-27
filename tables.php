@@ -176,7 +176,7 @@
 
 
 //SQL sentens
-	$stmt2 = $mysql->prepare("SELECT id, Login, Name, reserv_date, label_genre, description, time_created FROM Reservation WHERE deleted IS NULL ORDER BY time_created DESC LIMIT 10");
+	$stmt2 = $mysql->prepare("SELECT id, Name, Last_Name, reserv_date, label_genre, description, time_created FROM Reservation WHERE deleted IS NULL ORDER BY time_created DESC LIMIT 10");
 	
 		// IF THERE IS ?DELITE=ROW_ID in the url
 	
@@ -210,7 +210,7 @@
 	echo $mysql->error;
 	
 	//variables for data for each row we will get
-	$stmt2->bind_result($id, $Login, $Name, $reserv_date, $label_genre, $description, $time_created);
+	$stmt2->bind_result($id, $Name, $Last_Name, $reserv_date, $label_genre, $description, $time_created);
 
 	//query
 	$stmt2->execute();
@@ -223,8 +223,8 @@
 		$table2_html .="<tr>";//start new row
 		
 			$table2_html .="<th><center>ID</center></th>";
-			$table2_html .="<th><center>Login</center></th>";
-			$table2_html .="<th><center>Name</center></th>";
+			$table2_html .="<th><center>First Name</center></th>";
+			$table2_html .="<th><center>Last Name</center></th>";
 			$table2_html .="<th><center>The Date when</center></th>";
 			$table2_html .="<th><center>Type</center></th>";
 			$table2_html .="<th><center>Description</center></th>";
@@ -245,8 +245,8 @@
 		
 		
 			$table2_html .="<td>".$id."</td>";	//add colums
-			$table2_html .="<td>".$Login."</td>";
 			$table2_html .="<td>".$Name."</td>";
+			$table2_html .="<td>".$Last_Name."</td>";
 			$table2_html .="<td>";
 			//echo strtotime($reserv_date);
 			//echo date("d m Y", strtotime($reserv_date));
@@ -284,7 +284,7 @@
 				<dt>Beta Version 2.0</dt>
 				<dd>© Vadim Kozlov and Dmitri Kabluchko</dd>
 				<dt>Folders of</dt>
-				<dd><div class="bkt"><a href="http://localhost:5555/~shikter/homeworks" target="_blank">Homework</a></div>
+				<dd><div class="bkt"><a href="http://localhost:5555/~shikter/web/" target="_blank">Web Folders</a></div>
 			</dl>
 			<br>
 
