@@ -65,6 +65,7 @@
 		
 		if($stmt->execute()){
 			return "User has been created successfully!";
+
 		}else{
 			//this is to show if there is a SQL error
 			return $stmt->error;

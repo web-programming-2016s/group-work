@@ -5,30 +5,13 @@
 	//Restriction - Not logged in
 	if(isset($_SESSION["user_id"])){
 		//redirect user to restricted page
-		header("Location: restrict.php");
+		header("Location: login.php");
 	}
 	
 	$notice="";
 
 	//login=something is in the URL
-	if(isset($_POST["login"])){
-		
-		//login
-		
-		echo "logging in ...";
-		
-				if (!empty($_POST["username"]) && !empty ($_POST["password"])){
-			
-			//save to DB
-			
-			login($_POST["username"], $_POST["password"]);
-		}else{
-			
-			echo "Both fields are required!";
-		}
-		
-	//signup button clicked
-	}else if(isset($_POST["signup"])){
+	if(isset($_POST["signup"])){
 		
 		//signup
 		
@@ -112,7 +95,7 @@
 				<div class="col-md-3">
 					<div class="form-group">
 					<label for="password">Password</label>
-					<input name="password" id="password" type="password" class="form-control">
+					<input name="password" id="password" placeholder="Enter your preferred password" type="password" class="form-control">
 					</div>
 				</div>					
 			</div>

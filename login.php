@@ -15,7 +15,7 @@
 		
 		//login
 		
-		echo "logging in ...";
+		//echo "logging in ...";
 		
 				if (!empty($_POST["username"]) && !empty ($_POST["password"])){
 			
@@ -81,7 +81,7 @@
 				<div class="col-md-3">
 					<div class="form-group">
 					<label for="password">Password</label>
-					<input name="password" id="password" type="password" class="form-control">
+					<input name="password" id="password" placeholder="Enter your password" type="password" class="form-control">
 					</div>
 				</div>	
 			</div>

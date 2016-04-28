@@ -67,6 +67,7 @@
 		$table_html .= "<th>Characters</th>"; //table header
 		$table_html .= "<th>Created</th>"; //table header
 		$table_html .= "<th>Delete?</th>"; //table header
+		$table_html .= "<th>Edit</th>"; //table header
 	$table_html .= "</tr>"; //table row closing
 	
 	// GET RESULTS
@@ -83,10 +84,11 @@
 		$table_html .= "<td>" .$visibility. "</td>"; 
 		$table_html .= "<td>" .$start_date. "</td>"; 
 		$table_html .= "<td>" .$end_date. "</td>";
-		$table_html .= "<td>" .$favcolor. "</td>";  
+		$table_html .= "<td><div style='height:10px;width:10px;background-color:".$favcolor."'></div>" .$favcolor. "</td>";  
 		$table_html .= "<td>" .$characters. "</td>"; 
 		$table_html .= "<td>" .$created. "</td>";
     	$table_html .= "<td><a class= 'btn btn-danger' href='?delete=" .$id."'>Remove</a></td>";
+		$table_html .= "<td><a class= 'btn btn-success'  href='edit_b.php?edit=".$id."'>Edit</a></td>";	
 				
 	$table_html .= "</tr>"; //end row
 		
