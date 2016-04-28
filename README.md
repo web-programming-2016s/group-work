@@ -4,7 +4,7 @@
 * Similar apps - Pocket Expense Personal Finance, Good Budget, Mint.com
 * Functionalities of the app
      - It is possible to create a user
-     - User can update daily his spending calendar
+     - User can update daily his spending to calendar
      - Person can add the outgo
 
 * Summary:
