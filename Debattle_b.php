@@ -91,6 +91,28 @@
 	
 ?>
 
+<?php
+	
+	//we need functions file for dealing with session
+	require_once("functions.php");
+	
+		//Restriction -  logged in
+	if(!isset($_SESSION["user_id"])){
+		//redirect not logged in user to login page
+		header("Location: login.php");
+	}
+	
+	//?logout is in the URL
+	if(isset($_GET["logout"])){
+		
+		//delete the session
+		session_destroy();
+		
+		header("Location: login.php");
+	}
+	
+?>
+
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -109,8 +131,10 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="Debattle_b.php">Request</a></li>
 		<li> <a href="table_b.php"> Current</a></li>
+		<li> <a href="?logout=1"> Log Out</a></li>
           </ul>
     
+	
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
