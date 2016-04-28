@@ -1,6 +1,6 @@
 ﻿<?php
 
-			require_once("../../../config.php");
+			require_once("../../config.php");
 
 
 				$dataExists = false;
@@ -40,7 +40,7 @@
 <figure id="tlu_logo"><img border=none src="http://www.tlu.ee/~shikter/ristmed2/images/TLU_logo.jpg" alt="TLU" width="200"></figure>
 <br>
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -56,7 +56,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	
-      <ul class="nav navbar-nav">
+      <ul class="nav nav-tabs">
 	  
         <li><a href="app_message.php">Message APP</a></li>
 		<li class="active"><a href="app_reservation.php">Order APP</a></li>
@@ -170,9 +170,9 @@
 				
 				<td>
 					<div class="row">
-						<div class="form-group">
+						<div class="list-group">
 							<!-- <div class="col-md-1 col-sm-4"> -->
-								<select id="genre" name="genre" class="form-control" style="width: 300px;" placeholder="Genre">
+								<select id="genre" name="genre" class="list-group-item active" style="width: 300px;" placeholder="Genre">
 									<!-- <option value="notselected">Pick a category:</option>  NOT WORKING > without IF and ELSE. -->
 									<option></option>
 									<option>Clip movie</option>

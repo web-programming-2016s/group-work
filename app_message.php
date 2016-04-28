@@ -2,7 +2,7 @@
 
 	//require another php file
 	// ../../../ means > 3 folders back
-	require_once("../../../config.php");
+	require_once("../../config.php");
 	
 	$everything_was_okay = true;
 
@@ -114,7 +114,7 @@
 <figure id="tlu_logo"><img border=none src="http://www.tlu.ee/~shikter/ristmed2/images/TLU_logo.jpg" alt="TLU" width="200"></figure>
 <br>
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -130,7 +130,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	
-      <ul class="nav navbar-nav">
+      <ul class="nav nav-tabs">
 	  
         <li class="active"><a href="app_message.php">Message APP</a></li>
 		<li><a href="app_reservation.php">Order APP</a></li>

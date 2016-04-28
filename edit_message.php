@@ -2,7 +2,7 @@
 
 	//require another php file
 	// ../../../ means > 3 folders back
-	require_once("../../../config.php");
+	require_once("../../config.php");
 	
 	//the variable does not exists in the URL
 	if(!isset($_GET["edit"])){
@@ -116,7 +116,7 @@
 <figure id="tlu_logo"><img border=none src="http://www.tlu.ee/~shikter/ristmed2/images/TLU_logo.jpg" alt="TLU" width="200"></figure>
 <br>
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
