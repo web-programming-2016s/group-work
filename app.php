@@ -56,19 +56,6 @@
 		$everything_was_okay = false;
 	}
 	
-	
-	//lenght feild  
-	if(isset($_GET["lenght"])){
-		if(empty($_GET["lenght"])){
-		$everything_was_okay = false;
-		echo "Please enter the dolphins lenght! <br>";
-		}else{
-			echo "Lenght: ".$_GET["lenght"]."<br>";
-	
-			}
-	}else{
-		$everything_was_okay = false;
-	}
 		
 		
 	//SAVE TO DB
@@ -89,7 +76,7 @@
 		// 4 database
 		$mysql = new mysqli("localhost", $db_username, $db_password, "webpr2016_karoliinar");
 		
-		$stmt = $mysql->prepare("INSERT INTO homework (color, uim, saba, pikkus ) VALUES (?,?,?,?)");
+		$stmt = $mysql->prepare("INSERT INTO homework (color, uim, saba) VALUES (?,?,?)");
 			
 		//echo error
 		echo $mysql->error;
@@ -100,7 +87,7 @@
 		// d - decimal, float
 		
 		//for each question mark its type with one letter
-		$stmt->bind_param("sssi", $_GET["color"], $_GET["dorsal_fin"], $_GET["tail"], $_GET["lenght"]);
+		$stmt->bind_param("sssi", $_GET["color"], $_GET["dorsal_fin"], $_GET["tail"]);
 		
 		//save
 		if($stmt->execute()){
@@ -135,6 +122,12 @@
 		
 		  <ul class="nav navbar-nav">
 			
+			<li>
+				<a href="login.php">
+					Log in / Sign up
+				</a>
+			</li>
+			
 			<li class="active">
 				<a href="app_b.php">
 					App page
@@ -147,6 +140,7 @@
 					Table
 				</a>
 			</li>
+			
 			
 		  </ul> 
 		  
@@ -171,17 +165,19 @@
 					</div>
 				</div>
 			</div>
+			
 		<div class="row">
 				<div class="col-md-3 col-sm-6">
 					<div class="form-group">
 						<label for="dorsal_fin">Dorsal fin: </label>
 						<select name="dorsal_fin" id="dorsal_fin">
-					  <option value="flabby"> flabby </option>
-					  <option value="straight"> straight </option>
+					  <option value="flabby"> Flabby </option>
+					  <option value="straight"> Straight </option>
 					</select>
 					</div>
 				</div>
 		</div>
+		
 			<div class="row">
 				<div class="col-md-3 col-sm-6">
 					<div class="form-group">
@@ -189,15 +185,18 @@
 						<select name="tail" id="tail">
 					  <option value="broken"> Broken </option>
 					  <option value="not broken"> Not broken </option>
+					  </select>
 					</div>
 				</div>
 			</div>
+			
 			<div class="row">
 				<div class="col-md-3 col-sm-6">
 					<input class="btn btn-success hidden-xs" type="submit" value="Save to database">
 					<input class="btn btn-success btn-block visible-xs-block" type="submit" value="Save data 2">
 				</div>
 			</div>
+			
 		</form>
 		
 

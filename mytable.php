@@ -40,13 +40,13 @@
  	
  	
  	//SQL sentence
- 	$stmt = $mysql->prepare("SELECT id, color, uim, saba, pikkus, created FROM homework WHERE deleted IS NULL ORDER BY created DESC LIMIT 10");
+ 	$stmt = $mysql->prepare("SELECT id, color, uim, saba, created FROM homework WHERE deleted IS NULL ORDER BY created DESC LIMIT 10");
  	
  	//if error is sentence
  	echo $mysql->error;
  	
  	//variables for data for each row we will get
- 	$stmt->bind_result($id, $color, $uim, $saba, $pikkus, $created);
+ 	$stmt->bind_result($id, $color, $uim, $saba, $created);
  	
  	//query
  	$stmt->execute();
@@ -60,7 +60,6 @@
  			$table_html .= "<th>Color</th>";
  			$table_html .= "<th>Uim</th>";
  			$table_html .= "<th>Saba</th>";
- 			$table_html .= "<th>Pikkus</th>";
  			$table_html .= "<th>Created</th>";
  	 	$table_html .= "</tr>";
  	
@@ -75,7 +74,6 @@
  			$table_html .= "<td>".$color."</td>";
  			$table_html .= "<td>".$uim."</td>";
  			$table_html .= "<td>".$saba."</td>";
- 			$table_html .= "<td>".$pikkus."</td>";
  			$table_html .= "<td>".$created."</td>";
  			$table_html .= "<td>
 								<a class='btn btn-danger' href='?delete=".$id."'>X</a>

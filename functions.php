@@ -32,9 +32,10 @@
 	
 			$_SESSION["user_id"] = $id;
 			$_SESSION["name"] = $name;
+			$_SESSION["name2"] = $name2;
 			$_SESSION["username"] = $user;
 		
-			header("Location: restrict.php");
+			header("Location: delfiini_tabel.php");
 		
 		}else{
 			echo $stmt->error; 
