@@ -267,7 +267,7 @@ $if_there_is_mob_cked = false;
 
 
     <br>
-    <h2> First application by Angel Casal </h2>
+    <h2> GROUP WORK MASHA AND ANGEL 2016 </h2>
 
     <a href="table.php">Link to table</a>
 
