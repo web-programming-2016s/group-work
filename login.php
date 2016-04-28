@@ -4,7 +4,7 @@
 	//RESTRICTION - NOT LOGGED IN
 	if(isset($_SESSION["user_id"])){
 		//redirect user to restricted page
-		header("Location: restrict.php");
+		header("Location: group_work_masha_angel.php");
 	}
 	
 	//login button clicked

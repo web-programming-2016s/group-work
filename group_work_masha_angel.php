@@ -1,12 +1,28 @@
 <?php require_once("header.php"); ?>
 <?php
 
+    require_once("function.php");
+	
+	//RESTRICTION - NOT LOGGED IN
+	if(!isset($_SESSION["user_id"])){
+		//redirect user to restricted page
+		header("Location: login.php");
+	}
+
 	// require another php file
 	// ../../../ => 3 folders back
-	require_once("../../config.php");
-	$everything_was_okay = true;
 
+        //?logout is in the URL
+	if(isset($_GET["logout"])){
+		//delete the session
+		session_destroy();
+		
+		header("Location: login.php");
+	}
 
+	
+
+		
 	//*********************
 	// TO field validation
 	//*********************
@@ -268,6 +284,10 @@ $if_there_is_mob_cked = false;
 
     <br>
     <h2> GROUP WORK MASHA AND ANGEL 2016 </h2>
+    
+    <a href="?logout=1" >Log out</a>
+
+		
 
     <a href="table.php">Link to table</a>
 

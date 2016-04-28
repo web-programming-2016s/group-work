@@ -34,7 +34,7 @@
 			$_SESSION["name"] = $name;
 			$_SESSION["username"] = $user;
 			
-			header("Location: restrict.php");
+			header("Location: group_work_masha_angel.php");
 			
 			
 		}else{
