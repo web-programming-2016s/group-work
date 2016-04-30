@@ -1,6 +1,30 @@
 <?php require_once ("header.php"); ?>
 
 <?php
+	
+	//we need functions file for dealing with session
+	require_once("functions.php");
+	
+		//Restriction -  logged in
+	if(!isset($_SESSION["user_id"])){
+		//redirect not logged in user to login page
+		header("Location: login.php");
+	}
+	
+	//?logout is in the URL
+	if(isset($_GET["logout"])){
+		
+		//delete the session
+		session_destroy();
+		
+		header("Location: login.php");
+	}
+	
+
+?>
+
+<?php
+	$user = $_SESSION["username"]; 
 	// table.php
 	
 	//getting our config
@@ -34,9 +58,9 @@
 			$stmt->close();
 		}
 	
-	
+
 	//SQL sentence // to show all results, remove ORDER 
-	$stmt = $mysql->prepare("SELECT id, challengee, motion, position, visibility, start_date, end_date, characters, favcolor, created FROM debattle_request WHERE deleted IS NULL ORDER BY created LIMIT 30 ");
+	$stmt = $mysql->prepare("SELECT id, challengee, motion, position, visibility, start_date, end_date, characters, favcolor, created FROM debattle_request WHERE username = '$user' AND DELETED IS NULL ORDER BY created LIMIT 30 ");
 	
 	// on the above WHERE, WHERE deleted IS NULL show only those that are not deleted. WHERE should be before the ORDER
 	
@@ -137,6 +161,9 @@
       <ul class="nav navbar-nav">
         <li> <a href="Debattle_b.php">Request</a></li>
 		<li class="active"><a href="table_b.php"> Current</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+        <li><a >Welcome <?=$_SESSION["username"];?></a></li>
 		<li> <a href="?logout=1"> Log Out</a></li>
           </ul>
     
