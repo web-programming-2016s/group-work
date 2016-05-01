@@ -1,4 +1,5 @@
-﻿<?php
+﻿
+<?php
 
 			require_once("../../config.php");
 
@@ -25,6 +26,7 @@
 						
 						//save
 						if($stmt->execute()){
+
 							echo "saved sucessfully";
 						}else{
 							echo $stmt->error;
@@ -85,6 +87,7 @@
 			$date = date_format( date_create($date) , "d.m.Y");
 			echo 
 			
+
 			"<div>
 			
 			<br>First Name: $Name
@@ -94,12 +97,38 @@
 			<br>Description: $description
 			
 			<br><br>Sent to database ... <span style='color: red;'>saved sucessfully</span>
-			</div>
-			<br>
-			";
+			
+
+			<br>";
+
 		}
-		
+	
 	?>
+
+<div class="alert alert-success" role="alert">...</div>
+
+
+<h1>Log in</h1>
+<form method="POST">
+	
+	<input type="text" placeholder="username" name="username">
+	<input type="password" placeholder="password" name="password">
+	
+	<input type="submit" name="login" value="Log in">
+	
+</form> 
+
+
+<h1>Sign up</h1>
+<form method="POST">
+	
+	<input type="text" placeholder="First and Last name" name="name">
+	<input type="text" placeholder="username" name="username">
+	<input type="password" placeholder="password" name="password">
+	
+	<input type="submit" name="signup" value="Sign up">
+	
+</form> 
 		
 	<h2>Reservation form:</h2>
 		<div id="errors" style="color: red;"></div>
