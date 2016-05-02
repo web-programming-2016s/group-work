@@ -35,34 +35,9 @@
 	//create connection
 	$mysql = new mysqli("localhost", $db_username, $db_password, "webpr2016_islam");
 	
-	/*
-		IF THERE IS ?DELETE=ROW_ID in the url
-	*/
-
-		if(isset($_GET["delete"])) {
-			
-			echo "Deleting row with id:".$_GET["delete"];
-			
-			// NOW () = current date-time
-			$stmt = $mysql->prepare("UPDATE debattle_request SET deleted=NOW() WHERE id = ?");
-			
-			// replace the ?. The i here is an integer for the id number
-			
-			$stmt->bind_param ("i", $_GET["delete"]);
-		
-			if ($stmt->execute()){
-				echo " Deleted successfully";
-			}else{
-				echo $stmt->error;
-			}
-			
-			//Closes the statement, so others can use connection
-			$stmt->close();
-		}
 	
-
 	//SQL sentence // to show all results, remove ORDER 
-	$stmt = $mysql->prepare("SELECT id, challengee, motion, position, visibility, start_date, end_date, characters, favcolor, created FROM debattle_request WHERE username = '$user' AND DELETED IS NULL ORDER BY created LIMIT 30 ");
+	$stmt = $mysql->prepare("SELECT username, first_name, last_name, created FROM debattle_users ORDER BY created LIMIT 30 ");
 	
 	// on the above WHERE, WHERE deleted IS NULL show only those that are not deleted. WHERE should be before the ORDER
 	
@@ -70,7 +45,7 @@
 	echo $mysql->error;
 	
 	//variable for data for each row we will get
-	$stmt->bind_result($id, $challengee, $motion, $position, $visibility, $start_date, $end_date, $characters, $favcolor, $created);
+	$stmt->bind_result($username, $first_name, $last_name, $created);
 
 	//query
 	$stmt->execute ();
@@ -82,18 +57,10 @@
 	//add somthing to string .=
 	$table_html .= "<table class='table table-bordered table-hover table-striped'>";
 	$table_html .= "<tr>"; //table row
-		$table_html .= "<th>ID</th>"; //table header
-		$table_html .= "<th>Challengee</th>"; //table header
-		$table_html .= "<th>Motion</th>"; //table header
-		$table_html .= "<th>Position</th>"; //table header
-		$table_html .= "<th>Visibility</th>"; //table header
-		$table_html .= "<th>Start Date</th>"; //table header
-		$table_html .= "<th>End Date</th>"; //table header
-		$table_html .= "<th>Favourite Colour</th>"; //table header
-		$table_html .= "<th>Characters</th>"; //table header
-		$table_html .= "<th>Created</th>"; //table header
-		$table_html .= "<th>Delete?</th>"; //table header
-		$table_html .= "<th>Edit</th>"; //table header
+		$table_html .= "<th>Username</th>"; //table header
+		$table_html .= "<th>First Name</th>"; //table header
+		$table_html .= "<th>Last Name</th>"; //table header
+		$table_html .= "<th>Joined</th>"; //table header
 	$table_html .= "</tr>"; //table row closing
 	
 	// GET RESULTS
@@ -103,18 +70,11 @@
 		// Do SOMETHING FOR EACH ROW //the dots are actual spaces
 		//echo $id." ".$challengee. "<br>";
 		$table_html .= "<tr>"; //start a new row
-		$table_html .= "<td>" .$id. "</td>"; //add coloumns
-		$table_html .= "<td>" .$challengee. "</td>"; 
-		$table_html .= "<td>" .$motion. "</td>"; 
-		$table_html .= "<td>" .$position. "</td>"; 
-		$table_html .= "<td>" .$visibility. "</td>"; 
-		$table_html .= "<td>" .$start_date. "</td>"; 
-		$table_html .= "<td>" .$end_date. "</td>";
-		$table_html .= "<td><div style='height:10px;width:10px;background-color:".$favcolor."'></div>" .$favcolor. "</td>";  
-		$table_html .= "<td>" .$characters. "</td>"; 
+		$table_html .= "<td>" .$username. "</td>"; //add coloumns
+		$table_html .= "<td>" .$first_name. "</td>"; 
+		$table_html .= "<td>" .$last_name. "</td>";  
 		$table_html .= "<td>" .$created. "</td>";
-    	$table_html .= "<td><a class= 'btn btn-danger' href='?delete=" .$id."'>Remove</a></td>";
-		$table_html .= "<td><a class= 'btn btn-success'  href='edit_b.php?edit=".$id."'>Edit</a></td>";	
+
 				
 	$table_html .= "</tr>"; //end row
 		
@@ -162,9 +122,9 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li> <a href="Debattle_b.php">Request</a></li>
-		<li class="active"><a href="table_b.php"> Sent</a></li>
+		<li><a href="table_b.php"> Sent</a></li>
 		<li><a href="received_b.php"> Received</a></li>
-		<li> <a href="users.php"> Users</a></li>
+		<li class="active"> <a href="users.php"> Users</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
         <li><a >Welcome <?=$_SESSION["first_name"];?></a></li>
@@ -177,7 +137,7 @@
 
 	<div class="container">
 	
-		<h1> Current Debattles </h1>
+		<h1> Current Users </h1>
 		<?php echo $table_html; ?>
 
 

@@ -174,6 +174,31 @@
 		
 	}
 	
+
+		function UsersDropdown (){
+		//query all interests
+		$mysql = new mysqli("localhost", $GLOBALS["db_username"], $GLOBALS["db_password"], "webpr2016_islam");
+		
+		$stmt = $mysql->prepare("SELECT id, username FROM debattle_users ORDER BY username ASC");
+		
+		echo $mysql->error;
+	
+		$stmt->bind_result($id, $username);
+		
+		$stmt->execute ();
+		
+		//dropdown menu
+		$html = "<select name='debattle_users'>";
+		
+		//for each interest
+		while($stmt->fetch()){
+			$html .= "<option value='".$id."'>".$username."</option>";
+		}
+		
+		$html .= "</select>";
+		echo $html;
+	}
+
 	
 	/*$name = "Islam";
 

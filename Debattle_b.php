@@ -1,3 +1,4 @@
+
 <?php require_once ("header.php"); ?>
 
 <?php
@@ -137,10 +138,12 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="Debattle_b.php">Request</a></li>
-		<li> <a href="table_b.php"> Current</a></li>
+		<li><a href="table_b.php"> Sent</a></li>
+		<li><a href="received_b.php"> Received</a></li>
+		<li> <a href="users.php"> Users</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-        <li><a >Welcome <?=$_SESSION["username"];?></a></li>
+        <li><a >Welcome <?=$_SESSION["first_name"];?></a></li>
 		<li> <a href="?logout=1"> Log Out</a></li>
           </ul>
     
@@ -156,7 +159,10 @@
 		<br>
 		<?=$notice;?>
 		<br>
+
+
 		<form>
+
 			<div class="row">
 				<div class="col-md-3">
 					<div class="form-group">

@@ -62,7 +62,7 @@
 	
 
 	//SQL sentence // to show all results, remove ORDER 
-	$stmt = $mysql->prepare("SELECT id, challengee, motion, position, visibility, start_date, end_date, characters, favcolor, created FROM debattle_request WHERE username = '$user' AND DELETED IS NULL ORDER BY created LIMIT 30 ");
+	$stmt = $mysql->prepare("SELECT id, username, motion, position, visibility, start_date, end_date, characters, favcolor, created FROM debattle_request WHERE challengee = '$user' AND DELETED IS NULL ORDER BY created LIMIT 30 ");
 	
 	// on the above WHERE, WHERE deleted IS NULL show only those that are not deleted. WHERE should be before the ORDER
 	
@@ -70,7 +70,7 @@
 	echo $mysql->error;
 	
 	//variable for data for each row we will get
-	$stmt->bind_result($id, $challengee, $motion, $position, $visibility, $start_date, $end_date, $characters, $favcolor, $created);
+	$stmt->bind_result($id, $username, $motion, $position, $visibility, $start_date, $end_date, $characters, $favcolor, $created);
 
 	//query
 	$stmt->execute ();
@@ -82,8 +82,7 @@
 	//add somthing to string .=
 	$table_html .= "<table class='table table-bordered table-hover table-striped'>";
 	$table_html .= "<tr>"; //table row
-		$table_html .= "<th>ID</th>"; //table header
-		$table_html .= "<th>Challengee</th>"; //table header
+		$table_html .= "<th>From</th>"; //table header
 		$table_html .= "<th>Motion</th>"; //table header
 		$table_html .= "<th>Position</th>"; //table header
 		$table_html .= "<th>Visibility</th>"; //table header
@@ -93,7 +92,6 @@
 		$table_html .= "<th>Characters</th>"; //table header
 		$table_html .= "<th>Created</th>"; //table header
 		$table_html .= "<th>Delete?</th>"; //table header
-		$table_html .= "<th>Edit</th>"; //table header
 	$table_html .= "</tr>"; //table row closing
 	
 	// GET RESULTS
@@ -103,8 +101,7 @@
 		// Do SOMETHING FOR EACH ROW //the dots are actual spaces
 		//echo $id." ".$challengee. "<br>";
 		$table_html .= "<tr>"; //start a new row
-		$table_html .= "<td>" .$id. "</td>"; //add coloumns
-		$table_html .= "<td>" .$challengee. "</td>"; 
+		$table_html .= "<td>" .$username. "</td>"; //add coloumns
 		$table_html .= "<td>" .$motion. "</td>"; 
 		$table_html .= "<td>" .$position. "</td>"; 
 		$table_html .= "<td>" .$visibility. "</td>"; 
@@ -114,7 +111,6 @@
 		$table_html .= "<td>" .$characters. "</td>"; 
 		$table_html .= "<td>" .$created. "</td>";
     	$table_html .= "<td><a class= 'btn btn-danger' href='?delete=" .$id."'>Remove</a></td>";
-		$table_html .= "<td><a class= 'btn btn-success'  href='edit_b.php?edit=".$id."'>Edit</a></td>";	
 				
 	$table_html .= "</tr>"; //end row
 		
@@ -162,8 +158,8 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li> <a href="Debattle_b.php">Request</a></li>
-		<li class="active"><a href="table_b.php"> Sent</a></li>
-		<li><a href="received_b.php"> Received</a></li>
+		<li><a href="table_b.php"> Sent</a></li>
+		<li class="active"><a href="received_b.php"> Received</a></li>
 		<li> <a href="users.php"> Users</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
@@ -177,7 +173,7 @@
 
 	<div class="container">
 	
-		<h1> Current Debattles </h1>
+		<h1> Received Debattles </h1>
 		<?php echo $table_html; ?>
 
 

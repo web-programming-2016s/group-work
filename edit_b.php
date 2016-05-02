@@ -1,3 +1,4 @@
+
 <?php require_once ("header.php"); ?>
 
 
@@ -133,14 +134,18 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Debattle</a>
+      <a class="navbar-brand" href="home.php">Debattle</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="Debattle_b.php">Request</a></li>
-		<li> <a href="table_b.php"> Current</a></li>
+		<li><a href="table_b.php"> Sent</a></li>
+		<li><a href="received_b.php"> Received</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+        <li><a >Welcome <?=$_SESSION["first_name"];?></a></li>
 		<li> <a href="?logout=1"> Log Out</a></li>
           </ul>
     
