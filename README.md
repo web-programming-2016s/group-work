@@ -1,14 +1,7 @@
 # PHP groupwork project
 **Deadline** examination day - please attend the same day with all group members
 
-## Instructions
-1. One group member forks this repository and shares with other team members
-2. Make a pull request
-3. Edit the README.md file accordingly
-4. Create web application
-
-### Requirements
-
+## Information
 1. **README.md contains:**
     * Debattle : Everything is Challengeable!
     * Islam Muhammad
