@@ -62,7 +62,7 @@
 	
 
 	//SQL sentence // to show all results, remove ORDER 
-	$stmt = $mysql->prepare("SELECT id, username, motion, position, visibility, start_date, end_date, characters, favcolor, created FROM debattle_request WHERE challengee = '$user' AND DELETED IS NULL ORDER BY created LIMIT 30 ");
+	$stmt = $mysql->prepare("SELECT id, username, motion, position, visibility, start_date, end_date, characters, favcolor, reply, created FROM debattle_request WHERE challengee = '$user' AND DELETED IS NULL ORDER BY created LIMIT 30 ");
 	
 	// on the above WHERE, WHERE deleted IS NULL show only those that are not deleted. WHERE should be before the ORDER
 	
@@ -70,7 +70,7 @@
 	echo $mysql->error;
 	
 	//variable for data for each row we will get
-	$stmt->bind_result($id, $username, $motion, $position, $visibility, $start_date, $end_date, $characters, $favcolor, $created);
+	$stmt->bind_result($id, $username, $motion, $position, $visibility, $start_date, $end_date, $characters, $favcolor, $reply, $created);
 
 	//query
 	$stmt->execute ();
@@ -90,8 +90,10 @@
 		$table_html .= "<th>End Date</th>"; //table header
 		$table_html .= "<th>Favourite Colour</th>"; //table header
 		$table_html .= "<th>Characters</th>"; //table header
+		$table_html .= "<th>Reply</th>"; //table header
 		$table_html .= "<th>Created</th>"; //table header
 		$table_html .= "<th>Delete?</th>"; //table header
+		$table_html .= "<th>Reply</th>"; //table header
 	$table_html .= "</tr>"; //table row closing
 	
 	// GET RESULTS
@@ -109,8 +111,10 @@
 		$table_html .= "<td>" .$end_date. "</td>";
 		$table_html .= "<td><div style='height:10px;width:10px;background-color:".$favcolor."'></div>" .$favcolor. "</td>";  
 		$table_html .= "<td>" .$characters. "</td>"; 
+		$table_html .= "<td>" .$reply. "</td>";
 		$table_html .= "<td>" .$created. "</td>";
-    	$table_html .= "<td><a class= 'btn btn-danger' href='?delete=" .$id."'>Remove</a></td>";
+    	$table_html .= "<td><a class= 'btn btn-danger' href='?delete=" .$id."'>Delete</a></td>";
+    	$table_html .= "<td><a class= 'btn btn-warning'  href='reply_b.php?edit=".$id."'>Reply</a></td>";	
 				
 	$table_html .= "</tr>"; //end row
 		
