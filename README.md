@@ -2,7 +2,7 @@
 **Deadline** examination day - please attend the same day with all group members
 
 ## Information
-1. **README.md contains:**
+1. Application:
     * Debattle : Everything is Challengeable!
     * Islam Muhammad
     * Debattle is an app that allows users to challenge each other of their position on certain topics (Pro and Against);
@@ -16,7 +16,7 @@
         * Users can edit their sent Debattle Request, or delete them
         * Users can respond to their received Debattle Request or delete them
 
-    * **summary:** Learnt how to deal with DB, and present the data on a website. All the work that has been done was related to PHP and MySQL. I believe in order to reach a better functionality of the website, and add more options (Threads, Time-Control, Rich Media, Sharing, Embedding, Voice...etc functionalities), one needs to get more knowledge of jQuery, CSS, much more indepth web programming....etc.
+    * **summary:** In the process of developing such app and based on past debate experience, and observing how online heated debates evolve, it is clear that these discussions/debates are less structured and need to be more organised. From this course, and while working on the idea of this app, I've learnt how to deal with DB, and present the data on a website. All the work that has been done was related to PHP and MySQL. I believe in order to reach a better functionality of the website, and add more options (Threads, Time-Control, Rich Media, Sharing, Embedding, Voice...etc functionalities), one needs to get more knowledge of jQuery, CSS, much more indepth web programming....etc. The Talkshow app is what Debattle aspires to be like.
 
 
 2. **Web application/service requirements:**
