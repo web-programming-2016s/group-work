@@ -12,12 +12,12 @@
 			$notice="";
 		//redirect user
 		echo "redirect";
-		header("Location: table_b.php");
+		header("Location: users.php");
 		exit (); //don't execute further
 		
 	}else{
 		
-		$notice = "User wants to edit row:".$_GET["edit"];
+		$notice = "User wants to challenge:".$_GET["edit"];
 		
 		//ask for latest data for single row
 		$mysql = new mysqli("localhost", $db_username, $db_password, "webpr2016_islam");
@@ -30,11 +30,11 @@
 			
 			// should be validation?
 			
-			$stmt = $mysql->prepare("UPDATE debattle_request SET challengee=?, motion=?, position=?, visibility=?, start_date=?, end_date=?, favcolor=?, characters=? WHERE id=?");
+			$stmt = $mysql->prepare("UPDATE debattle_users SET username=? WHERE id=?");
 			
 			echo $mysql->error;
 			
-			$stmt->bind_param("sssssssii", $_GET["challengee"], $_GET["motion"], $_GET["position"], $_GET["visibility"], $_GET["start_date"], $_GET["end_date"], $_GET["favcolor"], $_GET["characters"], $_GET["edit"]);
+			$stmt->bind_param("si", $_GET["username"], $_GET["edit"]);
 			
 			if($stmt->execute()){
 				
@@ -48,17 +48,10 @@
 				
 				//option two - update variables
 				
-				$challengee = $_GET["challengee"];
-				$motion = $_GET["motion"];
-				$position = $_GET["position"];
-				$visibility = $_GET["visibility"];
-				$start_date = $_GET["start_date"];
-				$end_date = $_GET["end_date"];
-				$favcolor = $_GET["favcolor"];
-				$characters = $_GET["characters"];
+				$challengee = $_GET["username"];
 				$id = $_GET["edit"];
 				
-				header("Location: table_b.php");
+				header("Location: users.php");
 				
 			}else{
 				
@@ -78,7 +71,7 @@
 		$stmt->bind_param("i", $_GET["edit"]);
 		
 		//bind result data
-		$stmt->bind_result($id, $challengee, $motion, $position, $visibility, $start_date, $end_date, $favcolor, $characters);
+		$stmt->bind_result($id, $username, $motion, $position, $visibility, $start_date, $end_date, $favcolor, $characters);
 		
 		$stmt->execute();
 		
@@ -87,7 +80,7 @@
 		if($stmt->fetch()){
 			$data="";
 			//we had data
-			$data= $challengee." ".$motion." ".$position." ".$visibility." ".$start_date." ".$end_date." ".$favcolor." ".$characters;
+			$data= $username." ".$motion." ".$position." ".$visibility." ".$start_date." ".$end_date." ".$favcolor." ".$characters;
 			
 		}else{
 			
@@ -140,8 +133,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="Debattle_b.php">Request</a></li>
-		<li class="active"><a href="table_b.php"> Sent</a></li>
+        <li class="active"><a href="Debattle_b.php">Request</a></li>
+		<li><a href="table_b.php"> Sent</a></li>
 		<li><a href="received_b.php"> Received</a></li>
 		<li> <a href="users.php"> Users</a></li>
 		</ul>
@@ -157,17 +150,17 @@
 
 	<div class="container">
 	
-		<h1> Edit your Debattle </h1>
+		<h1> Start A Debattle </h1>
 		<h3> Everything is Challengeable </h3>
 		<br>
-		<?=$notice;?> <?=$data;?>
+		<?=$notice;?> 
 		<form>
 			<div class="row">
 				<div class="col-md-3">
 					<div class="form-group">
 					<label for="challengee">User to Challenge</label>
 					<input name="edit" type="hidden" value="<?=$_GET["edit"];?>">
-					<input name="challengee" id="challengee" placeholder="@" type="text" value="<?=$challengee;?>" class="form-control">
+					<input name="challengee" id="challengee" placeholder="@" type="text" value="<?=$_GET["edit"];?>" class="form-control" readonly>
 					</div>
 				</div>
 			</div>
@@ -176,7 +169,7 @@
 				<div class="col-md-3">
 					<div class="form-group">
 					<label for="motion">Motion</label>
-					<input name="motion" id="motion" type="text" value="<?=$motion;?>" class="form-control">
+					<input name="motion" id="motion" type="text" value="" class="form-control">
 					</div>
 				</div>		
 			</div>
@@ -185,28 +178,13 @@
 				<div class="col-md-3">
 				<label for="position">Position</label>
 				
-					<?php if($position == "Pro"): ?>
+					<div class="radio">
+					<label><input type="radio" id="position" value="Pro" name="position"> Pro </label>
+					</div>
 					
-						<div class="radio">
-						<label><input type="radio" id="position" value="Pro" name="position" checked> Pro </label>
-						</div>
-						
-						<div class="radio">
-						<label><input type="radio" id="position" value="Against" name="position"> Against  </label>
-						</div>
-						
-					<?php else: ?>
-					
-						<div class="radio">
-						<label><input type="radio" id="position" value="Pro" name="position"> Pro </label>
-						</div>
-						
-						<div class="radio">
-						<label><input type="radio" id="position" value="Against" name="position" checked> Against  </label>
-						</div>
-
-					<?php endif; ?>
-				
+					<div class="radio">
+					<label><input type="radio" id="position" value="Against" name="position"> Against  </label>
+					</div>
 				</div>			
 			</div>
 			<br>
@@ -214,27 +192,13 @@
 				<div class="col-md-3">
 				<label for="visibility">Visibility</label>
 				
-					<?php if($visibility == "Open"): ?>
+					<div class="radio">
+					<label><input type="radio" id="visibility" value="Open" name="visibility"> Open </label>
+					</div>
 					
-						<div class="radio">
-						<label><input type="radio" id="visibility" value="Open" name="visibility" checked> Open </label>
-						</div>
-						
-						<div class="radio">
-						<label><input type="radio" id="visibility" value="Closed" name="visibility"> Closed  </label>
-						</div>
-						
-					<?php else: ?>
-					
-						<div class="radio">
-						<label><input type="radio" id="visibility" value="Open" name="visibility"> Open </label>
-						</div>
-						
-						<div class="radio">
-						<label><input type="radio" id="visibility" value="Closed" name="visibility" checked> Closed  </label>
-						</div>
-
-					<?php endif; ?>
+					<div class="radio">
+					<label><input type="radio" id="visibility" value="Closed" name="visibility"> Closed </label>
+					</div>
 				</div>			
 			</div>
 			<br>
@@ -243,7 +207,7 @@
 				<label for="bday">Start Date</label>
 				
 					<div class="date">
-					<input type="date" class="form-control" name="start_date" id="start_date" value="<?= $start_date;?>"> 
+					<input type="date" class="form-control" name="start_date" id="start_date" value=""> 
 					</div>
 				</div>	
 			</div>
@@ -253,7 +217,7 @@
 			<label for="bday2">End Date</label>
 				
 					<div class="date">
-					<input type="date" class="form-control" name="end_date" id="end_date" value="<?= $end_date;?>"> 
+					<input type="date" class="form-control" name="end_date" id="end_date" value=""> 
 					</div>
 			</div>			
 			</div>
@@ -263,7 +227,7 @@
 			<label for="colour">Choose your favourite colour</label>
 				
 					<div class="color">
-					<input type="color" class="form-control" name="favcolor" id="favcolor" value="<?= $favcolor;?>"> 
+					<input type="color" class="form-control" name="favcolor" id="favcolor" value=""> 
 					</div>	
 				</div>		
 			</div>
@@ -273,7 +237,7 @@
 			<div class="col-md-3">
 					<div class="form-group">
 					<label for="characters">Set the number of characters</label>
-					<input type="number" class="form-control" name="characters" value="<?= $characters;?>" min="1" max="300" class="form-control">
+					<input type="number" class="form-control" name="characters" value="" min="1" max="300" class="form-control">
 					</div>
 				</div>			
 			</div>

@@ -35,9 +35,10 @@
 	//create connection
 	$mysql = new mysqli("localhost", $db_username, $db_password, "webpr2016_islam");
 	
-	
+	$user = $_SESSION["username"]; 
+
 	//SQL sentence // to show all results, remove ORDER 
-	$stmt = $mysql->prepare("SELECT username, first_name, last_name, created FROM debattle_users ORDER BY created LIMIT 30 ");
+	$stmt = $mysql->prepare("SELECT username, first_name, last_name, created FROM debattle_users WHERE username != '$user' ORDER BY created LIMIT 30 ");
 	
 	// on the above WHERE, WHERE deleted IS NULL show only those that are not deleted. WHERE should be before the ORDER
 	
@@ -61,6 +62,7 @@
 		$table_html .= "<th>First Name</th>"; //table header
 		$table_html .= "<th>Last Name</th>"; //table header
 		$table_html .= "<th>Joined</th>"; //table header
+		$table_html .= "<th>Challenge</th>"; //table header
 	$table_html .= "</tr>"; //table row closing
 	
 	// GET RESULTS
@@ -74,6 +76,7 @@
 		$table_html .= "<td>" .$first_name. "</td>"; 
 		$table_html .= "<td>" .$last_name. "</td>";  
 		$table_html .= "<td>" .$created. "</td>";
+    	$table_html .= "<td><a class= 'btn btn-warning'  href='challenge_b.php?edit=".$username."'>Challenge</a></td>";
 
 				
 	$table_html .= "</tr>"; //end row
