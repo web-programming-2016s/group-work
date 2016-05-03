@@ -20,8 +20,8 @@
 
 
 2. **Web application/service requirements:**
-    * add separate file where you describe your DB table (you can export them from phpMyAdmin)
-    * You are using atleast 3 tables;
+    * The app depends on two DB tables; Users and Debattle Requests. The Requests carry all the information regarding the Debattles. (you can export them from phpMyAdmin)
+    * Only two tables used;
     * code is separated by files (you have config file, functions file etc.)
     * application has enough functionalities (you have solved all the issues)
     * it is possible to see what wach team member has developed 
