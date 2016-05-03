@@ -10,15 +10,20 @@
 ### Requirements
 
 1. **README.md contains:**
-    * name of the project
-    * names of the teammember
-    * purpose of the project (3-4 sentences what problem you are trying to solve);
-    * description of the project (target group – your customers/clients, how you differ from other apps – describe 2-3 similar applications/web services);
+    * Debattle : Everything is Challengeable!
+    * Islam Muhammad
+    * Debattle is an app that allows users to challenge each other of their position on certain topics (Pro and Against);
+    * The app provides an easy way for users to challenge and respond to each others on certain motions. It doesn't have an age preference as it can be used by any person;
     * functionalities of the app
-        * v0.1 It is possible to create user
-        * v0.2 User can add his/her interests
-        * ...
-    * **summary:** what did you learn? what did fail? what whould you do different next time?
+        * It is possible to create user
+        * User send a Debattle Request to other users
+        * Users can view sent and received Debattle Requests
+        * Users can have access to a list of the current Users on the Website
+        * Users can send a Debattle Request to any website user
+        * Users can edit their sent Debattle Request, or delete them
+        * Users can respond to their received Debattle Request or delete them
+
+    * **summary:** Learnt how to deal with DB, and present the data on a website. All the work that has been done was related to PHP and MySQL. I believe in order to reach a better functionality of the website, and add more options (Threads, Time-Control, Rich Media, Sharing, Embedding, Voice...etc functionalities), one needs to get more knowledge of jQuery, CSS, much more indepth web programming....etc.
 
 
 2. **Web application/service requirements:**
