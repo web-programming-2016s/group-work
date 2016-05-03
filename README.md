@@ -21,7 +21,9 @@
 
 2. **Web application/service requirements:**
     * The app depends on two DB tables; Users and Debattle Requests. The Requests carry all the information regarding the Debattles. (you can export them from phpMyAdmin)
-    * Only two tables used;
+    * Only two tables used; 
+    * Debattle_Request: `id`, `username`, `challengee`, `motion`, `position`, `visibility`, `start_date`, `end_date`, `favcolor`, `characters`, `created`, `reply`, `deleted`SELECT * FROM `debattle_request` 
+    * Debattle_Users: `id`, `username`, `password`, `first_name`, `last_name`, `created`SELECT * FROM `debattle_users`
     * code is separated by files (you have config file, functions file etc.)
     * application has enough functionalities (you have solved all the issues)
     * it is possible to see what wach team member has developed 
