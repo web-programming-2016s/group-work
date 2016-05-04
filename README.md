@@ -8,7 +8,7 @@
     * Debattle is an app that allows users to challenge each other of their position on certain topics (Pro and Against);
     * The app provides an easy way for users to challenge and respond to each others on certain motions. It doesn't have an age preference as it can be used by any person;
     * functionalities of the app
-        * It is possible to create user
+        * It is possible to create user (login and logout)
         * User send a Debattle Request to other users
         * Users can view sent and received Debattle Requests
         * Users can have access to a list of the current Users on the Website
