@@ -15,7 +15,7 @@
         * Users can send a Debattle Request to any website user
         * Users can edit their sent Debattle Request, or delete them
         * Users can respond to their received Debattle Request or delete them
-        * User can add their favourit Debattle topics
+        * User can add their favourite Debattle topics
 
     * **summary:** In the process of developing such app and based on past debate experience, and observing how online heated debates evolve, it is clear that these discussions/debates are less structured and need to be more organised. From this course, and while working on the idea of this app, I've learnt how to deal with DB, and present the data on a website. All the work that has been done was related to PHP and MySQL. I believe in order to reach a better functionality of the website, and add more options (Threads, Time-Control, Rich Media, Sharing, Embedding, Voice...etc functionalities), one needs to get more knowledge of jQuery, CSS, much more indepth web programming....etc. The Talkshow app is what Debattle aspires to be like.
 
