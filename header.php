@@ -73,6 +73,22 @@ require_once("functions.php");
 			}
 		</style>
 		
+		<style>
+
+		
+
+		@font-face 
+		{ 
+		font-family: Abel; 
+		src: url("http://www.cs.tlu.ee/~dmikab/groupwork/fonts/AbelRegular.ttf") format("truetype");
+		}
+
+		body {
+
+			font-family: Abel !important;
+		}
+		
+		</style>
 		
 		  <script>
 		  $(function() {
