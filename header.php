@@ -1,3 +1,14 @@
+<?php	require_once("functions.php");
+	
+	
+	//RESTRICTION - LOGGED IN
+	if(isset($_SESSION["user_id"])){
+		//redirect user to restricted page
+		header("Location: restrict.php");
+		
+	}
+?>
+
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <base target="_self"">
@@ -143,3 +154,66 @@
  
   <body>
 	
+	<figure id="tlu_logo"><img border=none src="http://www.tlu.ee/~shikter/ristmed2/images/TLU_logo.jpg" alt="TLU" width="200"></figure>
+<br>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Little Estonia</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	
+      <ul class="nav navbar-nav">
+	  
+		<?php 
+			
+			$pages = array
+			  (
+			  array("homepage.php","Homepage"),
+			  array("app_message.php","Message APP"),
+			  array("app_reservation.php","Order APP"),
+			  array("tables.php","Tables"),
+			  );
+			  
+			  foreach($pages as $page){
+				  //var_dump($page[]);
+				  
+				  $active = "";
+				  
+				  if("/home/shikter/public_html/web/groupwork/".$page[0] == $_SERVER['SCRIPT_FILENAME']){
+					  $active = "class='active'";
+				  }
+				  
+				  echo "<li ".$active." ><a href='".$page[0]."'>".$page[1]."</a></li>";
+			  }
+			  
+			  // logout
+			 
+		
+		?>
+		
+      </ul>
+	  
+	  <?php
+	  
+		 echo "
+				<ul class='nav navbar-nav navbar-right pull-right'>
+					<li><a>User Name</a></li>
+					<li><a href='#'>Log Link</a></li>
+				  </ul>
+			  ";
+	  
+	  ?>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
