@@ -26,6 +26,18 @@
 		<base target="_self"">
 		<!--<link rel="stylesheet" type="text/css" href="app.css">-->
 		
+		<style>
+			.navbar-inverse .navbar-nav>.active>a,
+			.navbar-inverse .navbar-nav>.open>a,
+			.navbar-inverse .navbar-nav>.active>a, 
+			.navbar-inverse .navbar-nav>.active>a:focus,
+			.navbar-inverse .navbar-nav>.active>a:hover	{
+				color: #000;
+				background-color: white;
+				background-image: none;
+			}
+		</style>
+		
 		
 		  <script>
 		  $(function() {
