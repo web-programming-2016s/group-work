@@ -8,56 +8,7 @@
 	$everything_was_okay = true;
 	$saved = false;
 	$msg = "";
- 
-	//check if there is variable in the URL
-	if(isset($_GET["color"])){
-		
-		//only if there is message in the URL
-		//echo "there is message"
-
-		//if its empty
-		if(empty($_GET["color"])){
-		$everything_was_okay = false;
-				//it is empty
-			echo "You selected: <br>";
-			echo "Please enter the dolphins color! <br>";
-		}else{
-			//its not empty
-			echo "You selected: <br>";
-			echo "Color: ".$_GET["color"]."<br>";
-			$varv = $_GET["color"];
-		}
-	}else{
-		echo "Nothing is added <br>";
-		$everything_was_okay = false;
-	}
-	//Dorsal fin field validation 
-	if(isset($_GET["color"])){
-		if(empty($_GET["dorsal_fin"])){
-		$everything_was_okay = false;
-			echo "Please enter the dorsal fin shape! <br>";
-		}else{
-			echo "Dorsal fin: ".$_GET["dorsal_fin"]."<br>";
-		}
-	}else{
-		$everything_was_okay = false;
-	}
-	
-	//Tail field 
-	if(isset($_GET["tail"])){
-		if(empty($_GET["tail"])){
-		$everything_was_okay = false;
-				//it is empty
-			echo "Please enter the dolphins tail shape! <br>";
-		}else{
-			//its not empty
-			echo "Tail shape: ".$_GET["tail"]."<br>";
-		}
-	}else{
-		$everything_was_okay = false;
-	}
-	
-		
+ 	
 		
 	//SAVE TO DB
 	// ? was everything okay
@@ -131,7 +82,7 @@
 			</li>
 			
 			<li class="active">
-				<a href="app_b.php">
+				<a href="app.php">
 					App page
 				</a>
 			</li>
@@ -154,16 +105,18 @@
 
 		<h1> Identifying dolphins from pool 7 </h1>
 		
+		
+		
 		<?php
 			//var_dump($saved);
 			if($saved == true){
 			
 				$dolphin="";
 				
-				$a="tundmatu";
-				$b="delfiin1";
-				$c="delfiin2";				
-				$d="delfiin3";
+				$a="Not a dolphin from pool 7";
+				$b="Luna";
+				$c="Jax";				
+				$d="Summmer";
 				
 				$color=$_GET["color"];
 				$dorsal=$_GET["dorsal_fin"];
@@ -179,7 +132,6 @@
 						}	
 					
 					}elseif($dorsal=="straight"){
-					echo "siin";
 						if($tail=="broken"){
 							$dolphin=$a;
 						}elseif($tail=="not broken"){
