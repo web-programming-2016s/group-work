@@ -41,6 +41,7 @@ require_once("../../config.php");
 			$_SESSION["username"] = $user;
 			
 			header("Location: homepage.php");
+			
 		//----------------------------------//	
 			
 		}else{
