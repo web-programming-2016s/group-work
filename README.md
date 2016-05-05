@@ -13,7 +13,7 @@ Summary: (will do last)
 sign up / log in
 
 2 page:
-project choice: drop in menus with location, type and topic -> list of available projects. 
+project choice: drop in menus with location, type and topic -> list of available projects from our database. The listing shows project names and short descriptions. User can choose one 
 
 3 page:
-after choosing a project, user enters personal info so Involved can contact them 
+after choosing a project, more info shows. User can enter personal info so Involved can contact them 
