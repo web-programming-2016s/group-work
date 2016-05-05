@@ -1,7 +1,7 @@
 <?php
 		
 	//signup button clocked
-	} if(isset($_POST["signup"])){
+	 if(isset($_POST["signup"])){
 		
 		//signup
 		echo "signing up...";
