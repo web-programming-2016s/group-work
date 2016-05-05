@@ -127,10 +127,11 @@ class Calendar {
 	 //*********************
 	 // TO field validation
 	 //*********************
-	 if(isset($_GET["Category"])){ //if there is ?to= in the URL
-	   if(empty($_GET["Category"])){ //if it is empty
+
+	 if(isset($_GET["category"])){ //if there is ?to= in the URL
+	   if(empty($_GET["category"])){ //if it is empty
 	     $everything_was_okay = false; //empty
-	     echo "Please enter the category <br>"; // yes it is empty
+	     echo "Please enter the product <br>"; // yes it is empty
 	   }else{
 	     echo "Category: ".$_GET["category"]."<br>"; //no it is not empty
 	   }
@@ -180,7 +181,7 @@ class Calendar {
 	   // 4 database
 	   $mysql = new mysqli("localhost", $db_username, $db_password, "webpr2016_carmet");
 
-	   $stmt = $mysql->prepare("INSERT INTO Homework2 (name, amount) VALUES (?,?)");
+	   $stmt = $mysql->prepare("INSERT INTO Homework2 (date, category, amount) VALUES (?,?,?)");
 
 	   //echo error
 	   echo $mysql->error;
@@ -191,7 +192,7 @@ class Calendar {
 	   // d - decimal, float
 
 	   //for each question mark its type with one letter
-	   $stmt->bind_param("sd", $_GET["name"], $_GET["amount"]);
+	   $stmt->bind_param("ssd",$_GET["date"], $_GET["category"], $_GET["amount"]);
 
 	   //save
 	   if($stmt->execute()){
@@ -235,22 +236,22 @@ class Calendar {
 		       <div class="col-md-3 col-sm-6">
 		         <div class="form-group">
 		           <label for="Day">Category: </label>
-		           <input name="date" id="Day" type="text" value="<?php echo $_GET["day"]."." ?>" class="form-control">
+		           <input name="date" id="Day" type="text" value="<?php echo $_GET["year"]."-".$_GET["month"]."-".$_GET["day"] ?>" class="form-control">
 		         </div>
 		       </div>
 		     </div>
 		     <div class="row">
 		       <div class="col-md-3 col-sm-6">
 		         <div class="form-group">
-		           <label for="Category">Category: </label>
-		           <input name="Category" id="category" type="text" class="form-control">
+		           <label for="category">category: </label>
+		           <input name="category" id="category" type="text" class="form-control">
 		         </div>
 		       </div>
 		     </div>
 		     <div class="row">
 		       <div class="col-md-3 col-sm-6">
 		         <div class="form-group">
-		           <label for="amount">Amount: </label>
+		           <label for="amount">amount: </label>
 		           <input name="amount" id="amount" type="text" class="form-control">
 
 		         </div>
