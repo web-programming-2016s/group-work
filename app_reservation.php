@@ -87,25 +87,22 @@
 			$date = date_format( date_create($date) , "d.m.Y");
 			echo 
 			
-
-			"<div>
 			
-			<br>First Name: $Name
-			<br>Last Name: $Last_Name
-			<br>Date: $date
-			<br>Type of shooting: $genre
-			<br>Description: $description
-			
-			<br><br>Sent to database ... <span style='color: red;'>saved sucessfully</span>
-			
-
-			<br>";
+			"<div class='alert alert-success' role='alert'>
+				<br>First Name: $Name
+				<br>Last Name: $Last_Name
+				<br>Date: $date
+				<br>Type of shooting: $genre
+				<br>Description: $description
+				
+				<br>saved sucessfully
+			</div>";
 
 		}
 	
 	?>
 
-<div class="alert alert-success" role="alert">...</div>
+
 
 
 <h1>Log in</h1>
