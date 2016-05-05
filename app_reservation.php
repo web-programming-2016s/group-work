@@ -58,9 +58,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	
-      <ul class="nav navbar-nav">
+      <ul class="nav nav-tabs">
 	  
-		<li><a href="homepage.php">Homepage</a></li>
         <li><a href="app_message.php">Message APP</a></li>
 		<li class="active"><a href="app_reservation.php">Order APP</a></li>
 		<li><a href="tables.php">Tables</a></li>
@@ -106,28 +105,7 @@
 
 
 
-<h1>Log in</h1>
-<form method="POST">
-	
-	<input type="text" placeholder="username" name="username">
-	<input type="password" placeholder="password" name="password">
-	
-	<input type="submit" name="login" value="Log in">
-	
-</form> 
 
-
-<h1>Sign up</h1>
-<form method="POST">
-	
-	<input type="text" placeholder="First and Last name" name="name">
-	<input type="text" placeholder="username" name="username">
-	<input type="password" placeholder="password" name="password">
-	
-	<input type="submit" name="signup" value="Sign up">
-	
-</form> 
-		
 	<h2>Reservation form:</h2>
 		<div id="errors" style="color: red;"></div>
 			<div class="row">
