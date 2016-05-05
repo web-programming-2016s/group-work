@@ -127,6 +127,7 @@
 	
       <ul class="nav navbar-nav">
 	  
+		<li><a href="homepage.php">Homepage</a></li>
         <li><a href="app_message.php">Message APP</a></li>
 		<li class="active"><a href="app_reservation.php">Order APP</a></li>
 		<li><a href="tables.php">Tables</a></li>
