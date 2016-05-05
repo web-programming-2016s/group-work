@@ -50,9 +50,9 @@
 	
 	// IF THERE IS ?DELITE=ROW_ID in the url
 	
-	if(isset($_GET["delete"])){
+	if(isset($_GET["delete_o"]) && isset($_SESSION["user_id"])){
 		
-		echo "Deleting row with id:".$_GET["delete"];
+		echo "Deleting row with id:".$_GET["delete_o"];
 		echo "<br>";
 		
 		// NOW() = current date-time
@@ -61,7 +61,7 @@
 		echo $mysql->error;
 		
 		//replace the ?
-		$stmt->bind_param("i", $_GET["delete"]);
+		$stmt->bind_param("i", $_GET["delete_o"]);
 		
 		if($stmt->execute()){
 			echo "<span style='color: red;'>deleted successfully</span>";
@@ -101,8 +101,11 @@
 			$table_html .="<th><center>Message</center></th>";
 			$table_html .="<th><center>Sender</center></th>";
 			$table_html .="<th><center>Created</center></th>";
-			$table_html .="<th><center>Edit</center></th>";
-			$table_html .="<th><center>Delete?</center></th>";
+			if(isset($_SESSION["user_id"])){
+				$table_html .="<th><center>Edit</center></th>";
+				$table_html .="<th><center>Delete?</center></th>";
+			}
+			
 		
 		$table_html .="</tr>"; //end row
 	
@@ -123,9 +126,11 @@
 			$table_html .="<td>";
 			$table_html .=date_format( date_create($created) , "d/m/Y - H:i:s");
 			$table_html .="</td>";
-			
-			$table_html .="<td><a class='btn btn-warning' href='edit_message.php?edit=".$id."'>Edit</a></td>";
-			$table_html .="<td><a class='btn btn-danger' href='?delete=".$id."'>X</a></td>";
+			if(isset($_SESSION["user_id"])){
+				$table_html .="<td><a class='btn btn-warning' href='edit_message.php?edit=".$id."'>Edit</a></td>";
+				$table_html .="<td><a class='btn btn-danger' href='?delete=".$id."'>X</a></td>";
+				
+			}
 			
 		$table_html .="</tr>"; //end row
 	}
@@ -233,7 +238,7 @@
 			$table2_html .="</td>";
 			
 			$table2_html .="<td><a class='btn btn-warning' href='edit_reservation.php?edit=".$id."'>Edit</a></td>";
-			$table2_html .="<td><a class='btn btn-danger' href='?delete=".$id."'>X</a></td>";
+			$table2_html .="<td><a class='btn btn-danger' href='?delete_o=".$id."'>X</a></td>";
 			
 		$table2_html .="</tr>"; //end row
 	}

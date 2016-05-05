@@ -40,7 +40,7 @@ require_once("../../../config.php");
 			$_SESSION["Last_Name"] = $Last_Name;
 			$_SESSION["username"] = $user;
 			
-			header("Location: restrict.php");
+			header("Location: homepage.php");
 		//----------------------------------//	
 			
 		}else{

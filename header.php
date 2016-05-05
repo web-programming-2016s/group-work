@@ -1,12 +1,36 @@
-<?php	require_once("functions.php");
+<?php	
+
+require_once("functions.php");
 	
-	
-	//RESTRICTION - LOGGED IN
-	if(isset($_SESSION["user_id"])){
-		//redirect user to restricted page
-		header("Location: restrict.php");
+		//?logout is in the URL
+	if(isset($_GET["logout"])){
+		session_destroy();
 		
+		header("Location: ".$_SERVER['PHP_SELF']);
 	}
+	
+	$pages = array
+	  (
+	  array("homepage.php","Homepage","not restricted"),
+	  array("app_message.php","Message APP","restricted"),
+	  array("app_reservation.php","Order APP","not restricted"),
+	  array("tables.php","Tables","not restricted"),
+	  );
+	  
+	
+	  foreach($pages as $page){
+		  //var_dump($page[]);
+		  
+		  $active = "";
+		  
+		  if("/home/shikter/public_html/web/groupwork/".$page[0] == $_SERVER['SCRIPT_FILENAME']){
+			  if(!isset($_SESSION["user_id"]) && $page[2] == "restricted"){
+					// 1 restricets
+				header("Location: homepage.php");
+				exit();
+			  }
+		  }
+	  }
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +86,6 @@
 			});
 		  </script>
 		  
-		  
 		  <!-- 
 				$ function() { 
 								$( ".datepicker" ).datepicker({ 
@@ -70,9 +93,6 @@
 																									}) 
 							}); 
 			-->
-		  
-		  
-		  
 		  
 				
 		 <script type="text/javascript">
@@ -176,13 +196,6 @@
 	  
 		<?php 
 			
-			$pages = array
-			  (
-			  array("homepage.php","Homepage"),
-			  array("app_message.php","Message APP"),
-			  array("app_reservation.php","Order APP"),
-			  array("tables.php","Tables"),
-			  );
 			  
 			  foreach($pages as $page){
 				  //var_dump($page[]);
@@ -193,7 +206,13 @@
 					  $active = "class='active'";
 				  }
 				  
-				  echo "<li ".$active." ><a href='".$page[0]."'>".$page[1]."</a></li>";
+				  if($page[2] != "restricted"){
+					  echo "<li ".$active." ><a href='".$page[0]."'>".$page[1]."</a></li>";
+				  }elseif(isset($_SESSION["user_id"])){
+					echo "<li ".$active." ><a href='".$page[0]."'>".$page[1]."</a></li>";
+					 
+				  }
+				  
 			  }
 			  
 			  // logout
@@ -208,7 +227,7 @@
 		 echo "
 				<ul class='nav navbar-nav navbar-right pull-right'>
 					<li><a>User Name</a></li>
-					<li><a href='#'>Log Link</a></li>
+					<li><a href='?logout'>Log out</a></li>
 				  </ul>
 			  ";
 	  
