@@ -6,7 +6,8 @@
 	require_once("../../config.php");
 
 	$everything_was_okay = true;
-
+	$saved = false;
+	$msg = "";
  
 	//check if there is variable in the URL
 	if(isset($_GET["color"])){
@@ -91,7 +92,8 @@
 		
 		//save
 		if($stmt->execute()){
-			echo "saved sucessfully";
+			$msg = "saved sucessfully";
+			$saved = true;
 		}else{
 			echo $stmt->error;
 		}
@@ -151,6 +153,59 @@
 	<div class="container">
 
 		<h1> Identifying dolphins from pool 7 </h1>
+		
+		<?php
+			//var_dump($saved);
+			if($saved == true){
+			
+				$dolphin="";
+				
+				$a="tundmatu";
+				$b="delfiin1";
+				$c="delfiin2";				
+				$d="delfiin3";
+				
+				$color=$_GET["color"];
+				$dorsal=$_GET["dorsal_fin"];
+				$tail=$_GET["tail"];
+				
+				if($color=="grey"){
+					echo $dorsal;
+					if($dorsal=="flabby"){
+						if($tail=="broken"){
+							$dolphin=$a;
+						}elseif($tail=="not broken"){
+							$dolphin=$b;
+						}	
+					
+					}elseif($dorsal=="straight"){
+					echo "siin";
+						if($tail=="broken"){
+							$dolphin=$a;
+						}elseif($tail=="not broken"){
+							$dolphin=$c;
+						}	
+					}	
+				}elseif($color=="dark grey"){
+					if($dorsal=="flabby"){
+						
+						$dolphin=$a;
+							
+					}elseif($dorsal=="straight"){
+						if($tail=="broken"){
+							$dolphin=$d;
+						}elseif($tail=="not broken"){
+							$dolphin=$a;
+						}	
+					}	
+				}			
+				
+				echo "<h2>".$dolphin."</h2>";
+			
+			
+			}
+		
+		?>
 		
 		<form>
 			<div class="row">

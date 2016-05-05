@@ -247,9 +247,9 @@
 					
 						<label for="Dolphin">Dolphins name: </label>
 						<select name="Dolphin" id="color">
-					<option value="jax"> Jax </option>
-					<option value="luna"> Luna </option>
-					<option value="summer"> Summer </option>
+					<option value="Jax"> Jax </option>
+					<option value="Luna"> Luna </option>
+					<option value="Summer"> Summer </option>
 					</select>
 					</div>
 				</div>
@@ -266,7 +266,7 @@
 		</form>
 		
 
-		<h1> This is the Table page </h1>
+		<h1> History </h1>
 
 		<?php echo $table_html; ?>
 			<a href="?logout=1" >Log out</a><br>

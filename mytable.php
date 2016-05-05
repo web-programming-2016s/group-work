@@ -61,6 +61,7 @@
  			$table_html .= "<th>Uim</th>";
  			$table_html .= "<th>Saba</th>";
  			$table_html .= "<th>Created</th>";
+ 			$table_html .= "<th></th>";
  	 	$table_html .= "</tr>";
  	
  	//GET RESULT
