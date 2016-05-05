@@ -1,35 +1,7 @@
 <?php
-
-
-	
-	
-//---------------------------------------------------------------------------------//
-	
-	//login=smth is in the URL
-	//login button clocked
-	if(isset($_POST["login"])){
-		
-		//login
-		echo "logging in...";
-		
-			//the fields are not empty
-			if( !empty($_POST["username"]) && !empty($_POST["password"]) ){
-				
-				//save to db
-				
-				login($_POST["username"], $_POST["password"]);
-				
-			}else{
-				
-				echo "both fields are rquired!";
-				
-			}
-		
-//---------------------------------------------------------------------------------//
-		
 		
 	//signup button clocked
-	}else if(isset($_POST["signup"])){
+	} if(isset($_POST["signup"])){
 		
 		//signup
 		echo "signing up...";
@@ -51,9 +23,8 @@
 	}
 	
 //---------------------------------------------------------------------------------//
-
-
 ?>
+  
   
 <style> 
 body{
