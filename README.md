@@ -8,3 +8,12 @@ Other volunteer coordination sites only let you leave your email, so they can co
 Functionality: sing up, log in, find available projects based on type, topic and location.
 Summary: (will do last)
 
+
+1 page:
+sign up / log in
+
+2 page:
+project choice: drop in menus with location, type and topic -> list of available projects. 
+
+3 page:
+after choosing a project, user enters personal info so Involved can contact them 
