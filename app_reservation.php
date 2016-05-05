@@ -87,7 +87,7 @@
 			$date = date_format( date_create($date) , "d.m.Y");
 			echo 
 			
-			
+
 			"<div class='alert alert-success' role='alert'>
 				<br>First Name: $Name
 				<br>Last Name: $Last_Name
@@ -198,7 +198,7 @@
 					<div class="row">
 						<div class="list-group">
 							<!-- <div class="col-md-1 col-sm-4"> -->
-								<select id="genre" name="genre" class="list-group-item active" style="width: 300px;" placeholder="Genre">
+								<select id="genre" name="genre" class="list-group-item" style="width: 300px;" placeholder="Genre">
 									<!-- <option value="notselected">Pick a category:</option>  NOT WORKING > without IF and ELSE. -->
 									<option></option>
 									<option>Clip movie</option>
