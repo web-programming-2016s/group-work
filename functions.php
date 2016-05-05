@@ -53,7 +53,7 @@
 		//GLOBALS - access outside variable in function
 		$mysql = new mysqli("localhost", $GLOBALS["db_username"], $GLOBALS["db_password"], "webpr2016_karoliinar");
 		
-		$stmt = $mysql->prepare("INSERT INTO users (username, password, name, name2) VALUES (?,?,?,?) ");
+		$stmt = $mysql->prepare("INSERT INTO users (username, password, name, name2) VALUES (?,?,?,?)");
 		
 		echo $mysql->error;
 	

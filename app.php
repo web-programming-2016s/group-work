@@ -87,7 +87,7 @@
 		// d - decimal, float
 		
 		//for each question mark its type with one letter
-		$stmt->bind_param("sssi", $_GET["color"], $_GET["dorsal_fin"], $_GET["tail"]);
+		$stmt->bind_param("sss", $_GET["color"], $_GET["dorsal_fin"], $_GET["tail"]);
 		
 		//save
 		if($stmt->execute()){

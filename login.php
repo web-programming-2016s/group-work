@@ -4,7 +4,7 @@
 	//RESTRICTION -NOT LOGGED IN
 	if(isset($_SESSION["user_id"])){
 		//redirict user to restricted page
-		header("location: restrict.php");
+		header("location: delfiini_tabel.php");
 	}
 	
 		//login button clicked

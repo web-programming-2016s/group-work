@@ -1,5 +1,22 @@
 <?php require_once("header.php"); ?>
 <?php 
+
+	require_once("functions.php");
+	
+	
+		//RESTRICTION -LOGGED In
+	if(!isset($_SESSION["user_id"])){
+		//redirict not logged in user to login page
+		header("location: login.php");
+	}
+	
+		
+	if(isset($_GET["logout"])){
+	//delete the session
+		session_destroy();
+		
+		header("Location: login.php"); 
+	}
  
 	// require another php file
 	// ../../../ => 3 folders back
@@ -63,7 +80,7 @@
 		// d - decimal, float
 		
 		//for each question mark its type with one letter
-		$stmt->bind_param("s", $_GET["Dolphin"]);
+		$stmt->bind_param("si", $_GET["Dolphin"], $_SESSION["user_id"]);
 		
 		//save
 		if($stmt->execute()){
@@ -92,7 +109,7 @@
 		echo "Deleting row with id:".$_GET["delete"];
 		
 		// NOW() = current date-time
-		$stmt = $mysql->prepare("UPDATE homework SET deleted=NOW() WHERE id = ?");
+		$stmt = $mysql->prepare("UPDATE delfiini_tabel SET deleted=NOW() WHERE id = ?");
 		
 		echo $mysql->error;
 		
@@ -136,6 +153,7 @@
  			$table_html .= "<th>Dolphin</th>";
  			$table_html .= "<th>Date</th>";
  			$table_html .= "<th>User</th>";
+ 			$table_html .= "<th></th>";
  	 	$table_html .= "</tr>";
  	
  	//GET RESULT
@@ -198,7 +216,7 @@
 
 	<div class="container">
 	
-		<h2> Welcome </h2>
+		<h2> Welcome <?php echo $_SESSION["name"];?> </h2>
 	<?php	
 		//we need function for dealing with session
 	require_once("functions.php");
