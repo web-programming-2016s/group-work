@@ -104,7 +104,7 @@
 			//echo "<span style='color: red;'>saved sucessfully</span>";
 			//$_SESSION["msg"] = "<span style='color: red;'>saved sucessfully</span>";
 			
-			header('Location: app_message.php?msg=saved sucessfully');
+			header('Location: app_message.php?msg=Saved sucessfully');
 			
 		}else{
 			echo $stmt->error;
@@ -127,15 +127,15 @@
 	
 	
 		<h2>Form to send message:</h2>
-		<?php 
 		
-		//var_dump($_SESSION);
+<?php 	
+//var_dump($_SESSION);
 		
-		if(isset($_GET["msg"]) && $_GET["msg"] != ""){
+	if(isset($_GET["msg"]) && $_GET["msg"] != ""){
 
-			echo "<span style='color: red;'>".$_GET["msg"]."</span>";
-		}
-		?>
+		echo "<span style='color: red;'>".$_GET["msg"]."</span>";
+		
+?>
 		<br>
 		
 				<form method="get">
