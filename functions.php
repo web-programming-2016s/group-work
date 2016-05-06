@@ -47,7 +47,7 @@ require_once("../../config.php");
 		}else{
 			// username was wrong or password was wrong or both.
 			echo $stmt->error;
-			echo "wrong credentials";
+			echo "<h4><span style='color: red;'><strong>Wrong credentials</strong></span></h4>";
 		}
 		
 	}
