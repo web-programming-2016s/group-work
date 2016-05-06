@@ -27,9 +27,27 @@
   
   
 <style> 
+
 body{
-    font-family: "Abel";
+	font-family: "Abel";
+			src: url("http://www.cs.tlu.ee/~dmikab/groupwork/fonts/AbelRegular.ttf") format("truetype");
+			
+    background: url(http://subtlepatterns.com/patterns/natural_paper.png) ; 
+   <!--  font-size: 11px; -->
+   <!--  font-size: 11px; -->
+   <!-- font-family: 'Open Sans', sans-serif; -->
+   <!-- text-align: center; -->
+   <!-- color: #EAEAEA; -->
 }
+
+
+<!--
+img {
+    vertical-align: left;
+	text-align: left;
+}
+-->
+
 
 #text3 {
     background: #333;
@@ -40,29 +58,19 @@ body{
     box-shadow: 0 1px 0 #ccc inset;
     transition: 500ms all ease;
     outline: 0;
+	text-align: center;
 }
 
 #text3:hover {
     width: 270px;
 }  
 
-
-
-
-
-body{
-    background: url(http://subtlepatterns.com/patterns/natural_paper.png) ;
-    font-size: 11px;
-    font-size: 11px;
-    font-family: 'Open Sans', sans-serif;
-    color: #EAEAEA;
-    text-align: center;
-}
-
 .wrap{
+		font-size: 11px;
+		font-size: 11px;
    position:relative;
-   width:300px;
-   height:410px;
+   width:310px;
+   height:550px;
    padding:1em 1em;
    margin:20px auto;
    background:#666666;
@@ -98,15 +106,18 @@ body{
    border-radius:0 0 0 5px;
 }
 
+
 .wrap img {
     width: 100%;
     margin-top: 15px;
 }
 
+ 
 p{ 
     margin-top: 15px;
     text-align: justify;
 }
+
 
 h1{
     font-size: 20px;
@@ -115,56 +126,69 @@ h1{
     text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
 }
 
+ 
 a{
     text-decoration: none;
     color: #EAEAEA !important;
 }
 
+
 a:hover{
     text-decoration: underline;
     color: #fff !important ;
 }
+
+
+.btn{
+  margin:0px center;
+  display: inline-block;
+  padding: 6px 45px;
+}
+
+
 </style>
 
 
 
-///here field for input
+<!-- here field for input -->
 <div class="wrap rounded">
-       <h1>Log in</h1>
-<form method="POST">
 
-	<input type="text" id="text3" placeholder="Username" name="username">
-	<br><br>
-	<input type="password" id="text3" placeholder="Password" name="password">
-	<br><br>
-	<input type="submit" name="login" value="Log in">
+       <h1 align="center" style="color:#EAEAEA;" text-align="center;">Log in</h1>
+	<br>
+	<form align="center" method="POST">
+
+		<input type="text" id="text3" placeholder="Username" name="username">
+		<br><br>
+		<input type="password" id="text3" placeholder="Password" name="password">
+		<br><br>
+		<input class="btn btn-primary" type="submit" name="login" value="Log in">		
+		<br><br>
+		
+		<hr />
 	
-
-
-</form>
+	</form>
      
-       
-        <p>
-         <h1>Create User Name</h1>
-<form method="POST">
-<!-- <form>-->
-
-	<input type="text" id=text3 placeholder="Username" name="username">
-	<input type="password" id=text3 placeholder="Password" name="password">
-	<br><br>
-	<input type="First_Name" id=text3 placeholder="First Name" name="First_Name">
-	<input type="Last_Name" id=text3 placeholder="Last Name" name="Last_Name">
-	<br><br>
-	<input type="submit" name="signup" value="Sign up">
+         <h1 align="center" style="color:#EAEAEA;">Create User Name</h1>
+	<br>
+	<form align="center" method="POST">
 	
+		<input type="text" id=text3 placeholder="Username" name="username">
+		<br><br>
+		<input type="password" id=text3 placeholder="Password" name="password">
+		<br><br><br>
+		<input type="First_Name" id=text3 placeholder="First Name" name="First_Name">
+		<br><br>
+		<input type="Last_Name" id=text3 placeholder="Last Name" name="Last_Name">
+		<br><br>
+		<input class="btn btn-warning" type="submit" name="signup" value="Sign up">
+		<br><br>
+	
+	</form>
 
-
-</form>
-       </p> 
-       <br/>
        
 </div>
-///filed ends
+
+<!-- filed ends -->
 
 
 

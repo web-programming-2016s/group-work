@@ -1,4 +1,6 @@
-﻿<?php
+﻿<?php require_once("header.php");?>
+
+<?php
 
 	//require another php file
 	// ../../../ means > 3 folders back
@@ -101,10 +103,10 @@
 		
 		//save
 		if($stmt->execute()){
-			//echo "<span style='color: red;'>saved sucessfully</span>";
+			echo "<span style='color: red;'>saved sucessfully</span>";
 			//$_SESSION["msg"] = "<span style='color: red;'>saved sucessfully</span>";
 			
-			header('Location: app_message.php?msg=Saved sucessfully');
+			//header('Location: app_message.php?msg=Saved sucessfully');
 			
 		}else{
 			echo $stmt->error;
@@ -113,7 +115,6 @@
 	}
 ?>
 
-<?php require_once("header.php");?>
 
 <?php
 	$current_time_with_fix = time() + (10 * 60 + 58);
@@ -131,9 +132,9 @@
 <?php 	
 //var_dump($_SESSION);
 		
-	if(isset($_GET["msg"]) && $_GET["msg"] != ""){
+	//if(isset($_GET["msg"]) && $_GET["msg"] != ""){
 
-		echo "<span style='color: red;'>".$_GET["msg"]."</span>";
+		//echo "<span style='color: red;'>".$_GET["msg"]."</span>";
 		
 ?>
 		<br>
