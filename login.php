@@ -25,14 +25,16 @@
 //---------------------------------------------------------------------------------//
 ?>
   
-  
+
 <style> 
 
+<!--
 body{
-	font-family: "Abel";
-			src: url("http://www.cs.tlu.ee/~dmikab/groupwork/fonts/AbelRegular.ttf") format("truetype");
+	font-family: "AbelRegular";
+			src: url("http://../fonts/AbelRegular_BACKUP.ttf") format("truetype");
+-->
 			
-    background: url(http://subtlepatterns.com/patterns/natural_paper.png) ; 
+    background-image: url(http://subtlepatterns.com/patterns/natural_paper.png) ; 
    <!--  font-size: 11px; -->
    <!--  font-size: 11px; -->
    <!-- font-family: 'Open Sans', sans-serif; -->
