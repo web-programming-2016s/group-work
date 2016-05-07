@@ -32,7 +32,7 @@
 
 
 
-///here field for input
+
 <div class="wrap rounded">
        <h1>Log in</h1>
 <form method="POST">
@@ -60,8 +60,7 @@
 	<input type="Last_Name" id=text3 placeholder="Last Name" name="Last_Name">
 	<br><br>
 	<input type="submit" id= submit name="signup" value="Sign up">
-	
-
+	3
 
 </form>
        </p> 

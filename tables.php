@@ -6,28 +6,11 @@
 					   //.date("d.m.Y H:i:s");
 
 ?>
-	  
 
-	<style>
-		
-   table {
-	border:1px solid;
-    width: 1000px; 		
-	border-collapse: collapse;
-    margin: auto;		 
-   }
-   th { 
-    text-align: left; 		 /* Выравнивание по левому краю */
-    background: #ccc; 		 /* Цвет фона ячеек */
-    padding: 5px; 			 /* Поля вокруг содержимого ячеек */
-    border: 1px solid black; /* Граница вокруг ячеек */
-   }
-   td { 
-    padding: 5px; 			 /* Поля вокруг содержимого ячеек */
-    border: 1px solid black; /* Граница вокруг ячеек */
-	text-align: center; 
- 
-	</style>
+
+<head>
+<link rel="stylesheet" type="text/css" href="tablestyle.css">
+</head>
 
 
 	<div class="container">
