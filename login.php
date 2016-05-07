@@ -53,13 +53,14 @@
 <form method="POST">
 <!-- <form>-->
 
-	<input type="text" id=text3 placeholder="Username" name="username">
-	<input type="password" id=text3 placeholder="Password" name="password">
+			<input type="username" id=text3 placeholder="username" name="username">
+		<input type="password" id=text3 placeholder="Password" name="password">
 	<br><br>
 	<input type="First_Name" id=text3 placeholder="First Name" name="First_Name">
 	<input type="Last_Name" id=text3 placeholder="Last Name" name="Last_Name">
 	<br><br>
 	<input type="submit" id= submit name="signup" value="Sign up">
+	
 	
 
 </form>
@@ -68,11 +69,10 @@
 </div>
 
 <span class="input input--kuro">
-	<input class="input__field input__field--kuro" type="text" id="input-1" />
-	<label class="input__label input__label--kuro" for="input-1">
-		<span class="input__label-content input__label-content--kuro">First Name</span>
-	</label>
-</span>
+					<input class="input__field input__field--kuro" type="text" id="input-7" />
+					<label class="input__label input__label--kuro" for="input-7">
+						<span class="input__label-content input__label-content--kuro">Username</span>
+					</label>
 
 
 
