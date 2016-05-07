@@ -60,15 +60,19 @@
 	<input type="Last_Name" id=text3 placeholder="Last Name" name="Last_Name">
 	<br><br>
 	<input type="submit" id= submit name="signup" value="Sign up">
-	3
+	
 
 </form>
        </p> 
        <br/>
-       
 </div>
 
-
+<span class="input input--kuro">
+	<input class="input__field input__field--kuro" type="text" id="input-1" />
+	<label class="input__label input__label--kuro" for="input-1">
+		<span class="input__label-content input__label-content--kuro">First Name</span>
+	</label>
+</span>
 
 
 
