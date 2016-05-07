@@ -1,7 +1,7 @@
 <?php
 		
 	//signup button clocked
-	} if(isset($_POST["signup"])){
+	 if(isset($_POST["signup"])){
 		
 		//signup
 		echo "signing up...";
@@ -47,8 +47,17 @@ body{
 }  
 
 
+#submit {
+    width: 60px;
+    height:30px;
+    color: #000000;
+}  
 
-
+#login {
+    width: 60px;
+    height:30px;
+    color: #000000;
+}  
 
 body{
     background: url(http://subtlepatterns.com/patterns/natural_paper.png) ;
@@ -137,7 +146,7 @@ a:hover{
 	<br><br>
 	<input type="password" id="text3" placeholder="Password" name="password">
 	<br><br>
-	<input type="submit" name="login" value="Log in">
+	<input type="submit" id="login" name="login" value="Log in">
 	
 
 
@@ -155,7 +164,7 @@ a:hover{
 	<input type="First_Name" id=text3 placeholder="First Name" name="First_Name">
 	<input type="Last_Name" id=text3 placeholder="Last Name" name="Last_Name">
 	<br><br>
-	<input type="submit" name="signup" value="Sign up">
+	<input type="submit" id= submit name="signup" value="Sign up">
 	
 
 
@@ -164,7 +173,7 @@ a:hover{
        <br/>
        
 </div>
-///filed ends
+
 
 
 
