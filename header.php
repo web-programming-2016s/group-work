@@ -10,7 +10,7 @@ require_once("functions.php");
 	if(isset($_POST["login"])){
 		
 		//login
-		echo "logging in...";
+		//echo "logging in...";
 		
 			//the fields are not empty
 			if( !empty($_POST["username"]) && !empty($_POST["password"]) ){
@@ -21,7 +21,7 @@ require_once("functions.php");
 				
 			}else{
 				
-				echo "both fields are rquired!";
+				echo "<span style='color: red;'>Both fields are rquired!</span>";
 				
 			}
 	}

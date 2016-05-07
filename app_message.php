@@ -1,4 +1,6 @@
-﻿<?php
+﻿<?php require_once("header.php");?>
+
+<?php
 
 	//require another php file
 	// ../../../ means > 3 folders back
@@ -101,10 +103,10 @@
 		
 		//save
 		if($stmt->execute()){
-			//echo "<span style='color: red;'>saved sucessfully</span>";
+			echo "<span style='color: red;'>saved sucessfully</span>";
 			//$_SESSION["msg"] = "<span style='color: red;'>saved sucessfully</span>";
 			
-			header('Location: app_message.php?msg=saved sucessfully');
+			//header('Location: app_message.php?msg=Saved sucessfully');
 			
 		}else{
 			echo $stmt->error;
@@ -113,7 +115,6 @@
 	}
 ?>
 
-<?php require_once("header.php");?>
 
 <?php
 	$current_time_with_fix = time() + (10 * 60 + 58);
@@ -127,15 +128,15 @@
 	
 	
 		<h2>Form to send message:</h2>
-		<?php 
 		
-		//var_dump($_SESSION);
+<?php 	
+//var_dump($_SESSION);
 		
-		if(isset($_GET["msg"]) && $_GET["msg"] != ""){
+	//if(isset($_GET["msg"]) && $_GET["msg"] != ""){
 
-			echo "<span style='color: red;'>".$_GET["msg"]."</span>";
-		}
-		?>
+		//echo "<span style='color: red;'>".$_GET["msg"]."</span>";
+		
+?>
 		<br>
 		
 				<form method="get">
@@ -185,11 +186,11 @@
 
 	
 		<br>
-			<hr />
 		
 	</section>
 </div>
 
+<hr />
 
 	<div class="container">
 		<section id="CopyRights">
@@ -199,7 +200,7 @@
 				<dt>Beta Version 2.0</dt>
 				<dd>© Vadim Kozlov and Dmitri Kabluchko</dd>
 				<dt>Directory:</dt>
-				<dd><div class="bkt"><a href="http://localhost:5555/~shikter/web/" target="_blank">Web Folders</a></div>
+				<dd><div class="bkt"><a href="http://localhost:5555/~shikter/web/groupwork/" target="_blank">Web Folders</a></div>
 			</dl>
 			<br>
 

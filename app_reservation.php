@@ -28,6 +28,8 @@
 						if($stmt->execute()){
 
 							echo "saved sucessfully";
+							//header('Location: app_reservation.php?ord=Saved sucessfully');
+							
 						}else{
 							echo $stmt->error;
 						}
@@ -70,6 +72,16 @@
 	?>
 
 	<h2>Reservation form:</h2>
+	
+	
+<?php 			
+	/*if(isset($_GET["ord"]) && $_GET["ord"] != ""){
+
+		echo "<span style='color: red;'>".$_GET["ord"]."</span>";
+	}*/
+?>
+	
+	
 		<div id="errors" style="color: red;"></div>
 			<div class="row">
 				<form class="col-md-3 col-sm-6" id="dataForm" method="post" onsubmit="return validate();" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
@@ -206,10 +218,11 @@
 
 
 	<br>
-	<hr />
 		
 	</section>
 </div>
+
+<hr />
 
 	<div class="container">
 		<section id="CopyRights">
@@ -219,7 +232,7 @@
 				<dt>Beta Version 2.0</dt>
 				<dd>© Vadim Kozlov and Dmitri Kabluchko</dd>
 				<dt>Directory:</dt>
-				<dd><div class="bkt"><a href="http://localhost:5555/~shikter/web/" target="_blank">Web Folders</a></div>
+				<dd><div class="bkt"><a href="http://localhost:5555/~shikter/web/groupwork/" target="_blank">Web Folders</a></div>
 			</dl>
 			<br>
 

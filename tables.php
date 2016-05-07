@@ -205,8 +205,10 @@
 			$table2_html .="<th><center>Type</center></th>";
 			$table2_html .="<th><center>Description</center></th>";
 			$table2_html .="<th><center>Created</center></th>";
+			if(isset($_SESSION["user_id"])){
 			$table2_html .="<th><center>Edit</center></th>";
 			$table2_html .="<th><center>Delete?</center></th>";
+			}
 		
 		$table2_html .="</tr>"; //end row
 	
@@ -237,8 +239,10 @@
 			$table2_html .=date_format( date_create($time_created) , "d/m/Y - H:i:s");
 			$table2_html .="</td>";
 			
+			if(isset($_SESSION["user_id"])){
 			$table2_html .="<td><a class='btn btn-warning' href='edit_reservation.php?edit=".$id."'>Edit</a></td>";
 			$table2_html .="<td><a class='btn btn-danger' href='?delete_o=".$id."'>X</a></td>";
+			}
 			
 		$table2_html .="</tr>"; //end row
 	}
@@ -256,6 +260,7 @@
 
 		</div>
 
+	<hr />
 
 	<div class="container">
 		<section id="CopyRights">
@@ -265,7 +270,7 @@
 				<dt>Beta Version 2.0</dt>
 				<dd>© Vadim Kozlov and Dmitri Kabluchko</dd>
 				<dt>Directory:</dt>
-				<dd><div class="bkt"><a href="http://localhost:5555/~shikter/web/" target="_blank">Web Folders</a></div>
+				<dd><div class="bkt"><a href="http://localhost:5555/~shikter/web/groupwork/" target="_blank">Web Folders</a></div>
 			</dl>
 			<br>
 
