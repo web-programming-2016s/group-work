@@ -249,7 +249,7 @@ a:hover{
 
 .input__field--kuro:focus + .input__label--kuro .input__label-content--kuro,
 .input--filled .input__label-content--kuro {
-  -webkit-animation: anim-2 0.3s forwards;
+   -webkit-animation: anim-2 0.3s forwards;
   animation: anim-2 0.3s forwards;
 }
 

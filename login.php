@@ -35,7 +35,7 @@
 	<!-- <input type="text" id="text3" placeholder="Username" name="username"> -->
 	
 	<span class="input input--kuro">
-		<input class="input__field input__field--kuro" type="text" id="input-7" />
+		<input class="input__field input__field--kuro" type="text" id="input-7" name="username"/>
 				<label class="input__label input__label--kuro" for="input-7">
 					<span class="input__label-content input__label-content--kuro">Username</span>
 				</label>
