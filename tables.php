@@ -8,9 +8,7 @@
 ?>
 
 
-<head>
 <link rel="stylesheet" type="text/css" href="tablestyle.css">
-</head>
 
 
 	<div class="container">

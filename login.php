@@ -25,12 +25,7 @@
 //---------------------------------------------------------------------------------//
 ?>
   
-  <head>
 <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-
-
-
 
 
 <div class="wrap rounded">
@@ -53,7 +48,7 @@
 <form method="POST">
 <!-- <form>-->
 
-			<input type="username" id=text3 placeholder="username" name="username">
+			<input type="username" id=text3 placeholder="Username" name="username">
 		<input type="password" id=text3 placeholder="Password" name="password">
 	<br><br>
 	<input type="First_Name" id=text3 placeholder="First Name" name="First_Name">
