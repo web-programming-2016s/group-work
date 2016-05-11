@@ -25,28 +25,7 @@
 	$everything_was_okay = true;
 
  
-	//check if there is variable in the URL
-	if(isset($_GET["Dolphin"])){
-		
-		//only if there is message in the URL
-		//echo "there is message"
-
-		//if its empty
-		if(empty($_GET["Dolphin"])){
-		$everything_was_okay = false;
-				//it is empty
-			echo "You selected: <br>";
-			echo "Please enter the Dolphin name! <br>";
-		}else{
-			//its not empty
-			echo "You selected: <br>";
-			echo "Dolphin: ".$_GET["Dolphin"]."<br>";
-			$varv = $_GET["Dolphin"];
-		}
-	}else{
-		echo "Nothing is added <br>";
-		$everything_was_okay = false;
-	}
+	
 	
 	
 		
@@ -55,7 +34,7 @@
 	// ? was everything okay
 	if($everything_was_okay == true){
 		
-	echo "Saving to database ... ";
+
 	
 		
 		
@@ -84,9 +63,9 @@
 		
 		//save
 		if($stmt->execute()){
-			echo "saved sucessfully";
+			
 		}else{
-			echo $stmt->error;
+			//echo $stmt->error;
 		}
 		
 		
@@ -106,7 +85,7 @@
 	*/
 	if(isset($_GET["delete"])){
 		
-		echo "Deleting row with id:".$_GET["delete"];
+		
 		
 		// NOW() = current date-time
 		$stmt = $mysql->prepare("UPDATE delfiini_tabel SET deleted=NOW() WHERE id = ?");
@@ -117,7 +96,7 @@
 		$stmt->bind_param("i", $_GET["delete"]);
 		
 		if($stmt->execute()){
-			echo "deleted successfully";
+		
 		}else{
 			echo $stmt->error;
 		}
@@ -218,8 +197,13 @@
 	
 		<h2> Welcome <?php echo $_SESSION["name"];?> </h2>
 	<?php	
+	
 		//we need function for dealing with session
 	require_once("functions.php");
+
+	if(isset($_GET["delete"])){
+	echo "Deleting row with id: ".$_GET["delete"];
+	}
 
 		//RESTRICTION -LOGGED In
 	if(!isset($_SESSION["user_id"])){

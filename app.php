@@ -14,7 +14,7 @@
 	// ? was everything okay
 	if($everything_was_okay == true){
 		
-	echo "Saving to database ... ";
+	
 	
 		
 		
@@ -46,11 +46,12 @@
 			$msg = "saved sucessfully";
 			$saved = true;
 		}else{
-			echo $stmt->error;
+			//echo $stmt->error;
 		}
 		
 		
 	}
+	
 	
 
 ?>
@@ -108,6 +109,8 @@
 		
 		
 		<?php
+	//echo "Saving to database ... ";	
+	
 			//var_dump($saved);
 			if($saved == true){
 			
@@ -123,7 +126,6 @@
 				$tail=$_GET["tail"];
 				
 				if($color=="grey"){
-					echo $dorsal;
 					if($dorsal=="flabby"){
 						if($tail=="broken"){
 							$dolphin=$a;
@@ -156,6 +158,8 @@
 			
 			
 			}
+		
+		
 		
 		?>
 		

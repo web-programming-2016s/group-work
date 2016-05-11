@@ -1,5 +1,6 @@
 <?php
 	require_once("functions.php");
+	require_once("header.php");
 	
 	//RESTRICTION -NOT LOGGED IN
 	if(isset($_SESSION["user_id"])){
@@ -62,7 +63,7 @@
 	<input type="text" placeholder="Username" name="username">
 	<input type="password" placeholder="Password" name="password">
 	
-	<input type="submit" name="login" value="Log in">
+	<input type="submit" class="btn btn-info" name="login" value="Log in">
 	
 </form>
 
@@ -76,7 +77,7 @@
 	<input type="text" placeholder="Username" name="username"><br>
 	<input type="password" placeholder="Password" name="password"><br>
 	
-	<input type="submit" name="signup" value="Sign up">
+	<input type="submit" class="btn btn-info" name="signup" value="Sign up">
 	
 	
 	
