@@ -127,6 +127,18 @@ require_once("functions.php");
 			});
 		  </script>
 		  
+		  <script>
+			function confirmDelete(event){
+				
+				var c = confirm("Do you want to delete?");
+				
+				if(!c){
+					event.preventDefault();
+				}
+			}
+		  
+		  </script>
+		  
 		  <!-- 
 				$ function() { 
 								$( ".datepicker" ).datepicker({ 
@@ -264,13 +276,21 @@ require_once("functions.php");
       </ul>
 	  
 	  <?php
-	  
+		
+		if(isset($_SESSION["user_id"])){
 		 echo "
 				<ul class='nav navbar-nav navbar-right pull-right'>
-					<li><a>User Name</a></li>
+					<li><a>".$_SESSION["First_Name"]." ".$_SESSION["Last_Name"]."</a></li>
 					<li><a href='?logout'>Log out</a></li>
 				  </ul>
 			  ";
+		}else{
+			echo "
+				<ul class='nav navbar-nav navbar-right pull-right'>
+					<li><a href='homepage.php'>login</a></li>
+				  </ul>
+			  ";
+		}
 	  
 	  ?>
 

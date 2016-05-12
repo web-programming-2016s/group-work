@@ -33,11 +33,11 @@
 	
 	if(isset($_GET["delete_o"]) && isset($_SESSION["user_id"])){
 		
-		echo "Deleting row with id:".$_GET["delete_o"];
+		echo "Deleting row with 2id:".$_GET["delete_o"];
 		echo "<br>";
 		
 		// NOW() = current date-time
-		$stmt = $mysql->prepare("UPDATE messages_sample SET deleted=NOW() WHERE id = ?");
+		$stmt = $mysql->prepare("UPDATE Reservation SET deleted=NOW() WHERE id = ?");
 		
 		echo $mysql->error;
 		
@@ -56,6 +56,30 @@
 		
 	}
 	
+	if(isset($_GET["delete"]) && isset($_SESSION["user_id"])){
+		
+		echo "Deleting row with 1id:".$_GET["delete"];
+		echo "<br>";
+		
+		// NOW() = current date-time
+		$stmt = $mysql->prepare("UPDATE messages_sample SET deleted=NOW() WHERE id = ?");
+		
+		echo $mysql->error;
+		
+		//replace the ?
+		$stmt->bind_param("i", $_GET["delete"]);
+		
+		if($stmt->execute()){
+			echo "<span style='color: red;'>deleted successfully</span>";
+			echo "<br>";
+		}else{
+			echo $stmt->error;
+		}
+		
+		//closes the statement, so others can use connection
+		$stmt->close();
+		
+	}
 	
 	//SQL sentens
 	$stmt = $mysql->prepare("SELECT id, recipient, message, sender, created FROM messages_sample WHERE deleted IS NULL ORDER BY created DESC LIMIT 10");
@@ -109,7 +133,7 @@
 			$table_html .="</td>";
 			if(isset($_SESSION["user_id"])){
 				$table_html .="<td><a class='btn btn-warning' href='edit_message.php?edit=".$id."'>Edit</a></td>";
-				$table_html .="<td><a class='btn btn-danger' href='?delete=".$id."'>X</a></td>";
+				$table_html .="<td><a class='btn btn-danger' onclick='confirmDelete(event)' href='?delete=".$id."'>X</a></td>";
 				
 			}
 			
@@ -136,31 +160,6 @@
 	$stmt2 = $mysql->prepare("SELECT id, Name, Last_Name, reserv_date, label_genre, description, time_created FROM Reservation WHERE deleted IS NULL ORDER BY time_created DESC LIMIT 10");
 	
 		// IF THERE IS ?DELITE=ROW_ID in the url
-	
-	if(isset($_GET["delete"])){
-		
-		echo "Deleting row with id:".$_GET["delete"];
-		echo "<br>";
-		
-		// NOW() = current date-time
-		$stmt = $mysql->prepare("UPDATE Reservation SET deleted=NOW() WHERE id = ?");
-		
-		echo $mysql->error;
-		
-		//replace the ?
-		$stmt->bind_param("i", $_GET["delete"]);
-		
-		if($stmt->execute()){
-			echo "<span style='color: red;'>deleted successfully</span>";
-			echo "<br>";
-		}else{
-			echo $stmt->error;
-		}
-		
-		//closes the statement, so others can use connection
-		$stmt->close();
-		
-	}
 	
 	
 	//if error in sentence
