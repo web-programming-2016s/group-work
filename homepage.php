@@ -5,7 +5,7 @@
 		echo "<p />Today is " .date('l, jS \of F Y - H:i:s', $current_time_with_fix);
 					   //.date("d.m.Y H:i:s");
 
-?>
+Today is Thursday, 12th of May 2016 - 13:23:16?>
 
 <div class="container">
 	<section id="Login_Form">
