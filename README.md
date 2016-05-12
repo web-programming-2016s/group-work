@@ -1,3 +1,15 @@
+* Name of the project: Manage your money
+* Name: Carol Liis Metsla
+* Easier to manage and keep track on your monthly spendings. This app is suitable for all the age groups.
+* Similar apps - Pocket Expense Personal Finance, Good Budget, Mint.com
+* Functionalities of the app
+     - It is possible to create a user
+     - User can update daily his spending to calendar
+     - Person can add the outgo
+
+* Summary:
+
+
 # PHP groupwork project
 **Deadline** examination day - please attend the same day with all group members
 
@@ -26,4 +38,4 @@
     * You are using atleast 3 tables;
     * code is separated by files (you have config file, functions file etc.)
     * application has enough functionalities (you have solved all the issues)
-    * it is possible to see what wach team member has developed 
+    * it is possible to see what wach team member has developed
