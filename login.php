@@ -34,23 +34,16 @@
 
 	<!-- <input type="text" id="text3" placeholder="Username" name="username"> -->
 	
-<span class="input input--kuro">
-	<input class="input__field input__field--kuro" type="username" id="input-1" name="username" />
-
-	<label class="input__label input__label--kuro" for="input-1">
-		<span class="input__label-content input__label-content--kuro">First Name</span>
-	</label>
-</span>
-
-<span class="input input--kuro">
-	<input class="input__field input__field--kuro" type="password" id="input-1" name="password" />
-
-	<label class="input__label input__label--kuro" for="input-1">
-		<span class="input__label-content input__label-content--kuro">Password</span>
-	</label>
-</span>
-
-	<!-- <input type="password" id="text3" placeholder="Password" name="password"> -->
+	<span class="input input--kuro">
+		<input class="input__field input__field--kuro" type="text" id="input-7" name="username"/>
+				<label class="input__label input__label--kuro" for="input-7">
+					<span class="input__label-content input__label-content--kuro">Username</span>
+				</label>
+	
+	<br><br>
+	<br><br>
+	<input type="password" id="text3" placeholder="Password" name="password">
+	<br><br>
 	<input type="submit" id="login" name="login" value="Log in">
 	<br><br>
 
@@ -68,7 +61,7 @@
 	<input type="First_Name" id=text3 placeholder="First Name" name="First_Name">
 	<input type="Last_Name" id=text3 placeholder="Last Name" name="Last_Name">
 	<br><br>
-	<input type="submit" id= submit name="signup" value="Sign up">
+	<input type="submit" id="submit" name="signup" value="Sign up">
 	<br>
 	
 
@@ -76,15 +69,6 @@
 
        <br/>
 </div>
-
-<!--
-				<span class="input input--kuro">
-					<input class="input__field input__field--kuro" type="text" id="input-7" />
-					
-					<label class="input__label input__label--kuro" for="input-7">
-						<span class="input__label-content input__label-content--kuro">Username</span>
-					</label>
--->
 
 
 
