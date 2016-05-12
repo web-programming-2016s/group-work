@@ -1,5 +1,6 @@
 <?php
 		
+	var_dump($_POST);
 	//signup button clocked
 	 if(isset($_POST["signup"])){
 		
@@ -34,22 +35,22 @@
 
 	<!-- <input type="text" id="text3" placeholder="Username" name="username"> -->
 	
-<span class="input input--kuro">
-	<input class="input__field input__field--kuro" type="username" id="input-1" name="username" />
+<span class="input input--isao">
+					<input class="input__field input__field--isao" type="usernmae" id="input-38" name="username" />
+					<label class="input__label input__label--isao" for="input-38" data-content="username">
+						<span class="input__label-content input__label-content--isao">username</span>
+					</label>
+				</span>
+	<span class="input input--isao">
+					<input class="input__field input__field--isao" type="password" id="input-38" name="password" />
+					<label class="input__label input__label--isao" for="input-38" data-content="password">
+						<span class="input__label-content input__label-content--isao">password</span>
+					</label>
+				</span>			
+<br><br>
 
-	<label class="input__label input__label--kuro" for="input-1">
-		<span class="input__label-content input__label-content--kuro">First Name</span>
-	</label>
 </span>
-
-<span class="input input--kuro">
-	<input class="input__field input__field--kuro" type="password" id="input-1" name="password" />
-
-	<label class="input__label input__label--kuro" for="input-1">
-		<span class="input__label-content input__label-content--kuro">Password</span>
-	</label>
-</span>
-
+<br><br>
 	<!-- <input type="password" id="text3" placeholder="Password" name="password"> -->
 	<input type="submit" id="login" name="login" value="Log in">
 	<br><br>
@@ -62,16 +63,34 @@
 <form method="POST">
 <!-- <form>-->
 
-			<input type="username" id=text3 placeholder="Username" name="username">
-		<input type="password" id=text3 placeholder="Password" name="password">
-	<br><br>
-	<input type="First_Name" id=text3 placeholder="First Name" name="First_Name">
-	<input type="Last_Name" id=text3 placeholder="Last Name" name="Last_Name">
-	<br><br>
-	<input type="submit" id= submit name="signup" value="Sign up">
-	<br>
+			<span class="input input--isao">
+					<input class="input__field input__field--isao" type="usernmae" id="input-38" name="username" />
+					<label class="input__label input__label--isao" for="input-38" data-content="username">
+						<span class="input__label-content input__label-content--isao">username</span>
+					</label>
+				</span>
+	<span class="input input--isao">
+					<input class="input__field input__field--isao" type="password" id="input-38" name="password" />
+					<label class="input__label input__label--isao" for="input-38" data-content="password">
+						<span class="input__label-content input__label-content--isao">password</span>
+					</label>
+				</span>		
 	
-
+<span class="input input--isao">
+					<input class="input__field input__field--isao" type="First_Name" id="input-38" name="First_Name" />
+					<label class="input__label input__label--isao" for="input-38" data-content="First_Name">
+						<span class="input__label-content input__label-content--isao">First Name</span>
+					</label>
+				</span>
+	<span class="input input--isao">
+					<input class="input__field input__field--isao" type="Last_Name" id="input-38" name="Last_Name" />
+					<label class="input__label input__label--isao" for="input-38" data-content="Last_Name">
+						<span class="input__label-content input__label-content--isao">Last Name
+						</span>
+					</label>
+				</span>	
+				<br>
+	<input type="submit" id="submit" name="signup" value="Sign up">
 </form>
 
        <br/>
