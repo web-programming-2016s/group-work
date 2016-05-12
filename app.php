@@ -12,10 +12,48 @@
 		
 	//SAVE TO DB
 	// ? was everything okay
-	if($everything_was_okay == true){
+	if(isset($_GET["color"])){
 		
 	
-	
+		$dolphin="";
+				
+				$a="Not a dolphin from pool 7";
+				$b="Luna";
+				$c="Jax";				
+				$d="Summer";
+				
+				$color=$_GET["color"];
+				$dorsal=$_GET["dorsal_fin"];
+				$tail=$_GET["tail"];
+				
+				if($color=="grey"){
+					if($dorsal=="flabby"){
+						if($tail=="broken"){
+							$dolphin=$a;
+						}elseif($tail=="not broken"){
+							$dolphin=$b;
+						}	
+					
+					}elseif($dorsal=="straight"){
+						if($tail=="broken"){
+							$dolphin=$a;
+						}elseif($tail=="not broken"){
+							$dolphin=$c;
+						}	
+					}	
+				}elseif($color=="dark grey"){
+					if($dorsal=="flabby"){
+						
+						$dolphin=$a;
+							
+					}elseif($dorsal=="straight"){
+						if($tail=="broken"){
+							$dolphin=$d;
+						}elseif($tail=="not broken"){
+							$dolphin=$a;
+						}	
+					}	
+				}			
 		
 		
 		//connection with username and password
@@ -28,7 +66,7 @@
 		// 4 database
 		$mysql = new mysqli("localhost", $db_username, $db_password, "webpr2016_karoliinar");
 		
-		$stmt = $mysql->prepare("INSERT INTO homework (color, uim, saba) VALUES (?,?,?)");
+		$stmt = $mysql->prepare("INSERT INTO homework (color, Fin, Tail, Dolphin) VALUES (?,?,?,?)");
 			
 		//echo error
 		echo $mysql->error;
@@ -39,7 +77,7 @@
 		// d - decimal, float
 		
 		//for each question mark its type with one letter
-		$stmt->bind_param("sss", $_GET["color"], $_GET["dorsal_fin"], $_GET["tail"]);
+		$stmt->bind_param("ssss", $_GET["color"], $_GET["dorsal_fin"], $_GET["tail"], $dolphin);
 		
 		//save
 		if($stmt->execute()){
@@ -105,7 +143,7 @@
 	<div class="container">
 
 		<h1> Identifying dolphins from pool 7 </h1>
-		
+		<h2> Dolphin features: </h2>
 		
 		
 		<?php
@@ -119,7 +157,7 @@
 				$a="Not a dolphin from pool 7";
 				$b="Luna";
 				$c="Jax";				
-				$d="Summmer";
+				$d="Summer";
 				
 				$color=$_GET["color"];
 				$dorsal=$_GET["dorsal_fin"];
@@ -203,8 +241,7 @@
 			
 			<div class="row">
 				<div class="col-md-3 col-sm-6">
-					<input class="btn btn-success hidden-xs" type="submit" value="Save to database">
-					<input class="btn btn-success btn-block visible-xs-block" type="submit" value="Save data 2">
+					<input class="btn btn-primary" type="submit" value="Save">
 				</div>
 			</div>
 			

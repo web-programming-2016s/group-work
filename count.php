@@ -1,4 +1,5 @@
-<?php require_once("header.php"); ?>
+ SELECT `Dolphin`, COUNT(*) FROM `homework` WHERE `Dolphin` != '' GROUP BY `Dolphin` 
+
 <?php
 	//table.php
 	
