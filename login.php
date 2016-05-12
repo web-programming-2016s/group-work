@@ -1,6 +1,6 @@
 <?php
 		
-	var_dump($_POST);
+
 	//signup button clocked
 	 if(isset($_POST["signup"])){
 		
@@ -30,7 +30,7 @@
 
 
 <div class="wrap rounded">
-       <h1>Log in</h1>
+       <h1 style="color:#eeeeee">Log in</h1>
 <form method="POST">
 
 	<!-- <input type="text" id="text3" placeholder="Username" name="username"> -->
@@ -59,7 +59,7 @@
 </form>
      
        
-         <h1>Create User Name</h1>
+         <h1 style="color:#eeeeee">Create User Name</h1>
 <form method="POST">
 <!-- <form>-->
 
