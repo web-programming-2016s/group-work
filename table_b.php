@@ -37,11 +37,8 @@
 
 
 
-
-
-
 	//SQL sentence
-	$stmt = $mysql->prepare("SELECT id, name, amount, created FROM Homework2 WHERE deleted IS NULL ORDER BY created DESC ");
+	$stmt = $mysql->prepare("SELECT id, date, category, amount FROM Homework2 WHERE deleted IS NULL ORDER BY created DESC ");
 
 	//WHERE deleted IS NULL show only those that are not deleted
 
@@ -49,20 +46,21 @@
 	echo $mysql->error;
 
 	//variables for data for each row we will get
-	$stmt->bind_result($id,$name,$amount, $created);
+	$stmt->bind_result($id,$date,$category,$amount);
 
 	//query
 	$stmt->execute();
 
 	$table_html = "";
-  $sum=0;
+	$sum=0;
 	//add smth to string .=
 	$table_html .= "<table class='table table-striped'>";
 		$table_html .= "<tr>";
 			$table_html .= "<th>ID</th>";
-			$table_html .= "<th>name</th>";
-			$table_html .= "<th>amount</th>";
-			$table_html .= "<th>Created</th>";
+			$table_html .= "<th>date</th>";
+			$table_html .= "<th>category</th>";
+				$table_html .= "<th>amount</th>";
+			//$table_html .= "<th>Created</th>";
 			$table_html .= "<th>Delete ?</th>";
 		$table_html .= "</tr>";
 
@@ -70,25 +68,30 @@
 	//we have multiple rows
 
 	while($stmt->fetch()){
-      $sum=$sum+$amount;
+			$sum=$sum+$amount;
 
 
 		//DO SOMETHING FOR EACH ROW
 		//echo $id." ".$message."<br>";
 		$table_html .= "<tr>"; //start new row
 			$table_html .= "<td>".$id."</td>"; //add columns
-			$table_html .= "<td>".$name."</td>";
+			$table_html .= "<td>".$date."</td>";
+			$table_html .= "<td>".$category."</td>";
 			$table_html .= "<td>".$amount."</td>";
-			$table_html .= "<td>".$created."</td>";
+			//$table_html .= "<td>".$created."</td>";
 			$table_html .= "<td>
 
 								<a class='btn btn-danger'
-                href='?delete=".$id."'>X</a>
+								href='?delete=".$id."'>X</a>
 							</td>";
 
 		$table_html .= "</tr>"; //end row
 	}
 	$table_html .= "</table>";
+
+
+
+
 	//echo $table_html;
 
 
@@ -106,7 +109,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		  </button>
-		  <a class="navbar-brand" href="#">Brand</a>
+
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -114,13 +117,7 @@
 
 		  <ul class="nav navbar-nav">
 
-			<li>
-				<a href="app_b.php">
-					App page
-				</a>
-			</li>
-
-
+		
 			<li class="active" >
 				<a href="table_b.php">
 					Table
