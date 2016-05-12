@@ -1,3 +1,5 @@
+ <?php require_once("header.php");?>
+
 <?php
 	//we need functions for dealing with session
 	require_once("functions.php");
@@ -31,5 +33,5 @@
 	<input type="text" name="code" min="10" max="10"><br>
 	<input type="submit" name="get clue" value="Get clue">
 </form>
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <a href="?logout=1" > Logout</a>;

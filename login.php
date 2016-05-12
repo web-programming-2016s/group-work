@@ -1,3 +1,7 @@
+
+ <?php require_once("header.php");?>
+
+
 <?php
 	require_once("functions.php");
 	
@@ -70,7 +74,7 @@
 	<input type="submit" name="login" value="Log in">
 	
 </form>
-
+<br><br><br><br><br><br><br><br><br><br><br>
 <h1>Sign up</h1>
 <form method="POST">
 

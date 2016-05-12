@@ -1,0 +1,8 @@
+
+Table "users" is the register for the contestants. Admin is required to divide players into groups 1 and 2. After the registration
+players of an ARG are signed in as teammembers of either first or second group. From now on different rules apply to them 
+according to the group they are in.
+
+Table "Correct_clues" is linked to the table "users" and contains both correct and fake clues that the users (players) try to get by 
+inserting different codes. For the purpose of demonstration the clues are marked as real or fake. During the actual ARG clues will be seemingly 
+similar in content and looking plausible.
