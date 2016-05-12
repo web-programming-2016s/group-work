@@ -7,6 +7,30 @@
 
 ?>
 
+<?php
+
+if(isset($_GET["watch_more_tb1"])){
+	$_SESSION["watch_more_tb1"] = true;
+}
+
+if(isset($_GET["watch_less_tb1"])){
+	$_SESSION["watch_more_tb1"] = false;
+}
+
+?>
+
+<?php
+
+if(isset($_GET["watch_more_tb2"])){
+	$_SESSION["watch_more_tb2"] = true;
+}
+
+if(isset($_GET["watch_less_tb2"])){
+	$_SESSION["watch_more_tb2"] = false;
+}
+
+?>
+
 
 <link rel="stylesheet" type="text/css" href="tablestyle.css">
 
@@ -14,8 +38,8 @@
 	<div class="container">
 			<section id="Tables">
 			
-				<h1>This is the Table page...</h1>
-					<p>(You can see only last 10 senders)</p>
+				<h1>This is the Tables page</h1>
+					<p><i>(You can see only last 10 rows)</i></p>
 						<br>
 			
 <?php
@@ -33,11 +57,11 @@
 	
 	if(isset($_GET["delete_o"]) && isset($_SESSION["user_id"])){
 		
-		echo "Deleting row with id:".$_GET["delete_o"];
+		echo "Deleting row with 2id:".$_GET["delete_o"];
 		echo "<br>";
 		
 		// NOW() = current date-time
-		$stmt = $mysql->prepare("UPDATE messages_sample SET deleted=NOW() WHERE id = ?");
+		$stmt = $mysql->prepare("UPDATE Reservation SET deleted=NOW() WHERE id = ?");
 		
 		echo $mysql->error;
 		
@@ -56,9 +80,33 @@
 		
 	}
 	
+	if(isset($_GET["delete"]) && isset($_SESSION["user_id"])){
+		
+		echo "Deleting row with 1id:".$_GET["delete"];
+		echo "<br>";
+		
+		// NOW() = current date-time
+		$stmt = $mysql->prepare("UPDATE messages_sample SET deleted=NOW() WHERE id = ?");
+		
+		echo $mysql->error;
+		
+		//replace the ?
+		$stmt->bind_param("i", $_GET["delete"]);
+		
+		if($stmt->execute()){
+			echo "<span style='color: red;'>deleted successfully</span>";
+			echo "<br>";
+		}else{
+			echo $stmt->error;
+		}
+		
+		//closes the statement, so others can use connection
+		$stmt->close();
+		
+	}
 	
 	//SQL sentens
-	$stmt = $mysql->prepare("SELECT id, recipient, message, sender, created FROM messages_sample WHERE deleted IS NULL ORDER BY created DESC LIMIT 10");
+	$stmt = $mysql->prepare("SELECT id, recipient, message, sender, created FROM messages_sample WHERE deleted IS NULL ORDER BY created DESC");
 	//WHERE deleted is NULL show only those that are not deleted
 	
 	
@@ -92,7 +140,27 @@
 	
 	// GET RESULT
 	// we have multiple rows
+	
+	// ---------------------------------------------------------------------
+	
+	$rows_count = 0;
+	$max_count = 10;
+	
+	if(isset($_SESSION["watch_more_tb1"]) && $_SESSION["watch_more_tb1"] == true){
+		$max_count = 1000000;
+	}
+	
+	
 	while($stmt->fetch()){
+		
+		$rows_count++;
+		
+		if($rows_count >= $max_count){
+			break;
+		}
+		
+		// Don't forget about - $stmt->close(); - to see other tables...
+	// ----------------------------------------------------------------------
 			
 			
 		// DO SOMETHING FOR EACH ROW
@@ -109,58 +177,53 @@
 			$table_html .="</td>";
 			if(isset($_SESSION["user_id"])){
 				$table_html .="<td><a class='btn btn-warning' href='edit_message.php?edit=".$id."'>Edit</a></td>";
-				$table_html .="<td><a class='btn btn-danger' href='?delete=".$id."'>X</a></td>";
+				$table_html .="<td><a class='btn btn-danger' onclick='confirmDelete(event)' href='?delete=".$id."'>X</a></td>";
 				
 			}
 			
 		$table_html .="</tr>"; //end row
 	}
 	
+	$stmt->close();
+	
 	$table_html .="</table>";
 	//echo $table_html;
 ?>
-					
-		<h3>Table of "Message APP"</h3>
+		
+		<h3 id="tb1">Table of "Message APP"</h3>
+		
+			<?php if(isset($_SESSION["watch_more_tb1"]) && $_SESSION["watch_more_tb1"] == true){ ?>
+				<a href="?watch_less_tb1#tb1">Watch last 10 senders</a>
+			<?php }else{ ?>
+				<a href="?watch_more_tb1#tb1">Watch all Message</a>
+			<?php } ?>
+			
+			<br><br>
+			
 			<?php echo $table_html; ?>
-				<br>
+			
+	<!-- -------------------------------------------------------------------------------------- -->
+			
+			<br>
+			
+			<?php if(isset($_SESSION["watch_more_tb1"]) && $_SESSION["watch_more_tb1"] == true){ ?>
+				<div align="center"> <a href="?watch_less_tb1#tb1">Watch last 10 senders</a> </div>
+			<?php }else{ ?>
+				<div align="center"> <a href="?watch_more_tb1#tb1">Watch full list - "Table of Message APP" </a> </div>
+			<?php } ?>
+			
 					<hr />
-				<br>	
-					
-<?php
-					
+				<br>			
+
+<?php	
 //---------------------------------------------------------------------------------------------
 
 
 
 //SQL sentens
-	$stmt2 = $mysql->prepare("SELECT id, Name, Last_Name, reserv_date, label_genre, description, time_created FROM Reservation WHERE deleted IS NULL ORDER BY time_created DESC LIMIT 10");
+	$stmt2 = $mysql->prepare("SELECT id, Name, Last_Name, reserv_date, label_genre, description, time_created FROM Reservation WHERE deleted IS NULL ORDER BY time_created DESC");
 	
 		// IF THERE IS ?DELITE=ROW_ID in the url
-	
-	if(isset($_GET["delete"])){
-		
-		echo "Deleting row with id:".$_GET["delete"];
-		echo "<br>";
-		
-		// NOW() = current date-time
-		$stmt = $mysql->prepare("UPDATE Reservation SET deleted=NOW() WHERE id = ?");
-		
-		echo $mysql->error;
-		
-		//replace the ?
-		$stmt->bind_param("i", $_GET["delete"]);
-		
-		if($stmt->execute()){
-			echo "<span style='color: red;'>deleted successfully</span>";
-			echo "<br>";
-		}else{
-			echo $stmt->error;
-		}
-		
-		//closes the statement, so others can use connection
-		$stmt->close();
-		
-	}
 	
 	
 	//if error in sentence
@@ -195,7 +258,27 @@
 	
 	// GET RESULT
 	// we have multiple rows
-	while($stmt2->fetch()){
+	
+	// ---------------------------------------------------------------------
+		
+		$rows_count = 0;
+		$max_count = 10;
+		
+		if(isset($_SESSION["watch_more_tb2"]) && $_SESSION["watch_more_tb2"] == true){
+			$max_count = 1000000;
+		}
+		
+		
+		while($stmt2->fetch()){
+			
+			$rows_count++;
+			
+			if($rows_count >= $max_count){
+				break;
+			}
+			
+		// Don't forget about - $stmt->close(); - to see other tables...
+	// ----------------------------------------------------------------------
 			
 			
 		// DO SOMETHING FOR EACH ROW
@@ -228,15 +311,39 @@
 		$table2_html .="</tr>"; //end row
 	}
 	
+	
+	$stmt2->close();
+	
 	$table2_html .="</table>";
 	//echo $table2_html;
 
 ?>
-					
-	<h3>Table of "Order APP"</h3>
-		<?php echo $table2_html;?>
-		
+	<!-- -------------------------------------------------------------------------------------- -->
+
+	<h3 id="tb2">Table of "Order APP"</h3>
+	
+		<?php if(isset($_SESSION["watch_more_tb2"]) && $_SESSION["watch_more_tb2"] == true){ ?>
+			<a href="?watch_less_tb2#tb2">Watch last 10 orders</a>
+		<?php }else{ ?>
+			<a href="?watch_more_tb2#tb2">Watch all Orders</a>
+		<?php } ?>
 			
+	<br><br>
+	<!-- -------------------------------------------------------------------------------------- -->
+	
+			<?php echo $table2_html;?>
+		
+	<!-- -------------------------------------------------------------------------------------- -->
+			
+	<br>
+			
+		<?php if(isset($_SESSION["watch_more_tb2"]) && $_SESSION["watch_more_tb2"] == true){ ?>
+			<div align="center"> <a href="?watch_less_tb2#tb2">Watch last 10 orders</a> </div>
+		<?php }else{ ?>
+			<div align="center"> <a href="?watch_more_tb2#tb2">Watch full list - "Table of Order APP" </a> </div>
+		<?php } ?>
+			
+	<!-- -------------------------------------------------------------------------------------- -->
 			</section>
 
 		</div>
