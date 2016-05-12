@@ -57,12 +57,12 @@
 		//GLOBALS - access outsde variable in function
 		$mysql = new mysqli("localhost",$GLOBALS["db_username"], $GLOBALS["db_password"],"webpr2016_marvin");
 	
-		$stmt = $mysql->prepare("INSERT INTO users (username, password, player) VALUES (?, ?, ?)");
+		$stmt = $mysql->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
 		
 			echo $mysql->error;
 			
 			
-		$stmt->bind_param("ssi", $user, $pass, $player);
+		$stmt->bind_param("ss", $user, $pass);
 		
 		if($stmt->execute()){
 			echo "player created successfully!";
