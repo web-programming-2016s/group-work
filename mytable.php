@@ -86,7 +86,45 @@
 	
 		
 ?>
-
+<?php
+//SQL sentence
+ 	$stmt = $mysql->prepare("SELECT Dolphin, COUNT(*) FROM homework WHERE Dolphin != '' GROUP BY Dolphin");
+ 	
+ 	//if error is sentence
+ 	echo $mysql->error;
+ 	
+ 	//variables for data for each row we will get
+ 	$stmt->bind_result($Dolphin, $COUNT);
+ 	
+ 	//query
+ 	$stmt->execute();
+ 	
+ 	$table_html = "";
+ 	
+ 	//add smth to string .=
+ 	$table_html .= "<table class='table table-striped'>";
+ 		$table_html .= "<tr>";
+ 			$table_html .= "<th>Dolphin</th>";
+ 			$table_html .= "<th>COUNT</th>";
+ 	 	$table_html .= "</tr>";
+ 	
+ 	//GET RESULT
+ 	//we have multiple rows
+ 	while($stmt->fetch()){
+ 	
+		//DO SOMETHING FOR EACH ROW
+		//echo $id." ".$message."<br>";
+		$table_html .= "<tr>"; //start a new row
+ 			$table_html .= "<td>".$Dolphin."</td>"; 
+ 			$table_html .= "<td>".$COUNT."</td>";
+ 	 	$table_html .= "</tr>"; //End row
+			
+	}
+	$table_html .= "</table>";
+	
+		
+?>
+<?php echo $table_html; ?>
 
 <nav class="navbar navbar-default">
 	  <div class="container-fluid">
