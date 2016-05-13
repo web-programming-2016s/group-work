@@ -1,4 +1,6 @@
+
 <?php require_once("header.php");?>
+
 
 <?php
 	$current_time_with_fix = time() + (10 * 60 + 58);
@@ -6,6 +8,8 @@
 					   //.date("d.m.Y H:i:s"); ?>
 
 <div class="container">
+
+
 	<section id="Login_Form">
 
 <?php		
@@ -28,6 +32,12 @@
 
 
 	<div class="container">
+	<style>
+	body {
+    color:#eeeeee;
+}
+	
+	</style>
 		<section id="CopyRights">
 
 			<br>
@@ -40,6 +50,7 @@
 			<br>
 
 		</section>
+		
 	</div>
 
 	</body>

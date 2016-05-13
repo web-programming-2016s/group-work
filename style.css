@@ -1,5 +1,73 @@
+body {
+  margin: 0;
+  background: #000; 
+  color:#eeeeee;
+}
+video { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+ background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;
+  background-size: cover;
+  transition: 1s opacity;
+}
+.stopfade { 
+   opacity: .5;
+}
 
+#polina { 
+  font-family: Agenda-Light, Agenda Light, Agenda, Arial Narrow, sans-serif;
+  font-weight:100; 
+  background: rgba(0,0,0,0.3);
+  color: white;
+  padding: 2rem;
+  width: 33%;
+  margin:2rem;
+  float: right;
+  font-size: 1.2rem;
+}
 
+#polina button { 
+  display: block;
+  width: 80%;
+  padding: .4rem;
+  border: none; 
+  margin: 1rem auto; 
+  font-size: 1.3rem;
+  background: rgba(255,255,255,0.23);
+  color: #fff;
+  border-radius: 3px; 
+  cursor: pointer;
+  transition: .3s background;
+}
+#polina button:hover { 
+   background: rgba(0,0,0,0.5);
+}
+
+a {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  background:rgba(0,0,0,0.5);
+  padding: .5rem;
+  transition: .6s background; 
+}
+a:hover{
+  background:rgba(0,0,0,0.9);
+}
+@media screen and (max-width: 500px) { 
+  div{width:70%;} 
+}
+@media screen and (max-device-width: 800px) {
+  html { background: url(//demosthenes.info/assets/images/polina.jpg) #000 no-repeat center center fixed; }
+  #bgvid { display: none; }
+}
 
 .input {
   position: relative;
@@ -82,7 +150,7 @@
   overflow: hidden;
   padding: 0;
   width: 100%;
-  color: #dadada;
+  color: #eeeeee;
   text-align: left;
 }
 
@@ -109,7 +177,7 @@
   top: 0;
   left: 0;
   padding: 0.75em 0.15em;
-  color: #da7071;
+  color: #e14658;
   opacity: 0;
   -webkit-transform: translate3d(0, 50%, 0);
   transform: translate3d(0, 50%, 0);
@@ -121,7 +189,8 @@
 }
 
 .input__field--isao:focus + .input__label--isao::before {
-  background-color: #da7071;
+  color:#eeeeee;
+  background-color: #e14658;
   -webkit-transform: scale3d(1, 1, 1);
   transform: scale3d(1, 1, 1);
 }
@@ -157,17 +226,22 @@ body{
     font-family: 'Open Sans', sans-serif;
     color: #000000;
     text-align: center;
+    opacity:50%;
 }
 
 .wrap{
+  opacity: 0.6;
    position:relative;
-   width:500px;
-   height:750px;
+   width:300px;
+   height:300px;
    padding:1em 1em;
    margin:20px auto;
-   background:#4E5066;
+   background:#98878F;
    overflow:hidden;
+
 }
+
+
 
 .wrap:before {
    content:"";
@@ -192,10 +266,7 @@ body{
    border-radius:0 0 0 5px;
 }
 
-.wrap img {
-    width: 100%;
-    margin-top: 15px;
-}
+
 
 p{ 
     margin-top: 15px;
@@ -220,7 +291,7 @@ a:hover{
 }
 
 
- #submit, #login {
+  #submit, #login {
 
    width: 60px;
     height:30px;
@@ -232,6 +303,6 @@ a:hover{
 #submit:hover,
 #login:hover {
     width: 100px;
-      color:#000000;
-      background-color:#da7071;
+      color:#eeeeee;
+      background-color:#192231;
 
