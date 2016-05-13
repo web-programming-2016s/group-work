@@ -54,36 +54,9 @@ if(isset($_GET["watch_less_tb2"])){
 	
 	
 	// IF THERE IS ?DELITE=ROW_ID in the url
-	
-	if(isset($_GET["delete_o"]) && isset($_SESSION["user_id"])){
-		
-		echo "Deleting row with 2id:".$_GET["delete_o"];
-		echo "<br>";
-		
-		// NOW() = current date-time
-		$stmt = $mysql->prepare("UPDATE Reservation SET deleted=NOW() WHERE id = ?");
-		
-		echo $mysql->error;
-		
-		//replace the ?
-		$stmt->bind_param("i", $_GET["delete_o"]);
-		
-		if($stmt->execute()){
-			echo "<span style='color: red;'>deleted successfully</span>";
-			echo "<br>";
-		}else{
-			echo $stmt->error;
-		}
-		
-		//closes the statement, so others can use connection
-		$stmt->close();
-		
-	}
-	
 	if(isset($_GET["delete"]) && isset($_SESSION["user_id"])){
 		
-		echo "Deleting row with 1id:".$_GET["delete"];
-		echo "<br>";
+		$error_delete1 = "Deleting \"TB1\" row with id:".$_GET["delete"]."<br>";
 		
 		// NOW() = current date-time
 		$stmt = $mysql->prepare("UPDATE messages_sample SET deleted=NOW() WHERE id = ?");
@@ -94,12 +67,33 @@ if(isset($_GET["watch_less_tb2"])){
 		$stmt->bind_param("i", $_GET["delete"]);
 		
 		if($stmt->execute()){
-			echo "<span style='color: red;'>deleted successfully</span>";
-			echo "<br>";
+			$error_delete1.= "<span style='color: red;'>deleted successfully</span><br>";
 		}else{
-			echo $stmt->error;
+			$error_delete1.=$stmt->error;
 		}
 		
+		//closes the statement, so others can use connection
+		$stmt->close();
+		
+	}
+	
+		if(isset($_GET["delete_o"]) && isset($_SESSION["user_id"])){
+		
+		$error_delete2 = "Deleting \"TB2\" row with id:".$_GET["delete_o"]."<br>";
+		
+		// NOW() = current date-time
+		$stmt = $mysql->prepare("UPDATE Reservation SET deleted=NOW() WHERE id = ?");
+		
+		echo $mysql->error;
+		
+		//replace the ?
+		$stmt->bind_param("i", $_GET["delete_o"]);
+		
+		if($stmt->execute()){
+			$error_delete2.= "<span style='color: red;'>deleted successfully</span><br>";
+		}else{
+			$error_delete2.=$stmt->error;
+		}
 		//closes the statement, so others can use connection
 		$stmt->close();
 		
@@ -132,7 +126,7 @@ if(isset($_GET["watch_less_tb2"])){
 			$table_html .="<th><center>Created</center></th>";
 			if(isset($_SESSION["user_id"])){
 				$table_html .="<th><center>Edit</center></th>";
-				$table_html .="<th><center>Delete?</center></th>";
+				$table_html .="<th><center>Delete</center></th>";
 			}
 			
 		
@@ -189,6 +183,12 @@ if(isset($_GET["watch_less_tb2"])){
 	$table_html .="</table>";
 	//echo $table_html;
 ?>
+
+	<!-- -------------------------------------------------------------------------------------- -->
+
+		<?php if(isset($error_delete1)){
+		echo $error_delete1;
+		}?>
 		
 		<h3 id="tb1">Table of "Message APP"</h3>
 		
@@ -251,7 +251,7 @@ if(isset($_GET["watch_less_tb2"])){
 			$table2_html .="<th><center>Created</center></th>";
 			if(isset($_SESSION["user_id"])){
 			$table2_html .="<th><center>Edit</center></th>";
-			$table2_html .="<th><center>Delete?</center></th>";
+			$table2_html .="<th><center>Delete</center></th>";
 			}
 		
 		$table2_html .="</tr>"; //end row
@@ -305,7 +305,7 @@ if(isset($_GET["watch_less_tb2"])){
 			
 			if(isset($_SESSION["user_id"])){
 			$table2_html .="<td><a class='btn btn-warning' href='edit_reservation.php?edit=".$id."'>Edit</a></td>";
-			$table2_html .="<td><a class='btn btn-danger' href='?delete_o=".$id."'>X</a></td>";
+			$table2_html .="<td><a class='btn btn-danger' onclick='confirmDelete(event)' href='?delete_o=".$id."'>X</a></td>";
 			}
 			
 		$table2_html .="</tr>"; //end row
@@ -319,7 +319,10 @@ if(isset($_GET["watch_less_tb2"])){
 
 ?>
 	<!-- -------------------------------------------------------------------------------------- -->
-
+		<?php if(isset($error_delete2)){
+			echo $error_delete2;
+		}?>
+	
 	<h3 id="tb2">Table of "Order APP"</h3>
 	
 		<?php if(isset($_SESSION["watch_more_tb2"]) && $_SESSION["watch_more_tb2"] == true){ ?>

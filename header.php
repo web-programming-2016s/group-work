@@ -87,6 +87,25 @@ require_once("functions.php");
 		<!--<link rel="stylesheet" type="text/css" href="app.css">-->
 		
 		<style>
+
+		@font-face 
+		{ 
+		font-family: Abel; 
+<<<<<<< HEAD
+		src: url("http://www.cs.tlu.ee/~dmikab/groupwork/AbelRegular.ttf") format("truetype");
+=======
+		src: url("./fonts/AbelRegular_BACKUP.ttf") format("truetype");
+>>>>>>> 49059c71351a59814541f4bc5c69e36571431261
+		}
+
+		body {
+
+			font-family: Abel !important;
+		}
+		
+		</style>
+		
+		<style>
 			.navbar-inverse .navbar-nav>.active>a,
 			.navbar-inverse .navbar-nav>.open>a,
 			.navbar-inverse .navbar-nav>.active>a, 
@@ -98,22 +117,7 @@ require_once("functions.php");
 			}
 		</style>
 		
-		<style>
 
-		
-
-		@font-face 
-		{ 
-		font-family: Abel; 
-		src: url("http://www.cs.tlu.ee/~dmikab/groupwork/AbelRegular.ttf") format("truetype");
-		}
-
-		body {
-
-			font-family: Abel !important;
-		}
-		
-		</style>
 		
 		  <script>
 		  $(function() {
