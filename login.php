@@ -55,27 +55,66 @@
 ?>
 
 <h1>Log in</h1>
-<form method="POST">
 
-	<input type="text" placeholder="Username" name="username">
-	<input type="password" placeholder="Password" name="password">
-	
-	<input type="submit" class="btn btn-info" name="login" value="Log in">
-	
+<form method="POST" class="form-inline">
+  <div class="form-group">
+    <label for="Username">Username:</label>
+    <input type="text" class="form-control" name="username">
+  </div>
+  <div class="form-group">
+    <label for="Password">Password:</label>
+    <input type="password" class="form-control" name="password">
+  </div>
+  <input type="submit" name="login" value="Log in" class="btn btn-info"></input>
 </form>
 
+	
 
 <h1>Sign up</h1>
-<form method="POST">
+<div class="container">
+<form  method="POST" class="form-horizontal">
+  <div class="form-group">
+    <label for="name" class="col-sm-2 control-label">First name: </label>
+    <div class="col-sm-10">
+      <input style="width:25%;" type="text" class="form-control" name="name">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="name2" class="col-sm-2 control-label">Last name: </label>
+    <div class="col-sm-10">
+      <input style="width:25%;" type="text" class="form-control" name="name2">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="username" class="col-sm-2 control-label">Username: </label>
+    <div class="col-sm-10">
+      <input style="width:25%;" type="text" class="form-control" name="username">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password" class="col-sm-2 control-label">Password: </label>
+    <div class="col-sm-10">
+      <input style="width:25%;" type="password" class="form-control" name="password">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button name="signup" type="submit" class="btn btn-info">Sign up</button>
+    </div>
+  </div>
+</form>
+</div>
 
-	<input type="name" placeholder="First name" name="name"><br>
+<!--	<input type="name" placeholder="First name" name="name"><br>
 	<input type="name" placeholder="Last name" name="name2"><br>
 	
 	<input type="text" placeholder="Username" name="username"><br>
 	<input type="password" placeholder="Password" name="password"><br>
 	
-	<input type="submit" class="btn btn-info" name="signup" value="Sign up">
+	<input type="submit" class="btn btn-info" name="signup" value="Sign up"> -->
 	
 	
 	
 </form>
+</body>
+</html>
