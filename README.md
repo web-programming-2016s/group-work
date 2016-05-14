@@ -8,12 +8,5 @@
         * v0.2 It is possible to log in and out
         * v0.3 It is possible to add dolphins features and see what dolphin did you see
         * v0.4 It is possible to add dolphins who you saw
-    * **Summary:** what did you learn? what did fail? what whould you do different next time?
+    * **Summary:** I learned to make a simple web application.  what did you learn? what did fail? what whould you do different next time?
 
-
-2. **Web application/service requirements:**
-    * add separate file where you describe your DB table (you can export them from phpMyAdmin)
-    * You are using atleast 3 tables;
-    * code is separated by files (you have config file, functions file etc.)
-    * application has enough functionalities (you have solved all the issues)
-    * it is possible to see what wach team member has developed 
