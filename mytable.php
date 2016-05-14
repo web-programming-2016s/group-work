@@ -99,14 +99,14 @@
  	//query
  	$stmt->execute();
  	
- 	$table_html = "";
+ 	$table2_html = "";
  	
  	//add smth to string .=
- 	$table_html .= "<table class='table table-striped'>";
- 		$table_html .= "<tr>";
- 			$table_html .= "<th>Dolphin</th>";
- 			$table_html .= "<th>COUNT</th>";
- 	 	$table_html .= "</tr>";
+ 	$table2_html .= "<table class='table table-striped'>";
+ 		$table2_html .= "<tr>";
+ 			$table2_html .= "<th>Dolphin</th>";
+ 			$table2_html .= "<th>COUNT</th>";
+ 	 	$table2_html .= "</tr>";
  	
  	//GET RESULT
  	//we have multiple rows
@@ -114,17 +114,16 @@
  	
 		//DO SOMETHING FOR EACH ROW
 		//echo $id." ".$message."<br>";
-		$table_html .= "<tr>"; //start a new row
- 			$table_html .= "<td>".$Dolphin."</td>"; 
- 			$table_html .= "<td>".$COUNT."</td>";
- 	 	$table_html .= "</tr>"; //End row
+		$table2_html .= "<tr>"; //start a new row
+ 			$table2_html .= "<td>".$Dolphin."</td>"; 
+ 			$table2_html .= "<td>".$COUNT."</td>";
+ 	 	$table2_html .= "</tr>"; //End row
 			
 	}
-	$table_html .= "</table>";
+	$table2_html .= "</table>";
 	
 		
 ?>
-<?php echo $table_html; ?>
 
 <nav class="navbar navbar-default">
 	  <div class="container-fluid">
@@ -173,6 +172,12 @@
 		
 		echo "Deleting row with id:".$_GET["delete"];}
 		?>
+		
+		<h2> Count table </h2>
+
+		
+  <?php  echo $table2_html; ?>
+
   
 	</div>
 
