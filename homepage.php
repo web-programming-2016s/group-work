@@ -1,4 +1,5 @@
 
+
 <?php require_once("header.php");?>
 
 
@@ -23,12 +24,11 @@
 		}
  
  ?>
-		
-		<br><br>
+	<br><br>
 	</section>
 </div>
 
-<hr />
+<hr/>
 
 
 	<div class="container">

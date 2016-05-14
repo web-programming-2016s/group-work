@@ -7,3 +7,10 @@
 		echo "Welcome $_SESSION[userid] | <a href='logout.php'>Logout</a>|<a href='change.php'>Change Password</a>";
 	}
 ?>
+
+<style>
+
+	body {
+    color:#eeeeee;
+}
+</style>
