@@ -96,8 +96,8 @@ margin-left: 15%;
       <ul class="nav navbar-nav">
 	  
         <li> <a href="applic.php">Send</a></li>
-		<li class="active"><a href="table.php"> Table</a>
-		  <li class="active"><a href="my_mess.php">My messages</a></li> 
+		<li><a href="table.php"> Table</a>
+		  <li><a href="my_mess.php">My messages</a></li> 
 			
           </ul>
     
@@ -108,7 +108,11 @@ margin-left: 15%;
 
 <form method="GET" >
         <h1>Sign up</h1>
-		<p>Please fill in your name here so that other users can address you and send you messages</p>
+		<p>
+	Welcome to Color Messages!<br>
+	You can send I read messages in different colors <br>
+	Please fill in your name here so that other users can address you and send you messages<br>
+	</p>
         <div class="row">
 				<div class="col-md-3 col-sm-6">
 					<div class="form-group">
