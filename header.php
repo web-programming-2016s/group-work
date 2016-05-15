@@ -91,11 +91,7 @@ require_once("functions.php");
 		@font-face 
 		{ 
 		font-family: Abel; 
-<<<<<<< HEAD
-		src: url("http://www.cs.tlu.ee/~dmikab/groupwork/AbelRegular.ttf") format("truetype");
-=======
 		src: url("./fonts/AbelRegular_BACKUP.ttf") format("truetype");
->>>>>>> 49059c71351a59814541f4bc5c69e36571431261
 		}
 
 		body {
