@@ -33,8 +33,8 @@ overflow:hidden;
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="applic.php">Send<span class="sr-only">(current)</span></a></li>
-      <li><a href="table.php">Table <span class="sr-only"></span></a></li>
-	  <li class="active"><a href="my_mess.php">My messages</a></li> 
+      <li><a href="table.php">Table</a></li>
+	  <li><a href="my_mess.php">My messages</a></li> 
    
      
           </ul>
@@ -42,12 +42,12 @@ overflow:hidden;
   </div><!-- /.container-fluid -->
 </nav>
 
- <h1>Send  coloful messages!</h1>
- <div id="main" class="container">
+ 
+ <div class="container">
 
 <div id="form" class="container">
     <br>
-    
+    <h1>Send  coloful messages!</h1>
     <form method="get">
          <div class="row">
 				<div class="col-md-3 col-sm-6">
