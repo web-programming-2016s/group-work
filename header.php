@@ -135,17 +135,17 @@ require_once("functions.php");
 							}); 
 			-->
 		  
-		   <script>
--			function confirmDelete(event){
--				
--				var c = confirm("Do you want to delete?");
--				
--				if(!c){
--					event.preventDefault();
--				}
--			}
--		  
--		  </script>
+		 <script>
+			function confirmDelete(event){
+				
+				var c = confirm("Do you want to delete?");
+				
+				if(!c){
+					event.preventDefault();
+				}
+			}
+		  
+		 </script>
 				
 		 <script type="text/javascript">
 		
