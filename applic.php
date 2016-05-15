@@ -47,7 +47,7 @@ overflow:hidden;
 
 <div id="form" class="container">
     <br>
-    <h1>Send  coloful messages!</h1>
+    <h1>Send  colorful messages!</h1>
     <form method="get">
          <div class="row">
 				<div class="col-md-3 col-sm-6">
