@@ -104,6 +104,7 @@
 		//save
 		if($stmt->execute()){
 			echo "<span style='color: red;'>saved sucessfully</span>";
+			
 			//$_SESSION["msg"] = "<span style='color: red;'>saved sucessfully</span>";
 			
 			//header('Location: app_message.php?msg=Saved sucessfully');

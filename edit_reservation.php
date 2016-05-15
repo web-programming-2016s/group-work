@@ -1,4 +1,6 @@
-﻿<?php
+﻿
+
+<?php
 
 	//require another php file
 	// ../../../ means > 3 folders back

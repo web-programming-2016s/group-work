@@ -1,10 +1,4 @@
-<style>
-	
-	body {
-		
-		color:#000000;
-	}
-</style>
+
 <?php
 
 //we need functions for dealing with session
@@ -119,7 +113,7 @@ require_once("functions.php");
 		<section id="Add_interests">
 		
 			<h2>Add new interest</h2>
-				<form style="color: #000" method="POST">
+				<form method="POST">
 			
 					<input type="text" name="new_interest">
 					<input type="submit" name="add_new_interest" value="Add">
@@ -127,8 +121,7 @@ require_once("functions.php");
 				</form>
 			
 			<h2>Select user interests</h2>
-				<form style="color: #000">
-				
+				<form>
 					<?php createInterestDropdown(); ?>
 					<input type="submit" name="select_interest" value="Select">
 				</form>
