@@ -94,7 +94,21 @@
 
 ?>
 
+<style>
 
+{ margin: 0; padding: 0; }
+
+html { 
+        background: url('3.jpg') no-repeat fixed; 
+         background-position: left top;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+}
+
+
+</style>
 	
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
