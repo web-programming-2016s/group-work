@@ -73,7 +73,7 @@
 		//$table_html .= "<td>" .$Color. "</td>"; 
 		$table_html .= "<td>" .$From. "</td>"; 
 		$table_html .= "<td>" .$To. "</td>"; 
-		$table_html .= "<td bgcolor='$Color'>" .$Message. "</td>"; 
+		$table_html .= "<td bgcolor='$Color'><b>" .$Message. "</b></td>"; 
     	$table_html .= "<td><a class= 'btn btn-danger' href='?delete=" .$id."'>Remove</a></td>";
 				
 	$table_html .= "</tr>"; //end row
@@ -100,8 +100,8 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li> <a href="applic.php">Send</a></li>
-		<li class="active"><a href="table.php"> Table</a><span class="sr-only">(current)</span></a></li>
-		  <li class="active"><a href="my_mess.php">My messages</a></li> 
+		<li class="active"><a href="table.php">Table</a><span class="sr-only">(current)</span></a></li>
+		  <li><a href="my_mess.php">My messages</a></li> 
 
           </ul>
     
@@ -115,6 +115,10 @@
 		<?php echo $table_html; 
 		echo $text;
 		?>
+
+
+
+
 
 
   </body>
