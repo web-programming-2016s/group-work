@@ -1,3 +1,10 @@
+<style>
+	
+	body {
+		
+		color:#000000;
+	}
+</style>
 <?php
 
 //we need functions for dealing with session
