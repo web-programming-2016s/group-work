@@ -41,7 +41,7 @@ $mysql = new mysqli("localhost", $db_username, $db_password, "webpr2016_marpat")
 
 
 //SQL sentence // to show all results, remove ORDER 
-	$stmt = $mysql->prepare("SELECT `Color`, `From`, `Message` FROM `Color_Messages` WHERE `To` = '$name'");
+	$stmt = $mysql->prepare("SELECT `Color`, `From`, `Message` FROM `Color_Messages` WHERE (`To` = '$name' && `deleted` IS NULL)");
 	
 
 	
@@ -100,8 +100,8 @@ $mysql = new mysqli("localhost", $db_username, $db_password, "webpr2016_marpat")
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="applic.php">Send<span class="sr-only"></span></a></li>
-      <li><a href="table.php">Table <span class="sr-only"></span></a></li>
+        <li><a href="applic.php">Send</a></li>
+      <li><a href="table.php">Table</a></li>
    <li class="active"><a href="my_mess.php">My messages<span class="sr-only">(current)</span></a></li>
      
           </ul>
