@@ -1,4 +1,5 @@
 <?php
+if(!isset($noAccessCheck)){$noAccessCheck=false;}
 header('Content-Type: text/html; charset=utf-8');
 if(!$noAccessCheck){
     include('checkAccess.php');
