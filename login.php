@@ -30,8 +30,10 @@
 
 <video autoplay id="bgvid" loop>
   <source src="https://dl.dropboxusercontent.com/u/3465596/loops/loop.mp4" type="video/mp4">
+  <!-- 
   <source src="https://dl.dropboxusercontent.com/u/3465596/loops/loop.ogg" type="video/ogg">
   <source src="https://dl.dropboxusercontent.com/u/3465596/loops/loop.webm" type="video/webm">
+  -->
 </video>
 
 <div class="wrap rounded">

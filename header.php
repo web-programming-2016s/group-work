@@ -91,11 +91,7 @@ require_once("functions.php");
 		@font-face 
 		{ 
 		font-family: Abel; 
-<<<<<<< HEAD
-		src: url("http://www.cs.tlu.ee/~dmikab/groupwork/AbelRegular.ttf") format("truetype");
-=======
 		src: url("./fonts/AbelRegular_BACKUP.ttf") format("truetype");
->>>>>>> 49059c71351a59814541f4bc5c69e36571431261
 		}
 
 		body {
@@ -139,6 +135,17 @@ require_once("functions.php");
 							}); 
 			-->
 		  
+		 <script>
+			function confirmDelete(event){
+				
+				var c = confirm("Do you want to delete?");
+				
+				if(!c){
+					event.preventDefault();
+				}
+			}
+		  
+		 </script>
 				
 		 <script type="text/javascript">
 		
@@ -293,18 +300,6 @@ require_once("functions.php");
 				}
 			};
 		</script>
-		
-		<!--		
-			<script type="text/javascript" src="jquery.js"></script>
-					<script type="text/javascript">
-					function checker() 
-					{ 
-					if($('input[name^=toDel]:checked').length > 0) return confirm('Do you really want to delete?'); 
-					else return false; 
-					} 
-					
-			</script>
-		-->
 
 			<!--
 			<FORM action="" method="post" > 
@@ -368,16 +363,24 @@ require_once("functions.php");
 		
       </ul>
 	  
-	  <?php
-	  
+  <?php
+		
+		if(isset($_SESSION["user_id"])){
 		 echo "
 				<ul class='nav navbar-nav navbar-right pull-right'>
-					<li><a>User Name</a></li>
+					<li><a>".$_SESSION["First_Name"]." ".$_SESSION["Last_Name"]."</a></li>
 					<li><a href='?logout'>Log out</a></li>
 				  </ul>
 			  ";
+		}else{
+			echo "
+				<ul class='nav navbar-nav navbar-right pull-right'>
+					<li><a href='homepage.php'>Login</a></li>
+				  </ul>
+			  ";
+		}
 	  
-	  ?>
+	?>
 
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
