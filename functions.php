@@ -1,7 +1,7 @@
 <?php
 	
-	require_once("../../config.php");
-	
+	require_once("config.php");
+		require_once("header.php"); 
 	//start server session to store data
 	//in every file you want to access session
 	//you should require functions
@@ -14,13 +14,13 @@
 		
 		$mysql = new mysqli("localhost", $GLOBALS["db_username"], $GLOBALS["db_password"], "webpr2016_qpelit");
 		
-		$stmt = $mysql->prepare("SELECT id, name FROM users WHERE username=? and password=?");
+		$stmt = $mysql->prepare("SELECT id FROM my_Data WHERE user_name=? and password=?");
 		
 		echo $mysql->error;
 		
 		$stmt->bind_param("ss", $user, $pass);
 		
-		$stmt->bind_result($id, $name);
+		$stmt->bind_result($id);
 		
 		$stmt->execute();
 		
@@ -31,8 +31,7 @@
 			//create session variables 
 			//redirect user
 			$_SESSION["user_id"] = $id;
-			$_SESSION["name"] = $name;
-			$_SESSION["username"] = $user;
+			$_SESSION["user_name"] = $user;
 			
 			header("Location: restrict.php");
 			
@@ -45,7 +44,7 @@
 		
 	}
 
-	function signup($user, $pass, $name){
+	function signup($user, $mail, $gender, $phone, $pass){
 		
 		//hash the password
 		$pass = hash("sha512", $pass);
@@ -54,11 +53,11 @@
 		// GLOBALS - access outside variable in function
 		$mysql = new mysqli("localhost", $GLOBALS["db_username"], $GLOBALS["db_password"], "webpr2016_qpelit");
 		
-		$stmt = $mysql->prepare("INSERT INTO users (username, password, name) VALUES (?, ?, ?) ");
+		$stmt = $mysql->prepare("INSERT INTO my_Data (user_name, mail, gender, phone, password) VALUES (?,?,?,?,?)");
 		
 		echo $mysql->error;
 		
-		$stmt->bind_param("sss", $user, $pass, $name);
+		$stmt->bind_param("sssss", $user, $mail, $gender, $phone, $pass);
 		
 		if($stmt->execute()){
 			echo "user saved successfully!";
@@ -69,129 +68,337 @@
 	}
 
 
-	function saveInterest($interest){
-		
-		$mysql = new mysqli("localhost", $GLOBALS["db_username"], $GLOBALS["db_password"], "webpr2016_qpelit");
-		
-		$stmt = $mysql->prepare("INSERT INTO interests (name) VALUE (?)");
-		
-		echo $mysql->error;
-		
-		$stmt->bind_param("s", $interest);
-		
-		if($stmt->execute()){
-			echo "interest saved successfully!";
-		}else{
-			echo $stmt->error;
-		}
-		
-	}
 	
 	
-	function createInterestDropdown(){
-		
-		//query all interests
-		
-		$mysql = new mysqli("localhost", $GLOBALS["db_username"], $GLOBALS["db_password"], "webpr2016_qpelit");
-		
-		$stmt = $mysql->prepare("SELECT id, name FROM interests ORDER BY name ASC");
-		
-		echo $mysql->error;
-		
-		$stmt->bind_result($id, $name);
-		
-		$stmt->execute();
-		
-		
-		//dropdown html
-		$html = "<select name='user_interest'>";
-		
-		//for each interest
-		while($stmt->fetch()){
-			$html .= "<option value='".$id."'>".$name."</option>";
-		}
-		
-		$html .= "</select>";
-		
-		echo $html;
-	}
-	
-	
-function saveUserInterest($interest_id){
-		
-		$mysql = new mysqli("localhost", $GLOBALS["db_username"], $GLOBALS["db_password"], "webpr2016_qpelit");
-		
-		
-		//if user already has the interest
-		$stmt = $mysql->prepare("SELECT id FROM users_interests WHERE user_id = ? and interests_id = ?");
-		echo $mysql->error;
-		$stmt->bind_param("ii", $_SESSION["user_id"], $interest_id);
-		$stmt->execute();
-		
-		if($stmt->fetch()){
-			// it existed
-			echo "you already have this interest";
-			return; //stop it there
-		}
-		$stmt->close();
-		
-		
-		
-		
-		$stmt = $mysql->prepare("INSERT INTO users_interests (user_id, interests_id) VALUES (?, ?)");
+
+function addTopic($topic_subject, $topic_content, $topic_cat, $topic_by,$topic_byName){
+    
+    
+    $mysql = new mysqli("localhost", $GLOBALS["db_username"], $GLOBALS["db_password"], "webpr2016_qpelit");
+    
+    $stmt = $mysql->prepare("INSERT INTO topics (topic_subject,topic_content,topic_cat,topic_by,topic_byName) VALUES (?, ?,?,?,?)");
 		
 		echo $mysql->error;
 		
 		//$_SESSION["user_id"] logged in user ID
-		$stmt->bind_param("ii", $_SESSION["user_id"], $interest_id);
+		$stmt->bind_param("ssiis", $topic_subject, $topic_content, $topic_cat, $topic_by,$topic_byName);
 		
 		if($stmt->execute()){
-			echo "save successfully";
+			 	?>
+			<div class="alert alert-success" role="alert">"<b> Successfully Submitted!</b> </div>
+			<?php
 		}else{
 			echo $stmt->error;
 		}
+    
+    
+    
+    
+    
+    
+}
+
+function showTopics($topic_catNum){
+     $mysql = new mysqli("localhost", $GLOBALS["db_username"], $GLOBALS["db_password"], "webpr2016_qpelit");
+    
+    $stmt = $mysql->prepare("SELECT id, topic_subject, topic_cat, topic_by,topic_byName, topic_date FROM topics WHERE topic_cat='".$topic_catNum."' ORDER BY topic_date ");
+	
+	//WHERE deleted IS NULL show only those that are not deleted
+	
+	//if error in sentence
+	echo $mysql->error;
+	
+	//variables for data for each row we will get
+	$stmt->bind_result($top_id, $topic_subject, $topic_cat, $topic_by, $topic_byName,$topic_date);
+	
+	//query
+	$stmt->execute();
+	if($topic_catNum==1){
+        $topic_catName="PHP";
+    }
+    else if($topic_catNum==2){
+         $topic_catName="IOS";
+        
+    }
+      else if($topic_catNum==3){
+         $topic_catName="ANDROID";
+        
+    }
+ else if($topic_catNum==4){
+          $topic_catName="Game Development";
+    }
+	$table_html = "";
+	
+ 
+         
+	//add smth to string .=
+    
+  ?>  
+
+
+<br>
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading"><?php echo $topic_catName ?></div>
+      <div class="panel-body">
+     <?php
+	$table_html .= "<table class='table table-hover'>";
+		$table_html .= "<tr>";
+			$table_html .= "<th>Topic</th>";
+			$table_html .= "<th>User</th>";
+			$table_html .= "<th>Created</th>";
+		$table_html .= "</tr>";
+
+	// GET RESULT 
+	//we have multiple rows
+	while($stmt->fetch()){
 		
+		//DO SOMETHING FOR EACH ROW
+		//echo $id." ".$message."<br>";
+		$table_html .= "<tr>"; //start new row
+    
+			$table_html .= "<td><a href='?topicid=$top_id'>".$topic_subject."</a></td>"; //add columns
+			$table_html .= "<td>".$topic_byName."</td>";
+			$table_html .= "<td>".$topic_date."</td>";
+
+		
+		$table_html .= "</tr>"; //end row
+
 	}
-function createUserInterestList(){
+	$table_html .= "</table>";
+    $table_html .= "</div>";
+    $table_html .= "</div>";
+        $table_html .= "</div>";
+		echo $table_html;
+ 
+
+
+}
+function showBadge($catNum){
+    
+    $mysql = new mysqli("localhost", $GLOBALS["db_username"], $GLOBALS["db_password"], "webpr2016_qpelit");
+    $stmt=$mysql->prepare("SELECT COUNT(topic_content) FROM topics WHERE topic_cat='".$catNum."'");
+    $stmt->bind_result($topicCount);
+   
+    echo $mysql->error;
+    	$stmt->execute();
+  $stmt -> fetch();
+    echo  $topicCount;
+}
+function showContent($topic_id){
+     if(isset($_GET["edit_content"])){
+ 
+            editTopic($_GET["topic_subject"],$_GET["topic_content"], $_GET["topic_cat"], $topic_id);
+        
+        }
+    
+      $mysql = new mysqli("localhost", $GLOBALS["db_username"], $GLOBALS["db_password"], "webpr2016_qpelit");
+    
+    $stmt = $mysql->prepare("SELECT topic_subject,topic_content, topic_cat, topic_byName,topic_by, topic_date FROM topics WHERE id='".$topic_id."'");
+	
+	//WHERE deleted IS NULL show only those that are not deleted
+	
+	//if error in sentence
+	echo $mysql->error;
+	
+	//variables for data for each row we will get
+	$stmt->bind_result($topic_subject,$topic_content, $topic_cat, $topic_byName, $topic_by, $topic_date);
+     $stmt->execute();
+    $stmt->fetch();
+
+
+   
+          if(!isset($_GET["edit"])){ ?>
+         
+      <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading"><?php echo $topic_subject;?></div>
+      <div class="panel-body"><?php echo "<h4>".$topic_byName."</h4>".$topic_content."<br></br>".$topic_date;
+          
+        if($topic_by==$_SESSION["user_id"]){         
+             ?>
+          <form method="GET">   <input class="btn btn-success " name="edit" id="edit" type="submit" value="edit"> </form>
+        
+        </div>
+        <?php
+                           }                }
+    else{
+      
+        ?>
+        	<form method="GET">
+                   <div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading">Edit</div>
+        <div class="panel-body">
+              <div class="row">
+    <div class="col-md-5 col-sm-8">
+        <h2>Subject</h2> 
+
+	<input type="text" class="form-control" id="topic_subject" name="topic_subject" value="<?php  echo $topic_subject; ?>""> 
+          </div> <br></div>
+            <div class="row">
+        <div class="form-group col-md-5 col-sm-8">
+  
+  <select class="form-control" name="topic_cat" id="topic_cat">
+    <option value="1">Php</option>
+      <option value="2">Ios</option>
+    <option value="3">Android</option>
+     <option value="4">Game Development</option>
+  </select>
+</div></div>
+        
+        
+        
+        
+        
+    <div class="row">
+     <div class="col-md-11 col-sm-8">
+
+  
+        <h2>Content</h2>
+        
+    <textarea class="form-control" id="topic_content" name="topic_content"  rows="5"><?php echo $topic_content; ?></textarea>
+             
+         	<input class="btn btn-success " name="edit_content" id="edit_content" type="submit" value="submit">
+         </div></div></div>
+      </form>  <?php
+        
+       
+    
+
+    }}
+    
+    
+
+function editTopic($topic_subject,$topic_content,$topic_cat,$topic_id){
+    
+                $mysql = new mysqli("localhost", $GLOBALS["db_username"], $GLOBALS["db_password"], "webpr2016_qpelit");
+               $stmt = $mysql->prepare("UPDATE topics SET topic_subject=?, topic_content=?,topic_cat=? WHERE id=?");
+			
+			echo $mysql->error;
+			
+			$stmt->bind_param("ssii", $topic_subject,$topic_content, $topic_cat, $topic_id);
+			
+			if($stmt->execute()){
+				
+				echo "saved successfully"; 
+                
+   
+       
+			}else{
+				echo $stmt->error;
+			}
+            
+            
+            
+    
+    
+    
+}
+function editReply($reply_id,$reply_content){
+    
+        $mysql = new mysqli("localhost", $GLOBALS["db_username"], $GLOBALS["db_password"], "webpr2016_qpelit");
+               $stmt = $mysql->prepare("UPDATE replies SET reply_content=? WHERE reply_id=?");
+			
+			echo $mysql->error;
+			
+			$stmt->bind_param("si", $reply_content,$reply_id);
+			
+			if($stmt->execute()){
+				
+				echo "saved successfully"; 
+                
+   
+       
+			}else{
+				echo $stmt->error;
+			}
+    
+    
+    
+}
+function submitReply($user_id,$user_name,$reply_content,$topic_id){
+    
+       $mysql = new mysqli("localhost", $GLOBALS["db_username"], $GLOBALS["db_password"], "webpr2016_qpelit");
+    
+    $stmt = $mysql->prepare("INSERT INTO replies (topic_id,reply_content,reply_by,reply_byName) VALUES (?, ?,?,?)");
 		
-		$mysql = new mysqli("localhost", $GLOBALS["db_username"], $GLOBALS["db_password"], "webpr2016_qpelit");
+		echo $mysql->error;
 		
-		$stmt = $mysql->prepare("
-			SELECT interests.name FROM users_interests
-			INNER JOIN interests ON
-			users_interests.interests_id = interests.id
-			WHERE users_interests.user_id = ?
-		");
+		//$_SESSION["user_id"] logged in user ID
+		$stmt->bind_param("isis",$topic_id,$reply_content,$user_id,$user_name);
 		
-		$stmt->bind_param("i", $_SESSION["user_id"]);
-		$stmt->bind_result($interest);
-		
-		$stmt->execute();
-		
-		$html = "<ul>";
-		
-		//for each interest
-		while($stmt->fetch()){
-			$html .= "<li>".$interest."</li>";
+		if($stmt->execute()){
+			 	?>
+			<div class="alert alert-success" role="alert">"<b> Successfully Submitted!</b> </div>
+			<?php
+		}else{
+			echo $stmt->error;
 		}
-		
-		$html .= "</ul>";
-		
-		echo $html;
-		
-	}
+}
+function showReplies($topic_id){
+    
+   
+ 
+    
+    
+        $mysql = new mysqli("localhost", $GLOBALS["db_username"], $GLOBALS["db_password"], "webpr2016_qpelit");
+    
+    $stmt = $mysql->prepare("SELECT reply_id,reply_byName,reply_by,reply_content,reply_date FROM replies WHERE topic_id='".$topic_id."' ORDER BY reply_id");
 	
-	/*$name = "Romil";
+	//WHERE deleted IS NULL show only those that are not deleted
 	
-	hello($name, "thursday", 7);
-	hello("Toomas", "esmaspäev", 1);
-	
-	function hello($recieved_name, $day_of_the_week, $day){
-		echo "hello ".$recieved_name."!";
-		echo "<br>";
-		echo "Today is ".$day_of_the_week." ".$day;
-		echo "<br>";
-	}*/
+	//if error in sentence
+	echo $mysql->error;
+	 $html_reply="";
+	//variables for data for each row we will get
+	$stmt->bind_result($reply_id,$reply_byName,$reply_by, $reply_content,$reply_date);
+       if($stmt->execute()){
+		
+		}else{
+			echo $stmt->error;
+		}
+
+
+	while($stmt->fetch()){
+   
+     $html_reply .="<div class='panel-group'>";
+     $html_reply .="<div class='panel panel-primary'>";
+      $html_reply .="<div class='panel-heading'> @ ".$reply_byName."</div>";
+    $html_reply .="<div class='panel-body'>".$reply_content."<br>".$reply_date."</div>";
+        if($reply_by==$_SESSION["user_id"]){
+        $html_reply.="<a href='?reply_Eid=$reply_id&reply_eContent=$reply_content'>edit</a>";
+}
+     $html_reply .="</div>";
+    $html_reply .="</div><br>";
+    }
+   
+       
+        if(isset($_GET["reply_eContent"])){
+              $_SESSION["id"]=$_GET["reply_Eid"];
+        ?>
+           
+ <form method="GET">
+        <textarea class="form-control" id="reply_edited" name="reply_edited" rows="4"><?php echo $_GET["reply_eContent"]; ?></textarea>
+             <div class="row_b">
+         	<input class="btn btn-success " name="reply_edit" id="reply_edit" type="submit" value="submit">
+        </form>
+        <?php
+            
+     
+     
+        
+         
+        }    
+     if(isset($_GET["reply_edit"])){
+
+         editReply($_SESSION["id"],$_GET["reply_edited"]);
+         header("Location: restrictTopic.php");
+        
+     }
+   echo $html_reply;
+
+}
 
 
 ?>
