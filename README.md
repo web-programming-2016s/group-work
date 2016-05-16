@@ -10,9 +10,9 @@
 ### Requirements
 
 1. **README.md contains:**
-    * name of the project
-    * names of the teammember
-    * purpose of the project (3-4 sentences what problem you are trying to solve);
+    * name of the project: Little Estonia
+    * names of the team member: Vadim Kozlov, Dmitri Kablutsko
+    * purpose of the project (3-4 sentences what problem you are trying to solve); 
     * description of the project (target group – your customers/clients, how you differ from other apps – describe 2-3 similar applications/web services);
     * functionalities of the app
         * v0.1 It is possible to create user
@@ -26,4 +26,4 @@
     * You are using atleast 3 tables;
     * code is separated by files (you have config file, functions file etc.)
     * application has enough functionalities (you have solved all the issues)
-    * it is possible to see what wach team member has developed 
+    * it is possible to see what watch team member has developed 
