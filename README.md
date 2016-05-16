@@ -1,7 +1,4 @@
 # PHP groupwork project
-
-
-1. **README.md contains:**
     * Lendsy
     * Karli Jaanson, Elis Pihl. 
     * The purpose of the project is to create an app where all the photographers and photo enthusiasts can easily rent out their equipment.  Why we think it is needful? It is create solution for professional photographers and at the same time for  those who just have passion for photography as a hobby. Photo equipment is generally expensive and if photography isn't your everyday job then there is no point to buy yourself every part of equipment and high-priced lens. And even professional photographers time to time need some extra equipment that they commonly don't use daily. Instead of buying, you can rent everything you need and save money.  Or if you are having  equipment that you don`t need everyday then just load it up to our app and earn some extra money!
